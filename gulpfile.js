@@ -110,7 +110,7 @@ gulp.task('lint', function() {
   return gulp.src([
       'app/scripts/**/*.js',
       'app/elements/**/*.js',
-      'app/elements/**/*.html',
+      //'app/elements/**/*.html',
       'gulpfile.js'
     ])
     .pipe(reload({

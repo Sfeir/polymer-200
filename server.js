@@ -1,6 +1,6 @@
 'use strict';
 
-require('colors');
+//require('colors');
 
 var express = require('express'),
   bodyParser = require('body-parser'),

@@ -36,7 +36,7 @@
   <!-- endbuild-->
 
   <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
-  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
   <!-- endbuild -->
 
   <!-- will be replaced with elements/elements.vulcanized.html -->
@@ -45,14 +45,26 @@
 
   <style is="custom-style" include="shared-styles"></style>
 
-
 </head>
 
 <body unresolved class="fullbleed layout vertical">
 <span id="browser-sync-binding"></span>
+<template is="dom-bind" id="app">
+  <paper-header-panel main>
+    <paper-toolbar justify="  start">
+      <a href="#/home" class="top fit">
+        <img src="/images/logo-sfeir.svg" class="logo" aria-label="sfeir" alt="Sfeir">
+      </a>
+    </paper-toolbar>
+    <div id="main">
+      <paper-material elevation="1">
+        <people-list>
 
-<people-app id="app"></people-app>
-
+        </people-list>
+      </paper-material>
+    </div>
+  </paper-header-panel>
+</template>
 
 <!-- build:js scripts/app.js -->
 <script src="scripts/app.js"></script>
