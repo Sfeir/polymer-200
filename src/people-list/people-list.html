@@ -1,5 +1,4 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../components/people-card/people-card.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
@@ -12,8 +11,10 @@
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../../bower_components/google-map/google-map.html">
 <link rel="import" href="../../bower_components/google-map/google-map-marker.html">
-<link rel="import" href="../components/people-form/people-form.html">
 
+
+<link rel="import" href="../components/people-form/people-form.html">
+<link rel="import" href="../components/people-card/people-card.html">
 
 
 <dom-module id="people-list">
@@ -21,12 +22,21 @@
         <style include="iron-flex iron-flex-alignment">
             :host {
                 display: block;
-                padding: 10px;
+                padding: 20px;
+            }
+
+            .header{
+                padding: 0 20px;
+                color:var(--primary-color);
             }
 
             paper-dialog {
                 --paper-dialog-background-color:white;
                 top:185px;
+            }
+
+            a {
+                color: inherit;
             }
 
             google-map {
@@ -45,8 +55,8 @@
         </app-route>
 
 
-        <section class="layout horizontal">
-            <h2 class="flex">Vous avez {{peoples.length}} contacts</h2>
+        <section class="header layout horizontal center">
+            <h2 class="flex">You got {{peoples.length}} contacts</h2>
 
             <a href="/list/card" tabindex="-1">
                 <paper-icon-button icon="dns" aria-label$="Shopping cart: [[_computePluralizedQuantity(numItems)]]"></paper-icon-button>
@@ -57,7 +67,7 @@
         </section>
 
 
-        <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
+        <iron-pages class="layout vertical center"role="main" selected="[[page]]" attr-for-selected="name">
             <div name="card" class="list layout horizontal wrap around-justified">
                 <template is="dom-repeat" items="{{peoples}}">
                     <people-card people="{{item}}"></people-card>

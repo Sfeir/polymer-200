@@ -1,4 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+
+
 <link rel="import" href="../components/people-card/people-card.html">
 
 <dom-module id="people-detail">
@@ -10,8 +12,9 @@
             }
         </style>
 
-        <h2>Detail of</h2>
+
         <people-card display-skills people="{{currentPeople}}"></people-card>
+
 
     </template>
 
@@ -23,12 +26,12 @@
                 is         : 'people-detail',
                 properties : {
                     currentPeople : {
-                        type: Object,
-                        value: {},
-                        notify: true
+                        type   : Object,
+                        value  : {},
+                        notify : true
                     }
                 },
-                ready : function() {
+                ready      : function() {
                     this.currentPeople = {
                         "email"                : "hogandickerson@sfeir.com",
                         "lastname"             : "Powers",

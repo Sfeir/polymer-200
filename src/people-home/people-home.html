@@ -1,20 +1,20 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../components/people-card/people-card.html">
-<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
 
 <dom-module id="people-home">
     <template>
-        <style include="iron-flex iron-flex-alignment">
+        <style>
             :host {
                 display: block;
                 padding: 10px;
             }
         </style>
 
-        <div class="vertical layout center">
-            <h2>Do you know ?</h2>
-            <people-card people="{{currentPeople}}"></people-card>
-        </div>
+
+        <h2>Do you know ?</h2>
+        <people-card people="{{currentPeople}}"></people-card>
+
 
     </template>
 
