@@ -1,6 +1,5 @@
-# Trombinoscope
-Un trombinoscope utilisant Polymer 1.2
-# Polymer App Toolbox - Drawer Template
+# Peoples
+An application example using Polymer Toolbox
 
 
 ### Setup
@@ -11,6 +10,13 @@ Install [polymer-cli](https://github.com/Polymer/polymer-cli):
 
     npm install -g polymer-cli
 
+
+### Start REST sever API
+
+This command serves the rest datas at `http://localhost:3001`
+routing for the app:
+
+    npm start
 
 ### Start the development server
 
@@ -44,14 +50,4 @@ be served by a push-compatible server:
 This command serves the minified version of the app generated using fragment bundling:
 
     polymer serve src/bundled
-
-### Extend
-
-You can extend the app by adding more elements that will be demand-loaded
-e.g. based on the route, or to progressively render non-critical sections
-of the application.  Each new demand-loaded fragment should be added to the
-list of `fragments` in the included `polymer.json` file.  This will ensure
-those components and their dependencies are added to the list of pre-cached
-components (and will have bundles created in the fallback `bundled` build).
-
 
