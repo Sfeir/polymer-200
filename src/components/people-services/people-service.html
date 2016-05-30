@@ -6,7 +6,7 @@
     <template>
         <iron-ajax
                 id="getPeoples"
-                url="/routes/mocks/peoples.json"
+                url="http://localhost:3001/api/peoples"
                 handle-as="json"
                 on-response="onGetPeoples"
                 last-response="{{peoples}}"></iron-ajax>
