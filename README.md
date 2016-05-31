@@ -11,20 +11,11 @@ Install [polymer-cli](https://github.com/Polymer/polymer-cli):
     npm install -g polymer-cli
 
 
-### Start REST sever API
+### Start Server
 
-This command serves the rest datas at `http://localhost:3001`
-routing for the app:
+This command serves the rest datas at `http://localhost:3001` and the app at `http://localhost:8080`
 
     npm start
-
-### Start the development server
-
-This command serves the app at `http://localhost:8080` and provides basic URL
-routing for the app:
-
-    polymer serve
-
 
 ### Build
 

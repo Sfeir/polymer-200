@@ -39,7 +39,7 @@
   },
   "scripts": {
     "test": "gulp test:local",
-    "start": "node server/server",
+    "start": "node server/server & polymer serve",
     "lint": "gulp lint"
   },
   "engines": {
