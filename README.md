@@ -1,107 +1,44 @@
-# Trombinoscope
-Un trombinoscope utilisant Polymer 1.2
+# Peoples
+An application example using Polymer Toolbox
 
 
-## Pré-requis à l'installation
+### Setup
 
-Les dépendances principales suivantes doivent avoir été installées :
+##### Prerequisites
 
-* [Node.js](https://nodejs.org)
-* [npm](https://www.npmjs.com/)
-* Java 7, pour exécuter les tests
+Install [polymer-cli](https://github.com/Polymer/polymer-cli):
 
-
-**1)** Vérifiez votre version de Node.js
-
-```sh
-node --version
-```
-La version doit être égale ou supérieure à 0.12.x.
-Si vous n'avez pas Node.js ou que votre version est inférieure, allez sur [nodejs.org](https://nodejs.org) et installez la nouvelle version
+    npm install -g polymer-cli
 
 
-**2)** Vérifiez votre version de java
- 
-```sh
-java -version
-```
-Si vous n'avez pas Java ou que votre version est inférieure, allez sur [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html) et installez le JDK.
+### Start Server
 
-## Installation
+This command serves the rest datas at `http://localhost:3001` and the app at `http://localhost:8080`
 
-**1)**  Installez `gulp`, `bower` et `yeoman` globalement.
+    npm start
 
-```sh
-npm install -g gulp bower yo
-```
-Vous pourrez exécuter `gulp`, `bower` et `yeoman` en ligne de commande.
+### Build
 
+This command performs HTML, CSS, and JS minification on the application
+dependencies, and generates a service-worker.js file with code to pre-cache the
+dependencies based on the entrypoint and fragments specified in `polymer.json`.
+The minified files are output to the `build/unbundled` folder, and are suitable
+for serving from a HTTP/2+Push compatible server.
 
-**2)** Installez le générateur Yeoman pour Polymer
+In addition the command also creates a fallback `build/bundled` folder,
+generated using fragment bundling, suitable for serving from non
+H2/push-compatible servers or to clients that do not support H2/Push.
 
-```sh
-npm install -g generator-polymer
-```
-Vous pourrez créer des nouveaux composants dans le répertoire app/elements ([plus de détails](https://github.com/yeoman/generator-polymer#element-alias-el))
+    polymer build
 
+### Test the build
 
-**3)** Installez les dépendances du projet.
+This command serves the minified version of the app in an unbundled state, as it would
+be served by a push-compatible server:
 
-```sh
-npm install && bower install
-```
+    polymer serve src/unbundled
 
-Ça installera les sous-librairies de composants Polymer (Paper, Iron, Platinum) nécessaires au projet.
+This command serves the minified version of the app generated using fragment bundling:
 
+    polymer serve src/bundled
 
-## Pour le développement
-
-### Serveur de développement
-
-```sh
-gulp serve
-```
-
-Ça démarrera un serveur local avec plusieurs IPs à disposition :
-
-```
-Access URLs:
- -------------------------------------
-       Local: http://localhost:5000
-    External: http://192.168.0.30:5000
- -------------------------------------
-          UI: http://localhost:3001
- UI External: http://192.168.0.30:3001
- -------------------------------------
-```
-Les IP externes seront utilisées par les devices mobiles connectés au réseau local. Votre application sera disponible sur le port 5000 et une interface de synchronisation sera disponible sur le port 3001.
-
-
-### Execution des tests
-
-```sh
-gulp test:local
-```
-
-Ça exécutera les tests unitaires présents dans le répertoire `app/test` grâce à [web-component-tester](https://github.com/Polymer/web-component-tester).
-
-
-### Build & Vulcanisation
-
-```sh
-gulp
-```
-
-Build et optimise le projet, qui sera prêt au déploiement.
-
-
-## Documentation
-
-* [Polymer](https://www.polymer-project.org/), [Paper](https://elements.polymer-project.org/browse?package=paper-elements), [Iron](https://elements.polymer-project.org/browse?package=iron-elements) and [Neon](https://elements.polymer-project.org/browse?package=neon-elements) elements
-* [Polymer Starter Kit](https://developers.google.com/web/tools/polymer-starter-kit/)
-* Routing avec [Page.js](https://visionmedia.github.io/page.js/)
-* Tests unitaires avec [Web Component Tester](https://github.com/Polymer/web-component-tester)
-
-
-## Crédits
-Formation créée par [Céline LOUVET](https://github.com/celinelouvet) pour [SFEIR](http://join.sfeir.com)

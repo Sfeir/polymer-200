@@ -1,0 +1,109 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+
+<dom-module id="people-form">
+    <style include="iron-flex iron-flex-alignment">
+
+        .column {
+            padding-right: 20px;
+        }
+
+        paper-card {
+            min-width: 500px;
+            background-color: white;
+            margin: 10px;
+            padding: 15px;
+        }
+    </style>
+    <template>
+        <paper-card class="people">
+            <form is="iron-form" id="form" method="post">
+                <section class="layout vertical">
+                    <section class="column">
+                        <h2>Id.</h2>
+                        <div class="row input-row">
+                            <paper-input id="firstname" id="firstname" name="firstname" label="Firstname"
+                                         error-message="The firstname is required" required></paper-input>
+                        </div>
+                        <div class="row input-row">
+                            <paper-input id="lastname" id="lastname" name="lastname" label="Lastname"
+                                         required></paper-input>
+                        </div>
+                        <div class="row input-row">
+                            <paper-input type="email" id="accountEmail" name="accountEmail" label="Email"
+                                         error-message="The email is required" required></paper-input>
+                        </div>
+                        <div class="row input-row">
+                            <paper-input type="tel" id="accountPhone" name="accountPhone" label="Phone Number"
+                                         error-message="The phone number should have 10 digits"
+                                         pattern="\d{10}"></paper-input>
+
+                        </div>
+                    </section>
+                    <section class="column">
+                        <h2>Address</h2>
+                        <div class="row input-row">
+
+                            <paper-input type="text" id="shipAddress" name="shipAddress" label="Address"></paper-input>
+
+                        </div>
+                        <div class="row input-row">
+
+                            <paper-input type="text" id="shipCity" name="shipCity" label="City"
+                                         error-message="The city is required" required></paper-input>
+
+                        </div>
+                        <div class="row input-row">
+                            <paper-input type="text" id="shipState" name="shipState"
+                                         label="State/Province"></paper-input>
+                            <paper-input type="text" id="shipZip" name="shipZip" pattern="\d{5}" label="Zip/Postal Code"
+                                         error-message="The zipcode should have 5 digits"></paper-input>
+                        </div>
+                    </section>
+                    <section class="column">
+                        <h2>Job</h2>
+                        <div class="row input-row">
+                            <paper-dropdown-menu label="Function">
+                                <paper-listbox class="dropdown-content">
+                                    <paper-item>Developer</paper-item>
+                                    <paper-item>Manager</paper-item>
+                                    <paper-item>CTO</paper-item>
+                                </paper-listbox>
+                            </paper-dropdown-menu>
+                        </div>
+                    </section>
+                </section>
+                <section class="actions layout horizontal end-justified">
+                    <paper-button on-click="cancelForm">Cancel</paper-button>
+                    <paper-button on-click="validateForm">Validate</paper-button>
+                </section>
+            </form>
+        </paper-card>
+    </template>
+
+    <script>
+        (function() {
+            'use strict';
+
+            Polymer({
+                is           : 'people-form',
+                properties   : {},
+                validateForm : function() {
+                    return this.$.form.validate();
+                },
+                cancelForm : function() {
+                    window.history.back();
+                }
+            });
+        })();
+    </script>
+</dom-module>

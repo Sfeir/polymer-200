@@ -1,16 +1,15 @@
 {
-  "name": "sfeir-book",
-  "private": true,
+  "name": "polypeople",
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.2",
-    "iron-elements": "PolymerElements/iron-elements#^1.0",
-    "paper-elements": "PolymerElements/paper-elements#^1.0",
-    "neon-elements": "PolymerElements/neon-elements#^1.0",
-    "platinum-elements": "PolymerElements/platinum-elements#^1.2",
-    "page": "visionmedia/page.js#~1.6.4"
+    "app-layout": "polymerlabs/app-layout#master",
+    "app-route": "polymerelements/app-route#~0.9.0",
+    "google-map": "~1.1.10",
+    "iron-elements": "PolymerElements/iron-elements#~1.0.10",
+    "paper-elements": "PolymerElements/paper-elements#~1.0.7",
+    "polymer": "polymer/polymer#^1.4.0"
   },
   "devDependencies": {
-    "web-component-tester": "*"
+    "web-component-tester": "^4.0.0"
   },
   "ignore": []
 }

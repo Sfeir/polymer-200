@@ -1,0 +1,70 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-styles/typography.html">
+<dom-module id="people-app">
+    <template>
+
+        <style include="shared-styles iron-flex iron-flex-alignment">
+            :host {
+                display: block;
+            }
+
+            .bar {
+                height: 64px;
+                width: 100%;
+                position: absolute;
+                @apply(--layout-horizontal);
+                @apply(--layout-end);
+            }
+
+        </style>
+        <paper-header-panel main>
+            <paper-toolbar class="tall">
+                <div class="bar">
+                    <a data-route="home" href="{{baseUrl}}">
+                        <img src="/images/logo-sfeir.svg" class="logo" aria-label="sfeir" alt="Sfeir">
+                    </a>
+                    <span class="flex"></span>
+                    <a data-route="users" href="{{baseUrl}}peoples">
+                        <span>Peoples</span>
+                    </a>
+                    <a data-route="add" href="{{baseUrl}}peoples/add">
+                        <iron-icon icon="social:person-add"></iron-icon>
+                    </a>
+                    <paper-input class="bottom"></paper-input>
+                </div>
+            </paper-toolbar>
+            <div>
+                <div class="content">
+                    <iron-pages attr-for-selected="data-route" selected="{{route}}">
+                        <section data-route="home" tabindex="-1">
+                            <paper-material elevation="1">
+                                <people-home></people-home>
+                            </paper-material>
+                        </section>
+                        <section data-route="peoples" tabindex="-1">
+                            <people-list></people-list>
+                        </section>
+                    </iron-pages>
+                </div>
+            </div>
+        </paper-header-panel>
+    </template>
+
+    <script>
+        (function() {
+            'use strict';
+
+            Polymer({
+                is : 'people-app',
+
+                properties : {
+                    greeting : {
+                        type   : String,
+                        value  : 'Welcome to Peoples App!',
+                        notify : true
+                    }
+                }
+            });
+        })();
+    </script>
+</dom-module>
