@@ -25,7 +25,6 @@ app.get('/api/peoples', api.listAll);
 app.get('/api/person/:id', api.get);
 app.get('/api/person/name/:name', api.filterByName);
 app.get('/api/person/skill/:skill', api.filterBySkill);
-app.get('/api/person/weapon/:weapon', api.filterByWeapon);
 app.post('/api/person', api.create);
 app.put('/api/person/:id', api.update);
 app.delete('/api/person/:id', api.delete);
