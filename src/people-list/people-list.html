@@ -49,7 +49,7 @@
         <!-- Subroutes -->
         <app-route
                 route="{{route}}"
-                pattern="/:subpage"
+                pattern="/:subpage/:id"
                 data="{{routeData}}"
                 tail="{{subroute}}">
         </app-route>
@@ -77,7 +77,7 @@
                 <google-map latitude="48.8534100" longitude="2.3488000" fit-to-markers api-key="AIzaSyB4voafjokZbBCNj4AdylLknJwNmjkbxEg">
                     <template is="dom-repeat" items="{{peoples}}">
                         <google-map-marker latitude="{{item.geo.lat}}" longitude="{{item.geo.lng}}"
-                                           title="{{item.lastname}}">
+                                           title="{{item.lastname}}" open?="{{routeData.id==item.emai}}">
                             <img src="{{item.photo}}">
                         </google-map-marker>
                     </template>
@@ -139,7 +139,7 @@
                 },
 
                 ready : function() {
-
+                    console.log(this.routeData.id)
                 }
             });
         })();

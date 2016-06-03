@@ -34,15 +34,6 @@ exports.filterBySkill = function (req, res) {
 };
 
 
-exports.filterByWeapon = function (req, res) {
-  var weapon = getParam(req, 'weapon');
-  console.log('List by weapon : weapon=' + weapon);
-
-  var PEOPLES = _.where(PEOPLES, {weapon: weapon});
-
-  return res.status(200).json(PEOPLES);
-};
-
 
 exports.get = function (req, res) {
   var id = getId(req);
