@@ -49,7 +49,7 @@
         <!-- Subroutes -->
         <app-route
                 route="{{route}}"
-                pattern="/:subpage/:id"
+                pattern="/:subpage"
                 data="{{routeData}}"
                 tail="{{subroute}}">
         </app-route>
@@ -67,7 +67,7 @@
         </section>
 
 
-        <iron-pages class="layout vertical center"role="main" selected="[[page]]" attr-for-selected="name">
+        <iron-pages class="layout vertical center" role="main" selected="[[page]]" attr-for-selected="name">
             <div name="card" class="list layout horizontal wrap around-justified">
                 <template is="dom-repeat" items="{{peoples}}">
                     <people-card people="{{item}}"></people-card>
@@ -76,9 +76,10 @@
             <div name="map" class="list">
                 <google-map latitude="48.8534100" longitude="2.3488000" fit-to-markers api-key="AIzaSyB4voafjokZbBCNj4AdylLknJwNmjkbxEg">
                     <template is="dom-repeat" items="{{peoples}}">
-                        <google-map-marker latitude="{{item.geo.lat}}" longitude="{{item.geo.lng}}"
-                                           title="{{item.lastname}}" open?="{{routeData.id==item.emai}}">
-                            <img src="{{item.photo}}">
+                        <google-map-marker latitude="[[item.geo.lat]]" longitude="[[item.geo.lng]]"
+                                           title="[[item.lastname]]" open="[[_computOpen(routeData.id,item)]]">
+                          <h2>[[item.lastname]]</h2>
+                          <img src="[[item.photo]]">
                         </google-map-marker>
                     </template>
 
@@ -124,14 +125,19 @@
                 listeners: {
                     'addDialog.iron-overlay-closed': 'onClose'
                 },
+                _computOpen : function(id,item) {
+                    return id==item.email;
+                },
+
                 _routePageChanged : function(page) {
-                    if (page === 'add') {
-                        this.$.addDialog.open();
-                    }
-                    else {
-                        this.$.addDialog.close();
-                    }
-                    this.page = page || 'card';
+                  if (page === 'add') {
+                    this.$.addDialog.open();
+                  }
+                  else {
+                    this.$.addDialog.close();
+                  }
+                  this.page = page || 'card';
+                  console.log(page);
                 },
 
                 onClose: function() {
