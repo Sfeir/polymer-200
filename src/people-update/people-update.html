@@ -4,6 +4,10 @@
 <dom-module id="people-update">
     <template>
         <people-form></people-form>
+        <section class="actions layout horizontal end-justified">
+            <paper-button on-click="cancelForm">Cancel</paper-button>
+            <paper-button on-click="validateForm">Validate</paper-button>
+        </section>
     </template>
 
     <script>

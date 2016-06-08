@@ -25,8 +25,16 @@
             };
         }
 
-        .datas, .people-image {
+        .datas {
             padding: 16px;
+        }
+
+        .datas a{
+            color: #337ab7;
+        }
+
+        .actions{
+            color: black;
         }
 
         .username {
@@ -40,7 +48,6 @@
 
         .function {
             color: var(--paper-grey-600);
-            margin: 10px 0;
         }
 
 
@@ -62,8 +69,15 @@
             margin-left: 10px;
         }
 
+        .actions paper-icon-button{
+            width: 24px;
+            height: 24px;
+            padding: 0;
+            margin-left: 10px;
+            color: black;
+        }
+
         a {
-            color: #337ab7;
             text-decoration: none;
         }
 
@@ -82,43 +96,54 @@
 
     <template>
         <paper-card class="people">
-            <div class="card-content layout horizontal justified">
+            <div class="card-content layout vertical justified">
+                <div class="datas layout horizontal">
+                    <div class="layout vertical flex">
+                        <div class="people-header layout vertical flex">
+                            <a class="username" href="/detail/{{people.email}}">
+                                <span> {{people.firstname}}</span>
+                                <span class="lastname">{{people.lastname}}</span>
+                            </a>
+                            <span class="function">{{people.functionName}}</span>
+                        </div>
+                        <div class="people-data">
+                            <div class="layout horizontal center">
+                                <iron-image src="/images/md-email.svg"></iron-image>
+                                <a href$="mailto:{{people.email}}">{{people.email}}</a>
+                            </div>
+                            <div class="layout horizontal center flex">
+                                <iron-image src="/images/md-phone.svg"></iron-image>
+                                <a href$="tel:{{people.contactInfoPro.mobilePhone}}">{{people.contactInfoPro.mobilePhone}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="people-image">
+                        <iron-image  placeholder="/images/profile.svg" src="{{people.photo}}"></iron-image>
+                    </div>
+                </div>
                 <div class="datas layout vertical">
-                    <div class="people-header layout vertical">
-                        <a class="username" href="/detail/{{people.email}}">
-                            <span> {{people.firstname}}</span>
-                            <span class="lastname">{{people.lastname}}</span>
+                    <div class="layout horizontal">
+                        <span class="label">Manager: </span>{{people.manager}}
+                    </div>
+                    <div class="layout horizontal center actions">
+                        <div class="layout horizontal center actions flex">
+                            <span class="label">Location: </span>
+                            <a href="http://www.sfeir.com/contact/">{{people.entity}}</a>
+                        </div>
+                        <a href="/list/map/{{people.email}}" tabindex="-1">
+                            <img class="mapicon" src="/images/md-map.svg">
                         </a>
-                        <span class="function">{{people.functionName}}</span>
-                    </div>
-                    <div class="people-data flex">
-                        <div class="layout horizontal center">
-                            <iron-image src="/images/md-email.svg"></iron-image>
-                            <a href$="mailto:{{people.email}}">{{people.email}}</a>
-                        </div>
-                        <div class="layout horizontal center flex">
-                            <iron-image src="/images/md-phone.svg"></iron-image>
-                            <a href$="tel:{{people.contactInfoPro.mobilePhone}}">{{people.contactInfoPro.mobilePhone}}</a>
-                        </div>
-                    </div>
-                    <div class="people-subdata self-end-justified">
-                        <div class="layout horizontal center">
-                            <span class="label">Manager: </span>{{people.manager}}
-                        </div>
-                        <div class="layout horizontal center">
-                            <span class="label">Location: </span><a href="http://www.sfeir.com/contact/">{{people.entity}}</a>
-                            <a href="/list/map/{{people.email}}" tabindex="-1">
-                                <img class="mapicon" src="/images/md-map.svg">
-                            </a>
-                            <a href="/update/{{people.email}}" tabindex="-1">
-                                <paper-icon-button icon="create"></paper-icon-button>
-                            </a>
-                        </div>
+                        <a href="/update/{{people.email}}" tabindex="-1">
+                            <paper-icon-button icon="create"></paper-icon-button>
+                        </a>
+                        <a href="/update/{{people.email}}" tabindex="-1">
+                            <paper-icon-button icon="delete"></paper-icon-button>
+                        </a>
                     </div>
                 </div>
-                <div class="people-image">
-                    <iron-image  placeholder="/images/profile.svg" src="{{people.photo}}"></iron-image>
-                </div>
+
+
+
             </div>
             <template is="dom-if" if="{{displaySkills}}">
                 <div class="card-actions">

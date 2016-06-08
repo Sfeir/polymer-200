@@ -23,6 +23,11 @@
             margin: 10px;
             padding: 15px;
         }
+
+        h2, .actions{
+            color:var(--primary-color);
+        }
+
     </style>
     <template>
         <paper-card class="people">
@@ -49,42 +54,40 @@
 
                         </div>
                     </section>
-                    <section class="column">
-                        <h2>Address</h2>
-                        <div class="row input-row">
+                    <template is="dom-if" if="{{!displayOnlyId}}">
+                        <section class="column">
+                            <h2>Address</h2>
+                            <div class="row input-row">
 
-                            <paper-input type="text" id="shipAddress" name="shipAddress" label="Address"></paper-input>
+                                <paper-input type="text" id="shipAddress" name="shipAddress" label="Address"></paper-input>
 
-                        </div>
-                        <div class="row input-row">
+                            </div>
+                            <div class="row input-row">
 
-                            <paper-input type="text" id="shipCity" name="shipCity" label="City"
-                                         error-message="The city is required" required></paper-input>
+                                <paper-input type="text" id="shipCity" name="shipCity" label="City"
+                                             error-message="The city is required" required></paper-input>
 
-                        </div>
-                        <div class="row input-row">
-                            <paper-input type="text" id="shipState" name="shipState"
-                                         label="State/Province"></paper-input>
-                            <paper-input type="text" id="shipZip" name="shipZip" pattern="\d{5}" label="Zip/Postal Code"
-                                         error-message="The zipcode should have 5 digits"></paper-input>
-                        </div>
-                    </section>
-                    <section class="column">
-                        <h2>Job</h2>
-                        <div class="row input-row">
-                            <paper-dropdown-menu label="Function">
-                                <paper-listbox class="dropdown-content">
-                                    <paper-item>Developer</paper-item>
-                                    <paper-item>Manager</paper-item>
-                                    <paper-item>CTO</paper-item>
-                                </paper-listbox>
-                            </paper-dropdown-menu>
-                        </div>
-                    </section>
-                </section>
-                <section class="actions layout horizontal end-justified">
-                    <paper-button on-click="cancelForm">Cancel</paper-button>
-                    <paper-button on-click="validateForm">Validate</paper-button>
+                            </div>
+                            <div class="row input-row">
+                                <paper-input type="text" id="shipState" name="shipState"
+                                             label="State/Province"></paper-input>
+                                <paper-input type="text" id="shipZip" name="shipZip" pattern="\d{5}" label="Zip/Postal Code"
+                                             error-message="The zipcode should have 5 digits"></paper-input>
+                            </div>
+                        </section>
+                        <section class="column">
+                            <h2>Job</h2>
+                            <div class="row input-row">
+                                <paper-dropdown-menu label="Function">
+                                    <paper-listbox class="dropdown-content">
+                                        <paper-item>Developer</paper-item>
+                                        <paper-item>Manager</paper-item>
+                                        <paper-item>CTO</paper-item>
+                                    </paper-listbox>
+                                </paper-dropdown-menu>
+                            </div>
+                        </section>
+                    </template>
                 </section>
             </form>
         </paper-card>
@@ -96,7 +99,12 @@
 
             Polymer({
                 is           : 'people-form',
-                properties   : {},
+                properties   : {
+                    displayOnlyId:{
+                        type:Boolean,
+                        value:false
+                    }
+                },
                 validateForm : function() {
                     return this.$.form.validate();
                 },

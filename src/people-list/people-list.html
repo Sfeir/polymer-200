@@ -32,7 +32,7 @@
 
             paper-dialog {
                 --paper-dialog-background-color:white;
-                top:185px;
+                top:85px;
             }
 
             a {
@@ -52,6 +52,12 @@
                 pattern="/:subpage"
                 data="{{routeData}}"
                 tail="{{subroute}}">
+        </app-route>
+        <app-route
+                route="{{subroute}}"
+                pattern="/:id"
+                data="{{routeUserData}}"
+                tail="{{userSubroute}}">
         </app-route>
 
 
@@ -77,7 +83,7 @@
                 <google-map latitude="48.8534100" longitude="2.3488000" fit-to-markers api-key="AIzaSyB4voafjokZbBCNj4AdylLknJwNmjkbxEg">
                     <template is="dom-repeat" items="{{peoples}}">
                         <google-map-marker latitude="[[item.geo.lat]]" longitude="[[item.geo.lng]]"
-                                           title="[[item.lastname]]" open="[[_computOpen(routeData.id,item)]]">
+                                           title="[[item.lastname]]" open="[[_computOpen(routeUserData.id,item)]]">
                           <h2>[[item.lastname]]</h2>
                           <img src="[[item.photo]]">
                         </google-map-marker>
@@ -93,7 +99,7 @@
                       positionTarget="document.body">
             <h2>Veuillez saisir les informations</h2>
             <paper-dialog-scrollable>
-                <people-form></people-form>
+                <people-form display-only-id></people-form>
             </paper-dialog-scrollable>
             <div class="buttons">
                 <paper-button dialog-dismiss>Annuler</paper-button>
@@ -126,7 +132,7 @@
                     'addDialog.iron-overlay-closed': 'onClose'
                 },
                 _computOpen : function(id,item) {
-                    return id==item.email;
+                    return  id && id==item.email;
                 },
 
                 _routePageChanged : function(page) {
@@ -136,16 +142,18 @@
                   else {
                     this.$.addDialog.close();
                   }
-                  this.page = page || 'card';
+                  if(page) {
+                      this.page = page
+                  }
+                  else{
+                    this.set('route.path','/card');
+                    this.page = 'card';
+                  }
                   console.log(page);
                 },
 
                 onClose: function() {
-                    this.set('route.path', '/');
-                },
-
-                ready : function() {
-                    console.log(this.routeData.id)
+                    this.set('route.path', '/card');
                 }
             });
         })();
