@@ -33,10 +33,6 @@
             color: #337ab7;
         }
 
-        .actions{
-            color: black;
-        }
-
         .username {
             font-size: 24px;
             font-weight: 400;
@@ -50,6 +46,9 @@
             color: var(--paper-grey-600);
         }
 
+        .people-data a {
+            padding-left: 10px;
+        }
 
         .people-image iron-image {
             box-sizing: border-box;
@@ -61,6 +60,10 @@
 
         .label {
             padding-right: 10px;
+        }
+
+        .actions{
+            color: black;
         }
 
         .mapicon {
@@ -81,15 +84,8 @@
             text-decoration: none;
         }
 
-        .people-data a {
-            padding-left: 10px;
-        }
 
-        a paper-button,
-        a:active paper-button,
-        a:visited paper-button {
-            color: #000;
-        }
+
 
 
     </style>
@@ -136,9 +132,7 @@
                         <a href="/update/{{people.email}}" tabindex="-1">
                             <paper-icon-button icon="create"></paper-icon-button>
                         </a>
-                        <a href="/update/{{people.email}}" tabindex="-1">
-                            <paper-icon-button icon="delete"></paper-icon-button>
-                        </a>
+                        <paper-icon-button icon="delete"></paper-icon-button>
                     </div>
                 </div>
 
