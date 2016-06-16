@@ -16,135 +16,144 @@
 
 
 <dom-module id="people-app">
-    <template>
+  <template>
 
-        <style include="shared-styles iron-flex iron-flex-alignment">
-            :host {
-                display: block;
-            }
+    <style include="shared-styles iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+      }
 
-            app-header {
-                background-color: var(--primary-color,#0168AB);
-                background-image: url('../images/bg_left.png') , url('../images/bg_right.png');
-                background-repeat: no-repeat , no-repeat;
-                background-position: left , right;
-            }
+      app-header {
+        background-color: var(--primary-color, #0168AB);
+        background-image: url('../images/bg_left.png'), url('../images/bg_right.png');
+        background-repeat: no-repeat, no-repeat;
+        background-position: left, right;
+      }
 
-            app-toolbar {
-                color: white;
-                --app-toolbar-font-size: 18px;
-            }
+      app-toolbar {
+        color: white;
+        --app-toolbar-font-size: 18px;
+      }
 
-            app-toolbar a {
-                z-index: 1;
-                height: 100%;
-                border: 2px solid transparent;
-                text-decoration: none;
-                color: inherit;
-                line-height: 64px;
-                padding-right: 15px;
-            }
+      app-toolbar a {
+        z-index: 1;
+        height: 100%;
+        border: 2px solid transparent;
+        text-decoration: none;
+        color: inherit;
+        line-height: 64px;
+        padding-right: 15px;
+      }
 
-            app-toolbar a:hover, app-toolbar a:focus {
-                border-bottom: 2px solid white;
-            }
+      app-toolbar a:hover, app-toolbar a:focus {
+        border-bottom: 2px solid white;
+      }
 
-            app-toolbar .logo {
-                margin-left: -130px;
-                height: 100%;
-            }
+      app-toolbar .logo {
+        margin-left: -130px;
+        height: 100%;
+      }
 
-            .addfab{
-                position: fixed;
-                bottom: 10px;
-                right: 10px;
-            }
-        </style>
+      .addfab {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+      }
+    </style>
 
-        <!-- ROUTING -->
-        <app-location route="{{route}}"></app-location>
-        <app-route
-                route="{{route}}"
-                pattern="/:page"
-                data="{{routeData}}"
-                tail="{{subroute}}">
-        </app-route>
+    <!-- ROUTING -->
+    <app-location route="{{route}}"></app-location>
+    <app-route
+      route="{{route}}"
+      pattern="/:page"
+      data="{{routeData}}"
+      tail="{{subroute}}">
+    </app-route>
 
-        <!-- DATA SERVICES -->
-        <people-service id="peopleService" peoples="{{peoples}}"></people-service>
+    <!-- DATA SERVICES -->
+    <people-service id="peopleService" peoples="{{peoples}}"></people-service>
 
-        <!-- APP LAYOUT -->
-        <app-header-layout>
-            <app-header condenses fixed effects="waterfall">
-                <app-toolbar>
-                    <a href="/home">
-                        <img src="/images/logo-sfeir.svg" class="logo" aria-label="sfeir" alt="Sfeir">
-                    </a>
-                    <span title></span>
-                    <a href="/list/card">
-                        <span>Peoples</span>
-                    </a>
-                </app-toolbar>
-            </app-header>
+    <!-- APP LAYOUT -->
+    <app-header-layout>
+      <app-header condenses fixed effects="waterfall">
+        <app-toolbar>
+          <a href="/home">
+            <img src="/images/logo-sfeir.svg" class="logo" aria-label="sfeir" alt="Sfeir">
+          </a>
+          <span title></span>
+          <a href="/list/card">
+            <span>Peoples</span>
+          </a>
+        </app-toolbar>
+      </app-header>
 
-            <iron-pages class="layout vertical center" role="main" selected="[[page]]" attr-for-selected="name">
-                <!-- home view -->
-                <people-home name="home"></people-home>
-                <!-- list view of items in a category -->
-                <people-list id="list" name="list" peoples="{{peoples}}" route="{{subroute}}"></people-list>
-                <!-- detail view of one item -->
-                <people-detail name="detail"></people-detail>
-                <!-- Skills -->
-                <people-skills name="skills"></people-skills>
-                <!-- Update -->
-                <people-update name="update"></people-update>
-            </iron-pages>
-            <a class="addfab" href="/list/add">
-                <paper-fab icon="add"></paper-fab>
-            </a>
-        </app-header-layout>
+      <iron-pages class="layout vertical center" role="main" selected="[[page]]" attr-for-selected="name">
+        <!-- home view -->
+        <people-home name="home" current-people="{{randomPeople}}"></people-home>
+        <!-- list view of items in a category -->
+        <people-list id="list" name="list" peoples="{{peoples}}" route="{{subroute}}"></people-list>
+        <!-- detail view of one item -->
+        <people-detail name="detail"></people-detail>
+        <!-- Skills -->
+        <people-skills name="skills"></people-skills>
+        <!-- Update -->
+        <people-update name="update"></people-update>
+      </iron-pages>
+      <a class="addfab" href="/list/add">
+        <paper-fab icon="add"></paper-fab>
+      </a>
+    </app-header-layout>
 
 
-    </template>
+  </template>
 
-    <script>
-        (function() {
-            'use strict';
+  <script>
+    (function () {
+      'use strict';
 
-            Polymer({
-                is : 'people-app',
+      Polymer({
+        is: 'people-app',
 
-                properties : {
-                    page : {
-                        type               : String,
-                        reflectToAttribute : true,
-                        observer           : '_pageChanged'
-                    },
-                    peoples:{
-                        type   : Array,
-                        value  : []
-                    }
-                },
+        properties: {
+          page: {
+            type: String,
+            reflectToAttribute: true,
+            observer: '_pageChanged'
+          },
+          peoples: {
+            type: Array,
+            value: [],
+            observer: '_peoplesChanged'
+          },
+          randomPeople: {
+            type: Object,
+            value: {}
+          }
+        },
 
-                observers : [
-                    '_routePageChanged(routeData.page)'
-                ],
+        observers: [
+          '_routePageChanged(routeData.page)'
+        ],
 
-                _routePageChanged : function(page) {
-                    this.page = page || 'home';
-                },
+        _routePageChanged: function (page) {
+          this.page = page || 'home';
+        },
 
-                _pageChanged : function(page) {
-                    var name = 'people-' + page;
-                    // load page import on demand.
-                    this.importHref(
-                            this.resolveUrl(name + '/' + name + '.html'), null, null, true);
-                },
+        _pageChanged: function (page) {
+          var name = 'people-' + page;
+          // load page import on demand.
+          this.importHref(
+            this.resolveUrl(name + '/' + name + '.html'), null, null, true);
+        },
 
-                ready : function() {
-                    this.$.peopleService.getPeoples();
-                }
-            });
-        })();
-    </script>
+        _peoplesChanged: function (peoples) {
+          this.randomPeople = this.peoples[Math.floor(Math.random() * this.peoples.length)];
+        },
+
+        ready: function () {
+          this.$.peopleService.getPeoples();
+        }
+      });
+    })();
+  </script>
 </dom-module>
