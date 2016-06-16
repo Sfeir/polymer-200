@@ -3,35 +3,48 @@
 
 
 <dom-module id="people-service">
-    <template>
-        <iron-ajax
-                id="getPeoples"
-                url="http://localhost:3001/api/peoples"
-                handle-as="json"
-                on-response="onGetPeoples"
-                last-response="{{peoples}}"></iron-ajax>
-    </template>
+  <template>
+    <iron-ajax
+      id="getPeoples"
+      url="{{apiUrl}}"
+      handle-as="json"
+      last-response="{{peoples}}"></iron-ajax>
+    <iron-ajax
+      id="getPeopleById"
+      handle-as="json"
+      last-response="{{currentPeople}}"></iron-ajax>
+  </template>
 
-    <script>
-        (function() {
-            'use strict';
+  <script>
+    (function () {
+      'use strict';
 
-            Polymer({
-                is : 'people-service',
-                properties : {
-                    peoples:{
-                        type   : Array,
-                        value  : [],
-                        notify:true
-                    }
-                },
-                getPeoples: function() {
-                    this.$.getPeoples.generateRequest();
-                },
-                onGetPeoples: function() {
-
-                }
-            });
-        })();
-    </script>
+      Polymer({
+        is: 'people-service',
+        properties: {
+          apiUrl:{
+            type:String,
+            value:"http://localhost:3001/api/peoples"
+          },
+          peoples: {
+            type: Array,
+            value: [],
+            notify: true
+          },
+          currentPeople: {
+            type: Object,
+            value: {},
+            notify: true
+          }
+        },
+        getPeoples: function () {
+          this.$.getPeoples.generateRequest();
+        },
+        getPeopleById: function (peopleId) {
+          this.$.getPeopleById.url=this.apiUrl+"/"+peopleId
+          this.$.getPeopleById.generateRequest();
+        }
+      });
+    })();
+  </script>
 </dom-module>

@@ -4,90 +4,50 @@
 <link rel="import" href="../components/people-card/people-card.html">
 
 <dom-module id="people-detail">
-    <template>
-        <style>
-            :host {
-                display: block;
-                padding: 10px;
-            }
-        </style>
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding: 10px;
+      }
+    </style>
+
+    <app-route
+      route="{{route}}"
+      pattern="/:id"
+      data="{{routeData}}"
+      tail="{{subroute}}">
+    </app-route>
+
+    <!-- DATA SERVICES -->
+    <people-service id="peopleService" current-people="{{currentPeople}}"></people-service>
+
+    <people-card display-skills people="{{currentPeople}}"></people-card>
 
 
-        <people-card display-skills people="{{currentPeople}}"></people-card>
+  </template>
 
+  <script>
+    (function () {
+      'use strict';
 
-    </template>
-
-    <script>
-        (function() {
-            'use strict';
-
-            Polymer({
-                is         : 'people-detail',
-                properties : {
-                    currentPeople : {
-                        type   : Object,
-                        value  : {},
-                        notify : true
-                    }
-                },
-                ready      : function() {
-                    this.currentPeople = {
-                        "email"                : "hogandickerson@sfeir.com",
-                        "lastname"             : "Powers",
-                        "firstname"            : "Black",
-                        "gender"               : "male",
-                        "photo"                : "http://randomuser.me/portraits/men/86.jpg",
-                        "id"                   : 9927,
-                        "twitter"              : "labore",
-                        "slack"                : "reprehenderit",
-                        "github"               : "aliquip",
-                        "linkedin"             : "qui",
-                        "url"                  : "ex",
-                        "contactInfoPro"       : {
-                            "mail"        : "blackpowers@sfeir.com",
-                            "fixedPhone"  : "+33182449424",
-                            "mobilePhone" : "+33684850125",
-                            "street"      : "220 Ide Court",
-                            "postalCode"  : "20636",
-                            "city"        : "Winchester"
-                        },
-                        "functionName"         : "Mcpherson",
-                        "functionDescription"  : "Wendi",
-                        "entity"               : "Sfeir-Paris",
-                        "currentClient"        : "Adeo",
-                        "workcity"             : "Luxembourg",
-                        "workAdress"           : "rue...",
-                        "manager"              : "Didier",
-                        "department"           : "Compta",
-                        "skills"               : [
-                            "Java",
-                            "AngularJS",
-                            "React",
-                            "git",
-                            "ES6",
-                            "JavaScript"
-                        ],
-                        "entryDate"            : "21/10/2014",
-                        "birthDate"            : "11/12/2001",
-                        "socialNumber"         : "4785882151",
-                        "contactInfoPerso"     : {
-                            "mail"        : "wendipowers@sfeir.com",
-                            "fixedPhone"  : "+33197859629",
-                            "mobilePhone" : "+33682956737",
-                            "street"      : "789 Nolans Lane",
-                            "postalCode"  : "36734",
-                            "city"        : "Loretto"
-                        },
-                        "emergencyContact"     : "",
-                        "emergencyPhoneNumber" : "",
-                        "driverLicence"        : "",
-                        "tshirtSize"           : "XL",
-                        "numberOfChild"        : 4
-                    }
-                }
-            });
-        })
-        ();
-    </script>
+      Polymer({
+        is: 'people-detail',
+        properties: {
+          currentPeople: {
+            type: Object,
+            value: {},
+            notify: true
+          }
+        },
+        observers  : [
+          '_routePageChanged(routeData.id)'
+        ],
+        _routePageChanged : function(peopleId) {
+          this.$.peopleService.getPeopleById(peopleId);
+        }
+      });
+    })
+    ();
+  </script>
 </dom-module>

@@ -22,12 +22,12 @@ app.use(function(req, res, next) {
 
 // JSON API
 app.get('/api/peoples', api.listAll);
-app.get('/api/person/:id', api.get);
-app.get('/api/person/name/:name', api.filterByName);
-app.get('/api/person/skill/:skill', api.filterBySkill);
-app.post('/api/person', api.create);
-app.put('/api/person/:id', api.update);
-app.delete('/api/person/:id', api.delete);
+app.get('/api/peoples/:id', api.get);
+app.get('/api/peoples/name/:name', api.filterByName);
+app.get('/api/peoples/skill/:skill', api.filterBySkill);
+app.post('/api/peoples', api.create);
+app.put('/api/peoples/:id', api.update);
+app.delete('/api/peoples/:id', api.delete);
 
 
 app.listen(app.get('port'), function () {

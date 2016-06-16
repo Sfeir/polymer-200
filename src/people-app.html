@@ -14,6 +14,11 @@
 <link rel="import" href="../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="components/people-services/people-service.html">
 
+<link rel="import" href="people-home/people-home.html">
+<link rel="import" href="people-list/people-list.html">
+<link rel="import" href="people-detail/people-detail.html">
+<link rel="import" href="people-skills/people-skills.html">
+
 
 <dom-module id="people-app">
   <template>
@@ -93,7 +98,7 @@
         <!-- list view of items in a category -->
         <people-list id="list" name="list" peoples="{{peoples}}" route="{{subroute}}"></people-list>
         <!-- detail view of one item -->
-        <people-detail name="detail"></people-detail>
+        <people-detail name="detail" route="{{subroute}}"></people-detail>
         <!-- Skills -->
         <people-skills name="skills"></people-skills>
         <!-- Update -->
@@ -137,16 +142,22 @@
 
         _routePageChanged: function (page) {
           this.page = page || 'home';
+          if(page=='home'){
+            this.getRandomPeople();
+          }
         },
 
         _pageChanged: function (page) {
           var name = 'people-' + page;
           // load page import on demand.
-          this.importHref(
-            this.resolveUrl(name + '/' + name + '.html'), null, null, true);
+          //this.importHref(this.resolveUrl(name + '/' + name + '.html'), function () {}, null, true);
         },
 
         _peoplesChanged: function (peoples) {
+          this.getRandomPeople();
+        },
+
+        getRandomPeople: function () {
           this.randomPeople = this.peoples[Math.floor(Math.random() * this.peoples.length)];
         },
 
