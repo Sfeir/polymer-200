@@ -26,11 +26,11 @@ exports.filterBySkill = function (req, res) {
   var skill = getParam(req, 'skill');
   console.log('List by skill : skill=' + skill);
 
-  var PEOPLES = _.filter(PEOPLES, function (person) {
+  var filteredPeoples = _.filter(PEOPLES, function (person) {
     return _.contains(person.skills, skill);
   });
 
-  return res.status(200).json(PEOPLES);
+  return res.status(200).json(filteredPeoples);
 };
 
 

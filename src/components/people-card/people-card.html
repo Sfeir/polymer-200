@@ -7,169 +7,179 @@
 <link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html">
 
 
-
 <dom-module id="people-card">
-    <style include="iron-flex iron-flex-alignment">
-        :host {
-            margin: 0;
-        }
+  <style include="iron-flex iron-flex-alignment">
+    :host {
+      margin: 0;
+    }
 
-        paper-card {
-            width: 450px;
-            height: 250px;
-            background-color: white;
-            margin: 10px;
-            --paper-card-content: {
-                padding: 0;
-                height: 100%;
-            };
-        }
+    paper-card {
+      width: 450px;
+      height: 250px;
+      background-color: white;
+      margin: 10px;
+      --paper-card-content: {
+        padding: 0;
+        height: 100%;
+      };
+    }
 
-        .datas {
-            padding: 16px;
-        }
+    .datas {
+      padding: 16px;
+    }
 
-        .datas a{
-            color: #337ab7;
-        }
+    .datas a {
+      color: #337ab7;
+    }
 
-        .username {
-            font-size: 24px;
-            font-weight: 400;
-        }
+    .username {
+      font-size: 24px;
+      font-weight: 400;
+    }
 
-        .lastname {
-            text-transform: uppercase;
-        }
+    .lastname {
+      text-transform: uppercase;
+    }
 
-        .function {
-            color: var(--paper-grey-600);
-        }
+    .function {
+      color: var(--paper-grey-600);
+    }
 
-        .people-data a {
-            padding-left: 10px;
-        }
+    .people-data a {
+      padding-left: 10px;
+    }
 
-        .people-image iron-image {
-            box-sizing: border-box;
-            width: 137px;
-            height: 137px;
-            border: 10px solid #F1F1F1;
-            border-radius: 2px;
-        }
+    .people-image iron-image {
+      box-sizing: border-box;
+      width: 137px;
+      height: 137px;
+      border: 10px solid #F1F1F1;
+      border-radius: 2px;
+    }
 
-        .label {
-            padding-right: 10px;
-        }
+    .label {
+      padding-right: 10px;
+    }
 
-        .actions{
-            color: black;
-        }
+    .actions {
+      color: black;
+    }
 
-        .mapicon {
-            width: 24px;
-            height: 24px;
-            margin-left: 10px;
-        }
+    .mapicon {
+      width: 24px;
+      height: 24px;
+      margin-left: 10px;
+    }
 
-        .actions paper-icon-button{
-            width: 24px;
-            height: 24px;
-            padding: 0;
-            margin-left: 10px;
-            color: black;
-        }
+    .actions paper-icon-button {
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      margin-left: 10px;
+      color: black;
+    }
 
-        a {
-            text-decoration: none;
-        }
+    a {
+      text-decoration: none;
+      color: var(--primary-color);
+    }
 
+    a.active paper-button{
+      background-color: orange;
+      color:white;
+    }
 
+  </style>
 
-
-
-    </style>
-
-    <template>
-        <paper-card class="people">
-            <div class="card-content layout vertical justified">
-                <div class="datas layout horizontal">
-                    <div class="layout vertical flex">
-                        <div class="people-header layout vertical flex">
-                            <a class="username" href="/detail/{{people.id}}">
-                                <span> {{people.firstname}}</span>
-                                <span class="lastname">{{people.lastname}}</span>
-                            </a>
-                            <span class="function">{{people.functionName}}</span>
-                        </div>
-                        <div class="people-data">
-                            <div class="layout horizontal center">
-                                <iron-image src="/images/md-email.svg"></iron-image>
-                                <a href$="mailto:{{people.email}}">{{people.email}}</a>
-                            </div>
-                            <div class="layout horizontal center flex">
-                                <iron-image src="/images/md-phone.svg"></iron-image>
-                                <a href$="tel:{{people.phone}}">{{people.phone}}</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="people-image">
-                        <iron-image  placeholder="/images/profile.svg" src="{{people.photo}}"></iron-image>
-                    </div>
-                </div>
-                <div class="datas layout vertical">
-                    <div class="layout horizontal">
-                      <span class="label">Manager: </span>
-                      <a href="/detail/{{people.managerId}}">
-                        {{people.manager}}
-                      </a>
-                    </div>
-                    <div class="layout horizontal center actions">
-                        <div class="layout horizontal center actions flex">
-                            <span class="label">Location: </span>
-                            <a href="http://www.sfeir.com/contact/">{{people.entity}}</a>
-                        </div>
-                        <a href="/list/map/{{people.id}}" tabindex="-1">
-                            <img class="mapicon" src="/images/md-map.svg">
-                        </a>
-                        <a href="/update/{{people.id}}" tabindex="-1">
-                            <paper-icon-button icon="create"></paper-icon-button>
-                        </a>
-                        <paper-icon-button icon="delete"></paper-icon-button>
-                    </div>
-                </div>
-
-
-
+  <template>
+    <paper-card class="people">
+      <div class="card-content layout vertical justified">
+        <div class="datas layout horizontal">
+          <div class="layout vertical flex">
+            <div class="people-header layout vertical flex">
+              <a class="username" href="/detail/{{people.id}}">
+                <span> {{people.firstname}}</span>
+                <span class="lastname">{{people.lastname}}</span>
+              </a>
+              <span class="function">{{people.functionName}}</span>
             </div>
-            <template is="dom-if" if="{{displaySkills}}">
-                <div class="card-actions">
-                    <template is="dom-repeat" items="{{people.skills}}">
-                        <a href="/skills/{{item}}">
-                            <paper-button elevation="1  " raised>{{item}}</paper-button>
-                        </a>
-                    </template>
-                </div>
-            </template>
-        </paper-card>
-    </template>
+            <div class="people-data">
+              <div class="layout horizontal center">
+                <iron-image src="/images/md-email.svg"></iron-image>
+                <a href$="mailto:{{people.email}}">{{people.email}}</a>
+              </div>
+              <div class="layout horizontal center flex">
+                <iron-image src="/images/md-phone.svg"></iron-image>
+                <a href$="tel:{{people.phone}}">{{people.phone}}</a>
+              </div>
+            </div>
+          </div>
+          <div class="people-image">
+            <iron-image placeholder="/images/profile.svg" src="{{people.photo}}"></iron-image>
+          </div>
+        </div>
+        <div class="datas layout vertical">
+          <div class="layout horizontal">
+            <span class="label">Manager: </span>
+            <a href="/detail/{{people.managerId}}">
+              {{people.manager}}
+            </a>
+          </div>
+          <div class="layout horizontal center actions">
+            <div class="layout horizontal center actions flex">
+              <span class="label">Location: </span>
+              <a href="http://www.sfeir.com/contact/">{{people.entity}}</a>
+            </div>
+            <a href="/list/map/{{people.id}}" tabindex="-1">
+              <img class="mapicon" src="/images/md-map.svg">
+            </a>
+            <a href="/update/{{people.id}}" tabindex="-1">
+              <paper-icon-button icon="create"></paper-icon-button>
+            </a>
+            <paper-icon-button icon="delete"></paper-icon-button>
+          </div>
+        </div>
 
-    <script>
-        (function() {
-            'use strict';
 
-            Polymer({
-                is         : 'people-card',
-                properties : {
-                    people        : {
-                        type   : Object,
-                        notify : true
-                    },
-                    displaySkills : {
-                        type : Boolean
-                    }
-                }
-            });
-        })();
-    </script>
+      </div>
+      <template is="dom-if" if="{{displaySkills}}">
+        <div class="card-actions">
+          <template is="dom-repeat" items="{{people.skills}}">
+            <a href="/skills/{{item}}" class$="[[_computIsSkillSelected(selectedSkill,item)]]">
+              <paper-button elevation="1  " raised>{{item}}</paper-button>
+            </a>
+          </template>
+        </div>
+      </template>
+    </paper-card>
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'people-card',
+        properties: {
+          people: {
+            type: Object,
+            notify: true
+          },
+          displaySkills: {
+            type: Boolean
+          },
+          selectedSkill: {
+            type: String,
+            value:'sit'
+          }
+        },
+        _computIsSkillSelected : function(selectedSkill,item) {
+          if(selectedSkill && selectedSkill==item){
+            return 'active';
+          }
+          return '';
+        }
+      });
+    })();
+  </script>
 </dom-module>

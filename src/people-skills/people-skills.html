@@ -2,18 +2,48 @@
 
 
 <dom-module id="people-skills">
-    <template>
-        <h2>People Skills</h2>
-    </template>
+  <template>
 
-    <script>
-        (function() {
-            'use strict';
+    <app-route
+      route="{{route}}"
+      pattern="/:skill"
+      data="{{routeData}}"
+      tail="{{subroute}}">
+    </app-route>
 
-            Polymer({
-                is : 'people-skills',
-                properties : {}
-            });
-        })();
-    </script>
+    <!-- DATA SERVICES -->
+    <people-service id="peopleService" peoples-by-skill="{{peoples}}"></people-service>
+
+
+    <h2>People Skills</h2>
+    <div name="card" class="list layout horizontal wrap around-justified">
+      <template is="dom-repeat" items="{{peoples}}">
+        <people-card people="{{item}}" display-skills selected-skill="{{routeData.skill}}"></people-card>
+      </template>
+    </div>
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'people-skills',
+        properties: {
+          peoples : {
+            type   : Array,
+            value  : []
+          }
+        },
+        observers  : [
+          '_routePageChanged(routeData.skill)'
+        ],
+        _routePageChanged : function(selectedSkill) {
+          if(selectedSkill){
+            this.$.peopleService.getPeoplesBySkills(selectedSkill);
+          }
+        }
+      });
+    })();
+  </script>
 </dom-module>
