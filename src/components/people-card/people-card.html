@@ -150,9 +150,11 @@
             <a href="/list/map/{{people.id}}" tabindex="-1">
               <img class="mapicon" src="/images/md-map.svg">
             </a>
-            <a href="/update/{{people.id}}" tabindex="-1">
-              <paper-icon-button icon="create"></paper-icon-button>
-            </a>
+            <template is="dom-if" if="{{canEdit}}">
+              <a href="/update/{{people.id}}" tabindex="-1">
+                <paper-icon-button icon="create"></paper-icon-button>
+              </a>
+            </template>
             <template is="dom-if" if="{{canDelete}}">
               <paper-icon-button icon="delete" on-click="deletePeople"></paper-icon-button>
             </template>
@@ -189,6 +191,9 @@
             type: Boolean
           },
           canDelete: {
+            type: Boolean
+          },
+          canEdit: {
             type: Boolean
           },
           selectedSkill: {

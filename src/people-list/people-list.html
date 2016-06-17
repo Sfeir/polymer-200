@@ -18,144 +18,163 @@
 
 
 <dom-module id="people-list">
-    <template>
-        <style include="iron-flex iron-flex-alignment">
-            :host {
-                display: block;
-                padding: 20px;
-            }
+  <template>
+    <style include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+        padding: 20px;
+      }
 
-            .header{
-                padding: 0 20px;
-                color:var(--primary-color);
-            }
+      .header {
+        padding: 0 20px;
+        color: var(--primary-color);
+      }
 
-            paper-dialog {
-                --paper-dialog-background-color:white;
-                top:85px;
-            }
+      paper-dialog {
+        --paper-dialog-background-color: white;
+        top: 85px;
+      }
 
-            a {
-                color: inherit;
-            }
+      a {
+        color: inherit;
+      }
 
-            google-map {
-                width: 700px;
-                height: 400px;
-            }
+      google-map {
+        width: 700px;
+        height: 400px;
+      }
 
-        </style>
+    </style>
 
-        <!-- Subroutes -->
-        <app-route
-                route="{{route}}"
-                pattern="/:subpage"
-                data="{{routeData}}"
-                tail="{{subroute}}">
-        </app-route>
-        <app-route
-                route="{{subroute}}"
-                pattern="/:id"
-                data="{{routeUserData}}"
-                tail="{{userSubroute}}">
-        </app-route>
+    <!-- Subroutes -->
+    <app-route
+      route="{{route}}"
+      pattern="/:subpage"
+      data="{{routeData}}"
+      tail="{{subroute}}">
+    </app-route>
+    <app-route
+      route="{{subroute}}"
+      pattern="/:id"
+      data="{{routeUserData}}"
+      tail="{{userSubroute}}">
+    </app-route>
 
+    <!-- DATA SERVICES -->
+    <people-service id="peopleService" peoples="{{peoples}}"
+                    on-create-success="onCreate"></people-service>
 
-        <section class="header layout horizontal center">
-            <h2 class="flex">You have {{peoples.length}} contact(s)</h2>
+    <section class="header layout horizontal center">
+      <h2 class="flex">You have {{peoples.length}} contact(s)</h2>
 
-            <a href="/list/card" tabindex="-1">
-                <paper-icon-button icon="dns" aria-label$="Shopping cart: [[_computePluralizedQuantity(numItems)]]"></paper-icon-button>
-            </a>
-            <a href="/list/map" tabindex="-1">
-                <paper-icon-button icon="maps:map" aria-label$="Shopping cart: [[_computePluralizedQuantity(numItems)]]"></paper-icon-button>
-            </a>
-        </section>
-
-
-        <iron-pages class="layout vertical center" role="main" selected="[[page]]" attr-for-selected="name">
-            <div name="card" class="list layout horizontal wrap around-justified">
-                <template is="dom-repeat" items="{{peoples}}">
-                    <people-card people="{{item}}" can-delete></people-card>
-                </template>
-            </div>
-            <div name="map" class="list">
-                <google-map latitude="48.8534100" longitude="2.3488000" fit-to-markers api-key="AIzaSyB4voafjokZbBCNj4AdylLknJwNmjkbxEg">
-                    <template is="dom-repeat" items="{{peoples}}">
-                        <google-map-marker latitude="[[item.geo.lat]]" longitude="[[item.geo.lng]]"
-                                           title="[[item.lastname]]" open="[[_computOpen(routeUserData.id,item)]]">
-                          <h2>[[item.lastname]]</h2>
-                          <img src="[[item.photo]]">
-                        </google-map-marker>
-                    </template>
-
-                </google-map>
-            </div>
-        </iron-pages>
+      <a href="/list/card" tabindex="-1">
+        <paper-icon-button icon="dns"
+                           aria-label$="Shopping cart: [[_computePluralizedQuantity(numItems)]]"></paper-icon-button>
+      </a>
+      <a href="/list/map" tabindex="-1">
+        <paper-icon-button icon="maps:map"
+                           aria-label$="Shopping cart: [[_computePluralizedQuantity(numItems)]]"></paper-icon-button>
+      </a>
+    </section>
 
 
-        <paper-dialog id="addDialog"  entry-animation="slide-from-top-animation"
-                      exit-animation="fade-out-animation"
-                      positionTarget="document.body">
-            <h2>Veuillez saisir les informations</h2>
-            <paper-dialog-scrollable>
-                <people-form display-only-id></people-form>
-            </paper-dialog-scrollable>
-            <div class="buttons">
-                <paper-button dialog-dismiss>Annuler</paper-button>
-                <paper-button dialog-confirm>Valider</paper-button>
-            </div>
-        </paper-dialog>
+    <iron-pages class="layout vertical center" role="main" selected="[[page]]" attr-for-selected="name">
+      <div name="card" class="list layout horizontal wrap around-justified">
+        <template is="dom-repeat" items="{{peoples}}">
+          <people-card people="{{item}}" can-delete can-edit></people-card>
+        </template>
+      </div>
+      <div name="map" class="list">
+        <google-map latitude="48.8534100" longitude="2.3488000" fit-to-markers
+                    api-key="AIzaSyB4voafjokZbBCNj4AdylLknJwNmjkbxEg">
+          <template is="dom-repeat" items="{{peoples}}">
+            <google-map-marker latitude="[[item.geo.lat]]" longitude="[[item.geo.lng]]"
+                               title="[[item.lastname]]" open="[[_computOpen(routeUserData.id,item)]]">
+              <h2>[[item.lastname]]</h2>
+              <img src="[[item.photo]]">
+            </google-map-marker>
+          </template>
 
-    </template>
+        </google-map>
+      </div>
+    </iron-pages>
 
-    <script>
-        (function() {
-            'use strict';
 
-            Polymer({
-                is         : 'people-list',
-                properties : {
-                    page : {
-                        type               : String,
-                        reflectToAttribute : true
-                    },
-                    peoples : {
-                        type   : Array,
-                        value  : []
-                    }
-                },
-                observers  : [
-                    '_routePageChanged(routeData.subpage)'
-                ],
-                listeners: {
-                    'addDialog.iron-overlay-closed': 'onClose'
-                },
-                _computOpen : function(id,item) {
-                    return  id && id==item.id;
-                },
+    <paper-dialog id="addDialog" entry-animation="slide-from-top-animation"
+                  exit-animation="fade-out-animation"
+                  positionTarget="document.body">
+      <h2>Veuillez saisir les informations</h2>
+      <paper-dialog-scrollable>
+        <people-form id="peopleForm" display-only-id></people-form>
+      </paper-dialog-scrollable>
+      <div class="buttons">
+        <paper-button dialog-dismiss>Annuler</paper-button>
+        <paper-button dialog-confirm on-click="createPeople">Valider</paper-button>
+      </div>
+    </paper-dialog>
 
-                _routePageChanged : function(page) {
-                  if (page === 'add') {
-                    this.$.addDialog.open();
-                  }
-                  else {
-                    this.$.addDialog.close();
-                  }
-                  if(page) {
-                      this.page = page
-                  }
-                  else{
-                    this.set('route.path','/card');
-                    this.page = 'card';
-                  }
-                  console.log(page);
-                },
+  </template>
 
-                onClose: function() {
-                    this.set('route.path', '/card');
-                }
-            });
-        })();
-    </script>
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'people-list',
+        properties: {
+          page: {
+            type: String,
+            reflectToAttribute: true
+          },
+          peoples: {
+            type: Array,
+            value: []
+          }
+        },
+        observers: [
+          '_routePageChanged(routeData.subpage)'
+        ],
+        listeners: {
+          'addDialog.iron-overlay-closed': 'onClose'
+        },
+        ready: function () {
+          this.$.peopleService.getPeoples();
+        },
+        _computOpen: function (id, item) {
+          return id && id == item.id;
+        },
+
+        _routePageChanged: function (page) {
+          if (page === 'add') {
+            this.$.addDialog.open();
+          }
+          else {
+            this.$.addDialog.close();
+          }
+          if (page) {
+            this.page = page
+          }
+          else {
+            this.set('route.path', '/card');
+            this.page = 'card';
+          }
+          console.log(page);
+        },
+
+        onClose: function () {
+          this.set('route.path', '/card');
+        },
+
+        createPeople: function () {
+          var people=this.$.peopleForm.currentPeople;
+          this.$.peopleService.createPeople(people);
+        },
+        onCreate:function(){
+          this.$.location.set('route','/card');
+          this.$.peopleService.getPeoples();
+        }
+
+      });
+    })();
+  </script>
 </dom-module>

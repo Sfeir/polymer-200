@@ -28,6 +28,13 @@
       method="PUT"
       handle-as="json"
       on-response="onUpdate"></iron-ajax>
+    <iron-ajax
+      id="createPeople"
+      url="{{apiUrl}}"
+      content-type="application/x-www-form-urlencoded"
+      method="POST"
+      handle-as="json"
+      on-response="onCreate"></iron-ajax>
   </template>
 
   <script>
@@ -82,6 +89,13 @@
         },
         onUpdate: function (event) {
           this.fire('update-success',event.detail.response);
+        },
+        createPeople: function (people) {
+          this.$.createPeople.body=people;
+          this.$.createPeople.generateRequest();
+        },
+        onCreate: function (event) {
+          this.fire('create-success',event.detail.response);
         }
       });
     })();

@@ -13,11 +13,11 @@
     </app-route>
 
     <!-- DATA SERVICES -->
-    <people-service id="peopleService" current-people="{{currentPeople}}" on-update-success="onUpdate"></people-service>
+    <people-service id="peopleService" current-people="{{currentPeople}}" on-update-success="backToList"></people-service>
 
     <people-form id="peopleForm" current-people="{{currentPeople}}"></people-form>
     <section class="actions layout horizontal end-justified">
-      <paper-button on-click="cancelForm">Cancel</paper-button>
+      <paper-button on-click="backToList">Cancel</paper-button>
       <paper-button on-click="updatePeople">Validate</paper-button>
     </section>
   </template>
@@ -45,7 +45,7 @@
           var people=this.$.peopleForm.currentPeople;
           this.$.peopleService.updatePeople(people);
         },
-        onUpdate:function(){
+        backToList:function(){
           this.$.location.set('path','/list/card');
         }
       });
