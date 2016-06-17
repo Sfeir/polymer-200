@@ -76,7 +76,7 @@
         <iron-pages class="layout vertical center" role="main" selected="[[page]]" attr-for-selected="name">
             <div name="card" class="list layout horizontal wrap around-justified">
                 <template is="dom-repeat" items="{{peoples}}">
-                    <people-card people="{{item}}"></people-card>
+                    <people-card people="{{item}}" can-delete></people-card>
                 </template>
             </div>
             <div name="map" class="list">

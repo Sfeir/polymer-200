@@ -17,6 +17,11 @@
       id="getPeoplesBySkill"
       handle-as="json"
       last-response="{{peoplesBySkill}}"></iron-ajax>
+    <iron-ajax
+      id="deletePeople"
+      method="DELETE"
+      handle-as="json"
+      on-response="onDelete"></iron-ajax>
   </template>
 
   <script>
@@ -50,12 +55,19 @@
           this.$.getPeoples.generateRequest();
         },
         getPeopleById: function (peopleId) {
-          this.$.getPeopleById.url=this.apiUrl+"/"+peopleId
+          this.$.getPeopleById.url=this.apiUrl+"/"+peopleId;
           this.$.getPeopleById.generateRequest();
         },
         getPeoplesBySkills: function (selectedSkill) {
           this.$.getPeoplesBySkill.url=this.apiUrl+"/skill/"+selectedSkill;
           this.$.getPeoplesBySkill.generateRequest();
+        },
+        deletePeople: function (peopleId) {
+          this.$.deletePeople.url=this.apiUrl+"/"+peopleId;
+          this.$.deletePeople.generateRequest();
+        },
+        onDelete: function (event) {
+          this.fire('delete-success',event.detail.response);
         }
       });
     })();

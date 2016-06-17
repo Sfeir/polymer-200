@@ -153,7 +153,9 @@
             <a href="/update/{{people.id}}" tabindex="-1">
               <paper-icon-button icon="create"></paper-icon-button>
             </a>
-            <paper-icon-button icon="delete"></paper-icon-button>
+            <template is="dom-if" if="{{canDelete}}">
+              <paper-icon-button icon="delete" on-click="deletePeople"></paper-icon-button>
+            </template>
           </div>
         </div>
 
@@ -186,6 +188,9 @@
           displaySkills: {
             type: Boolean
           },
+          canDelete: {
+            type: Boolean
+          },
           selectedSkill: {
             type: String,
             value:'sit'
@@ -196,6 +201,9 @@
             return 'active';
           }
           return '';
+        },
+        deletePeople: function () {
+          this.fire('delete-people',this.people.id);
         }
       });
     })();
