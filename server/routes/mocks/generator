@@ -2,17 +2,21 @@
   {
     'repeat(10)': {
       id: '{{objectId()}}',
+      gender:'{{random("male","female")}}',
       photo: function(){
-        return 'https://randomuser.me/portraits/men/'+integer(1, 100)+'.jpg';
+        var g='men';
+        if(this.gender=='female'){
+        	g='women';
+        }
+        return 'https://randomuser.me/portraits/'+g+'/'+integer(1, 100)+'.jpg';
       },
       firstname: '{{firstName()}}',
       lastname: '{{surname()}}',
       entity: '{{company().toUpperCase()}}',
       entryDate: '{{moment(this.date(new Date(2015, 0, 1), new Date())).format("DD/MM/YYYY")}}',
       birthDate: '{{moment(this.date(new Date(1945, 0, 1), new Date(1985, 0, 1))).format("DD/MM/YYYY")}}',
-      gender:'',
       email: function (tags) {
-        return (this.firstname + '.' + this.lastname + '@' + this.company + '.com');
+        return (this.firstname + '.' + this.lastname + '@' + this.entity + '.com');
       },
       skills:[
       {

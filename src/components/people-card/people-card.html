@@ -79,6 +79,23 @@
       color: black;
     }
 
+    .skills{
+      padding: 10px;
+      border: 1px solid lightgrey;
+    }
+
+    .skills h3 {
+      color: var(--primary-color);
+      font-size: 24px;
+      font-weight: normal;
+      line-height: 1.1;
+    }
+
+    .skills paper-button{
+      background-color: white;
+      margin: 5px;
+    }
+
     a {
       text-decoration: none;
       color: var(--primary-color);
@@ -143,7 +160,8 @@
 
       </div>
       <template is="dom-if" if="{{displaySkills}}">
-        <div class="card-actions">
+        <div class="skills">
+          <h3>Skills</h3>
           <template is="dom-repeat" items="{{people.skills}}">
             <a href="/skills/{{item}}" class$="[[_computIsSkillSelected(selectedSkill,item)]]">
               <paper-button elevation="1  " raised>{{item}}</paper-button>

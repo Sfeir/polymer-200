@@ -3,14 +3,14 @@
 exports.peoples = [
   {
     "id": "5763cd4d9d2a4f259b53c901",
-    "photo": "https://randomuser.me/portraits/men/59.jpg",
+    "photo": "https://randomuser.me/portraits/women/59.jpg",
     "firstname": "Leanne",
     "lastname": "Woodard",
     "entity": "BIOSPAN",
     "entryDate": "27/10/2015",
     "birthDate": "02/01/1974",
     "gender": "",
-    "email": "Leanne.Woodard@undefined.com",
+    "email": "Leanne.Woodard@BIOSPAN.com",
     "skills": [
       "pariatur",
       "ipsum",
@@ -47,7 +47,7 @@ exports.peoples = [
     "entryDate": "04/10/2015",
     "birthDate": "22/01/1963",
     "gender": "",
-    "email": "Castaneda.Salinas@undefined.com",
+    "email": "Castaneda.Salinas@METROZ.com",
     "skills": [
       "exercitation",
       "consectetur",
@@ -77,14 +77,14 @@ exports.peoples = [
   },
   {
     "id": "5763cd4dba6362a3f92c954e",
-    "photo": "https://randomuser.me/portraits/men/74.jpg",
+    "photo": "https://randomuser.me/portraits/women/74.jpg",
     "firstname": "Phyllis",
     "lastname": "Donovan",
     "entity": "PEARLESSA",
     "entryDate": "30/03/2015",
     "birthDate": "30/11/1951",
     "gender": "",
-    "email": "Phyllis.Donovan@undefined.com",
+    "email": "Phyllis.Donovan@PEARLESSA.com",
     "skills": [
       "fugiat",
       "deserunt",
@@ -114,14 +114,14 @@ exports.peoples = [
   },
   {
     "id": "5763cd4d3b57c672861bfa1f",
-    "photo": "https://randomuser.me/portraits/men/9.jpg",
+    "photo": "https://randomuser.me/portraits/women/9.jpg",
     "firstname": "Erika",
     "lastname": "Guzman",
     "entity": "CIRCUM",
     "entryDate": "13/05/2016",
     "birthDate": "19/03/1962",
     "gender": "",
-    "email": "Erika.Guzman@undefined.com",
+    "email": "Erika.Guzman@CIRCUM.com",
     "skills": [
       "aliquip",
       "do",
@@ -158,7 +158,7 @@ exports.peoples = [
     "entryDate": "28/09/2015",
     "birthDate": "15/04/1971",
     "gender": "",
-    "email": "Moody.Prince@undefined.com",
+    "email": "Moody.Prince@TRIPSCH.com",
     "skills": [
       "tempor",
       "deserunt",
@@ -188,14 +188,14 @@ exports.peoples = [
   },
   {
     "id": "5763cd4d979b62a209809160",
-    "photo": "https://randomuser.me/portraits/men/81.jpg",
+    "photo": "https://randomuser.me/portraits/women/81.jpg",
     "firstname": "Mercedes",
     "lastname": "Hebert",
     "entity": "QUINTITY",
     "entryDate": "02/01/2016",
     "birthDate": "20/07/1947",
     "gender": "",
-    "email": "Mercedes.Hebert@undefined.com",
+    "email": "Mercedes.Hebert@QUINTITY.com",
     "skills": [
       "ex",
       "commodo",
@@ -232,7 +232,7 @@ exports.peoples = [
     "entryDate": "26/09/2015",
     "birthDate": "18/07/1979",
     "gender": "",
-    "email": "Howell.Mcknight@undefined.com",
+    "email": "Howell.Mcknight@KRAG.com",
     "skills": [
       "commodo",
       "cillum",
@@ -262,14 +262,14 @@ exports.peoples = [
   },
   {
     "id": "5763cd4d5d6ad8dfc6c34883",
-    "photo": "https://randomuser.me/portraits/men/86.jpg",
+    "photo": "https://randomuser.me/portraits/women/86.jpg",
     "firstname": "Lizzie",
     "lastname": "Morris",
     "entity": "NSPIRE",
     "entryDate": "03/05/2016",
     "birthDate": "15/11/1981",
     "gender": "",
-    "email": "Lizzie.Morris@undefined.com",
+    "email": "Lizzie.Morris@NSPIRE.com",
     "skills": [
       "laborum",
       "cupidatat",
@@ -306,7 +306,7 @@ exports.peoples = [
     "entryDate": "17/05/2016",
     "birthDate": "21/10/1951",
     "gender": "",
-    "email": "Roy.Nielsen@undefined.com",
+    "email": "Roy.Nielsen@QNEKT.com",
     "skills": [
       "pariatur",
       "deserunt",
@@ -368,7 +368,7 @@ exports.peoples = [
       "linkedin": "https://www.linkedin.com/in/sunt"
     },
     "isManager": true,
-    "manager": "Shanna",
-    "managerId": "5763cd4d07ec40df1792cef2"
+    "manager": "",
+    "managerId": ""
   }
 ]
