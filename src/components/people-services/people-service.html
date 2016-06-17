@@ -22,6 +22,12 @@
       method="DELETE"
       handle-as="json"
       on-response="onDelete"></iron-ajax>
+    <iron-ajax
+      id="updatePeople"
+      content-type="application/x-www-form-urlencoded"
+      method="PUT"
+      handle-as="json"
+      on-response="onUpdate"></iron-ajax>
   </template>
 
   <script>
@@ -68,6 +74,14 @@
         },
         onDelete: function (event) {
           this.fire('delete-success',event.detail.response);
+        },
+        updatePeople: function (people) {
+          this.$.updatePeople.url=this.apiUrl+"/"+people.id;
+          this.$.updatePeople.body=people;
+          this.$.updatePeople.generateRequest();
+        },
+        onUpdate: function (event) {
+          this.fire('update-success',event.detail.response);
         }
       });
     })();
