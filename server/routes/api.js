@@ -114,7 +114,7 @@ function getParam(req, param) {
 
 function getId(req) {
   var param = getParam(req, 'id');
-  return parseInt(param);
+  return param;
 }
 
 function createId() {

@@ -2,582 +2,373 @@
 
 exports.peoples = [
   {
-    "email": "hogandickerson@sfeir.com",
-    "lastname": "Powers",
-    "firstname": "Black",
-    "gender": "male",
-    "photo": "https://randomuser.me/portraits/men/86.jpg",
-    "id": 9927,
-    "twitter": "labore",
-    "slack": "reprehenderit",
-    "github": "aliquip",
-    "linkedin": "qui",
-    "url": "ex",
-    "contactInfoPro": {
-      "mail": "blackpowers@sfeir.com",
-      "fixedPhone": "+33182449424",
-      "mobilePhone": "+33684850125",
-      "street": "220 Ide Court",
-      "postalCode": "20636",
-      "city": "Winchester"
-    },
-    "functionName": "Mcpherson",
-    "functionDescription": "Wendi",
-    "entity": "Sfeir-Paris",
-    "currentClient": "Adeo",
-    "workcity": "Luxembourg",
-    "workAdress": "rue...",
-    "manager": "Didier",
-    "department": "Compta",
+    "id": "5763cd4d9d2a4f259b53c901",
+    "photo": "https://randomuser.me/portraits/men/59.jpg",
+    "firstname": "Leanne",
+    "lastname": "Woodard",
+    "entity": "BIOSPAN",
+    "entryDate": "27/10/2015",
+    "birthDate": "02/01/1974",
+    "gender": "",
+    "email": "Leanne.Woodard@undefined.com",
     "skills": [
-      "Java",
-      "AngularJS",
-      "React",
-      "git",
-      "ES6",
-      "JavaScript"
+      "pariatur",
+      "ipsum",
+      "laboris",
+      "nostrud",
+      "elit"
     ],
-    "entryDate": "21/10/2014",
-    "birthDate": "11/12/2001",
-    "socialNumber": "4785882151",
-    "contactInfoPerso": {
-      "mail": "wendipowers@sfeir.com",
-      "fixedPhone": "+33197859629",
-      "mobilePhone": "+33682956737",
-      "street": "789 Nolans Lane",
-      "postalCode": "36734",
-      "city": "Loretto"
-    },
-    "emergencyContact": "",
-    "emergencyPhoneNumber": "",
-    "driverLicence": "",
-    "tshirtSize": "XL",
-    "numberOfChild": 4,
     "geo": {
-      "lat": 48.849014738923636,
-      "lng": 2.3431512050201304
-    }
+      "lat": 48.854107964410616,
+      "lng": 2.2486534555789013
+    },
+    "phone": "+1 (917) 469-2495",
+    "address": {
+      "street": "Narrows Avenue",
+      "postalCode": 705,
+      "city": "Boling"
+    },
+    "links": {
+      "twitter": "https://twitter.com/laboris",
+      "slack": "https://slack.com/fugiat",
+      "github": "https://github.com/velit",
+      "linkedin": "https://www.linkedin.com/in/voluptate"
+    },
+    "isManager": false,
+    "manager": "Erika",
+    "managerId": "5763cd4d3b57c672861bfa1f"
   },
   {
-    "email": "luannpowers@sfeir.com",
-    "lastname": "Shaffer",
-    "firstname": "Vargas",
-    "gender": "male",
-    "photo": "https://randomuser.me/portraits/men/57.jpg",
-    "id": 4013,
-    "twitter": "irure",
-    "slack": "pariatur",
-    "github": "aute",
-    "linkedin": "enim",
-    "url": "do",
-    "contactInfoPro": {
-      "mail": "vargasshaffer@sfeir.com",
-      "fixedPhone": "+33197542822",
-      "mobilePhone": "+33688258827",
-      "street": "108 Covert Street",
-      "postalCode": "66205",
-      "city": "Saranap"
-    },
-    "functionName": "Greta",
-    "functionDescription": "Teresa",
-    "entity": "Sfeir-Luxembourg",
-    "currentClient": "Adeo",
-    "workcity": "Paris",
-    "workAdress": "Place...",
-    "manager": "Bruno",
-    "department": "Recrutement",
+    "id": "5763cd4d51fdb6588742f99e",
+    "photo": "https://randomuser.me/portraits/men/65.jpg",
+    "firstname": "Castaneda",
+    "lastname": "Salinas",
+    "entity": "METROZ",
+    "entryDate": "04/10/2015",
+    "birthDate": "22/01/1963",
+    "gender": "",
+    "email": "Castaneda.Salinas@undefined.com",
     "skills": [
-      "ad",
-      "dolore",
-      "ullamco",
-      "sunt",
       "exercitation",
-      "Lorem",
-      "sint"
+      "consectetur",
+      "aute",
+      "ad",
+      "adipisicing"
     ],
-    "entryDate": "27/03/2005",
-    "birthDate": "17/10/2008",
-    "socialNumber": "16499299613",
-    "contactInfoPerso": {
-      "mail": "teresashaffer@sfeir.com",
-      "fixedPhone": "+33180943636",
-      "mobilePhone": "+33684757129",
-      "street": "949 Montgomery Street",
-      "postalCode": "51008",
-      "city": "Tampico"
-    },
-    "emergencyContact": "",
-    "emergencyPhoneNumber": "",
-    "driverLicence": "",
-    "tshirtSize": "XL",
-    "numberOfChild": 2,
     "geo": {
-      "lat": 48.849332568574255,
-      "lng": 2.367236381364804
-    }
+      "lat": 48.85988099923647,
+      "lng": 2.283677529858706
+    },
+    "phone": "+1 (918) 559-3382",
+    "address": {
+      "street": "Metrotech Courtr",
+      "postalCode": 5329,
+      "city": "Franklin"
+    },
+    "links": {
+      "twitter": "https://twitter.com/velit",
+      "slack": "https://slack.com/sunt",
+      "github": "https://github.com/sint",
+      "linkedin": "https://www.linkedin.com/in/voluptate"
+    },
+    "isManager": false,
+    "manager": "Erika",
+    "managerId": "5763cd4d3b57c672861bfa1f"
   },
   {
-    "email": "sofiashaffer@sfeir.com",
-    "lastname": "Yang",
-    "firstname": "Mendez",
-    "gender": "male",
+    "id": "5763cd4dba6362a3f92c954e",
     "photo": "https://randomuser.me/portraits/men/74.jpg",
-    "id": 1461,
-    "twitter": "excepteur",
-    "slack": "duis",
-    "github": "magna",
-    "linkedin": "qui",
-    "url": "git",
-    "contactInfoPro": {
-      "mail": "mendezyang@sfeir.com",
-      "fixedPhone": "+33186156125",
-      "mobilePhone": "+33685949922",
-      "street": "718 Billings Place",
-      "postalCode": "25511",
-      "city": "Eastvale"
-    },
-    "functionName": "Pugh",
-    "functionDescription": "Roy",
-    "entity": "Sfeir-Lille",
-    "currentClient": "Adeo",
-    "workcity": "Paris",
-    "workAdress": "rue...",
-    "manager": "Aurélien",
-    "department": "DO",
+    "firstname": "Phyllis",
+    "lastname": "Donovan",
+    "entity": "PEARLESSA",
+    "entryDate": "30/03/2015",
+    "birthDate": "30/11/1951",
+    "gender": "",
+    "email": "Phyllis.Donovan@undefined.com",
     "skills": [
-      "dolore",
-      "in",
-      "officia",
+      "fugiat",
       "deserunt",
-      "Java",
-      "irure",
-      "velit"
+      "culpa",
+      "adipisicing",
+      "Lorem"
     ],
-    "entryDate": "13/01/2014",
-    "birthDate": "30/09/2010",
-    "socialNumber": "9527509429",
-    "contactInfoPerso": {
-      "mail": "royyang@sfeir.com",
-      "fixedPhone": "+33180859936",
-      "mobilePhone": "+33694150833",
-      "street": "765 Bokee Court",
-      "postalCode": "72928",
-      "city": "Jeff"
-    },
-    "emergencyContact": "",
-    "emergencyPhoneNumber": "",
-    "driverLicence": "",
-    "tshirtSize": "XL",
-    "numberOfChild": 1,
     "geo": {
-      "lat": 48.860126613558705,
-      "lng": 2.359553543572332
-    }
+      "lat": 48.845544343608054,
+      "lng": 2.399797357715456
+    },
+    "phone": "+1 (833) 447-3526",
+    "address": {
+      "street": "Oakland Place",
+      "postalCode": 4086,
+      "city": "Onton"
+    },
+    "links": {
+      "twitter": "https://twitter.com/non",
+      "slack": "https://slack.com/enim",
+      "github": "https://github.com/laborum",
+      "linkedin": "https://www.linkedin.com/in/et"
+    },
+    "isManager": false,
+    "manager": "Erika",
+    "managerId": "5763cd4d3b57c672861bfa1f"
   },
   {
-    "email": "marisayang@sfeir.com",
-    "lastname": "Kelly",
-    "firstname": "Rodgers",
-    "gender": "male",
-    "photo": "https://randomuser.me/portraits/men/51.jpg",
-    "id": 7291,
-    "twitter": "incididunt",
-    "slack": "esse",
-    "github": "pariatur",
-    "linkedin": "JavaScript",
-    "url": "duis",
-    "contactInfoPro": {
-      "mail": "rodgerskelly@sfeir.com",
-      "fixedPhone": "+33182846234",
-      "mobilePhone": "+33695454827",
-      "street": "458 Little Street",
-      "postalCode": "71696",
-      "city": "Newry"
-    },
-    "functionName": "Clarice",
-    "functionDescription": "Paige",
-    "entity": "Sfeir-Luxembourg",
-    "currentClient": "Sanofi",
-    "workcity": "Paris",
-    "workAdress": "Place...",
-    "manager": "Christophe",
-    "department": "Commerce",
+    "id": "5763cd4d3b57c672861bfa1f",
+    "photo": "https://randomuser.me/portraits/men/9.jpg",
+    "firstname": "Erika",
+    "lastname": "Guzman",
+    "entity": "CIRCUM",
+    "entryDate": "13/05/2016",
+    "birthDate": "19/03/1962",
+    "gender": "",
+    "email": "Erika.Guzman@undefined.com",
     "skills": [
-      "magna",
-      "est",
-      "quis",
-      "reprehenderit",
-      "officia",
-      "velit",
-      "est"
-    ],
-    "entryDate": "08/07/2000",
-    "birthDate": "13/08/2003",
-    "socialNumber": "16786202449",
-    "contactInfoPerso": {
-      "mail": "paigekelly@sfeir.com",
-      "fixedPhone": "+33183740931",
-      "mobilePhone": "+33695152736",
-      "street": "638 Jardine Place",
-      "postalCode": "95363",
-      "city": "Glenshaw"
-    },
-    "emergencyContact": "",
-    "emergencyPhoneNumber": "",
-    "driverLicence": "",
-    "tshirtSize": "XL",
-    "numberOfChild": 0,
-    "geo": {
-      "lat": 48.852292968381235,
-      "lng": 2.2935820674001963
-    }
-  },
-  {
-    "email": "penelopekelly@sfeir.com",
-    "lastname": "Alford",
-    "firstname": "Misty",
-    "gender": "female",
-    "photo": "https://randomuser.me/portraits/women/34.jpg",
-    "id": 3233,
-    "twitter": "mollit",
-    "slack": "ipsum",
-    "github": "cillum",
-    "linkedin": "amet",
-    "url": "in",
-    "contactInfoPro": {
-      "mail": "mistyalford@sfeir.com",
-      "fixedPhone": "+33181359229",
-      "mobilePhone": "+33691454335",
-      "street": "143 Moore Street",
-      "postalCode": "38171",
-      "city": "Roland"
-    },
-    "functionName": "Kent",
-    "functionDescription": "Lancaster",
-    "entity": "Sfeir-Lille",
-    "currentClient": "Generali",
-    "workcity": "Luxembourg",
-    "workAdress": "Boulevard..",
-    "manager": "Céline",
-    "department": "Compta",
-    "skills": [
-      "proident",
-      "commodo",
-      "pariatur",
-      "officia",
-      "ullamco",
-      "sint",
-      "laborum"
-    ],
-    "entryDate": "04/11/2002",
-    "birthDate": "23/06/2013",
-    "socialNumber": "6592428004",
-    "contactInfoPerso": {
-      "mail": "lancasteralford@sfeir.com",
-      "fixedPhone": "+33191353833",
-      "mobilePhone": "+33685643823",
-      "street": "326 Brighton Avenue",
-      "postalCode": "86046",
-      "city": "Belgreen"
-    },
-    "emergencyContact": "",
-    "emergencyPhoneNumber": "",
-    "driverLicence": "",
-    "tshirtSize": "L",
-    "numberOfChild": 0,
-    "geo": {
-      "lat": 48.85069576611214,
-      "lng": 2.373169985392953
-    }
-  },
-  {
-    "email": "sheppardalford@sfeir.com",
-    "lastname": "Dixon",
-    "firstname": "Franks",
-    "gender": "male",
-    "photo": "https://randomuser.me/portraits/men/81.jpg",
-    "id": 2457,
-    "twitter": "fugiat",
-    "slack": "mollit",
-    "github": "esse",
-    "linkedin": "fugiat",
-    "url": "adipisicing",
-    "contactInfoPro": {
-      "mail": "franksdixon@sfeir.com",
-      "fixedPhone": "+33187152429",
-      "mobilePhone": "+33695747931",
-      "street": "527 Independence Avenue",
-      "postalCode": "31666",
-      "city": "Beyerville"
-    },
-    "functionName": "Walters",
-    "functionDescription": "Charlotte",
-    "entity": "Sfeir-Luxembourg",
-    "currentClient": "Adeo",
-    "workcity": "Paris",
-    "workAdress": "Place...",
-    "manager": "Didier",
-    "department": "DO",
-    "skills": [
-      "labore",
-      "sint",
-      "sit",
-      "dolore",
-      "est",
-      "duis",
-      "laboris"
-    ],
-    "entryDate": "08/08/2003",
-    "birthDate": "03/12/2009",
-    "socialNumber": "10176756867",
-    "contactInfoPerso": {
-      "mail": "charlottedixon@sfeir.com",
-      "fixedPhone": "+33194152421",
-      "mobilePhone": "+33680243523",
-      "street": "691 Bogart Street",
-      "postalCode": "64007",
-      "city": "Kerby"
-    },
-    "emergencyContact": "",
-    "emergencyPhoneNumber": "",
-    "driverLicence": "",
-    "tshirtSize": "L",
-    "numberOfChild": 1,
-    "geo": {
-      "lat": 48.852875424350934,
-      "lng": 2.3775836541342956
-    }
-  },
-  {
-    "email": "gingerdixon@sfeir.com",
-    "lastname": "Kirby",
-    "firstname": "Frederick",
-    "gender": "male",
-    "photo": "https://randomuser.me/portraits/men/50.jpg",
-    "id": 6360,
-    "twitter": "aliqua",
-    "slack": "commodo",
-    "github": "non",
-    "linkedin": "JavaScript",
-    "url": "amet",
-    "contactInfoPro": {
-      "mail": "frederickkirby@sfeir.com",
-      "fixedPhone": "+33196244333",
-      "mobilePhone": "+33694549827",
-      "street": "677 Grand Street",
-      "postalCode": "40583",
-      "city": "Fowlerville"
-    },
-    "functionName": "Susie",
-    "functionDescription": "Obrien",
-    "entity": "Sfeir-Lille",
-    "currentClient": "Generali",
-    "workcity": "Paris",
-    "workAdress": "rue...",
-    "manager": "Aurélien",
-    "department": "DO",
-    "skills": [
-      "aliqua",
-      "mollit",
-      "irure",
-      "pariatur",
-      "ex",
-      "ES6",
+      "aliquip",
+      "do",
+      "amet",
+      "aute",
       "et"
     ],
-    "entryDate": "20/06/2000",
-    "birthDate": "03/04/2012",
-    "socialNumber": "7854914196",
-    "contactInfoPerso": {
-      "mail": "obrienkirby@sfeir.com",
-      "fixedPhone": "+33181447537",
-      "mobilePhone": "+33688154732",
-      "street": "429 Grattan Street",
-      "postalCode": "42655",
-      "city": "Mappsville"
-    },
-    "emergencyContact": "",
-    "emergencyPhoneNumber": "",
-    "driverLicence": "",
-    "tshirtSize": "L",
-    "numberOfChild": 4,
     "geo": {
-      "lat": 48.851638203448665,
-      "lng": 2.3714236022837576
-    }
+      "lat": 48.843615611100034,
+      "lng": 2.3131976417042717
+    },
+    "phone": "+1 (818) 514-2231",
+    "address": {
+      "street": "Havemeyer Street",
+      "postalCode": 7615,
+      "city": "Yardville"
+    },
+    "links": {
+      "twitter": "https://twitter.com/nisi",
+      "slack": "https://slack.com/laborum",
+      "github": "https://github.com/ea",
+      "linkedin": "https://www.linkedin.com/in/sint"
+    },
+    "isManager": true,
+    "manager": "Mercedes",
+    "managerId": "5763cd4d979b62a209809160"
   },
   {
-    "email": "oconnorkirby@sfeir.com",
-    "lastname": "Wong",
-    "firstname": "Kellie",
-    "gender": "female",
-    "photo": "https://randomuser.me/portraits/women/35.jpg",
-    "id": 347,
-    "twitter": "non",
-    "slack": "labore",
-    "github": "anim",
-    "linkedin": "dolore",
-    "url": "fugiat",
-    "contactInfoPro": {
-      "mail": "kelliewong@sfeir.com",
-      "fixedPhone": "+33191745625",
-      "mobilePhone": "+33691249437",
-      "street": "142 Heyward Street",
-      "postalCode": "90668",
-      "city": "Montura"
-    },
-    "functionName": "Greene",
-    "functionDescription": "Shirley",
-    "entity": "Sfeir-Est",
-    "currentClient": "Sanofi",
-    "workcity": "Paris",
-    "workAdress": "rue...",
-    "manager": "Aurélien",
-    "department": "Recrutement",
+    "id": "5763cd4d5fc36e4f842ca5a9",
+    "photo": "https://randomuser.me/portraits/men/98.jpg",
+    "firstname": "Moody",
+    "lastname": "Prince",
+    "entity": "TRIPSCH",
+    "entryDate": "28/09/2015",
+    "birthDate": "15/04/1971",
+    "gender": "",
+    "email": "Moody.Prince@undefined.com",
     "skills": [
-      "Java",
-      "JavaScript",
-      "ipsum",
-      "veniam",
-      "nulla",
-      "do",
-      "aliqua"
-    ],
-    "entryDate": "12/01/2000",
-    "birthDate": "30/09/2001",
-    "socialNumber": "3193874425",
-    "contactInfoPerso": {
-      "mail": "shirleywong@sfeir.com",
-      "fixedPhone": "+33197843737",
-      "mobilePhone": "+33689550328",
-      "street": "424 Gatling Place",
-      "postalCode": "19138",
-      "city": "Lavalette"
-    },
-    "emergencyContact": "",
-    "emergencyPhoneNumber": "",
-    "driverLicence": "",
-    "tshirtSize": "L",
-    "numberOfChild": 3,
-    "geo": {
-      "lat": 48.860679339875986,
-      "lng": 2.3761796064921477
-    }
-  },
-  {
-    "email": "pearliewong@sfeir.com",
-    "lastname": "Weiss",
-    "firstname": "Tasha",
-    "gender": "female",
-    "photo": "https://randomuser.me/portraits/women/22.jpg",
-    "id": 5586,
-    "twitter": "do",
-    "slack": "quis",
-    "github": "React",
-    "linkedin": "git",
-    "url": "mollit",
-    "contactInfoPro": {
-      "mail": "tashaweiss@sfeir.com",
-      "fixedPhone": "+33192859131",
-      "mobilePhone": "+33695050633",
-      "street": "381 Bowne Street",
-      "postalCode": "14100",
-      "city": "Jessie"
-    },
-    "functionName": "Larson",
-    "functionDescription": "Lilly",
-    "entity": "Sfeir-Est",
-    "currentClient": "Generali",
-    "workcity": "Lille",
-    "workAdress": "Boulevard..",
-    "manager": "Céline",
-    "department": "Commerce",
-    "skills": [
-      "aute",
-      "dolor",
-      "sint",
-      "incididunt",
+      "tempor",
       "deserunt",
-      "ex",
-      "non"
+      "consequat",
+      "eiusmod",
+      "labore"
     ],
-    "entryDate": "26/04/2007",
-    "birthDate": "29/08/2014",
-    "socialNumber": "10904542270",
-    "contactInfoPerso": {
-      "mail": "lillyweiss@sfeir.com",
-      "fixedPhone": "+33199058930",
-      "mobilePhone": "+33687043335",
-      "street": "523 Seton Place",
-      "postalCode": "13237",
-      "city": "Gorham"
-    },
-    "emergencyContact": "",
-    "emergencyPhoneNumber": "",
-    "driverLicence": "",
-    "tshirtSize": "XL",
-    "numberOfChild": 4,
     "geo": {
-      "lat": 48.85893090916813,
-      "lng": 2.317131260135714
-    }
+      "lat": 48.852765798186375,
+      "lng": 2.3216256189826345
+    },
+    "phone": "+1 (938) 583-2635",
+    "address": {
+      "street": "Russell Street",
+      "postalCode": 500,
+      "city": "Coloma"
+    },
+    "links": {
+      "twitter": "https://twitter.com/qui",
+      "slack": "https://slack.com/sint",
+      "github": "https://github.com/esse",
+      "linkedin": "https://www.linkedin.com/in/fugiat"
+    },
+    "isManager": false,
+    "manager": "Mercedes",
+    "managerId": "5763cd4d979b62a209809160"
   },
   {
-    "email": "lelaweiss@sfeir.com",
-    "lastname": "Buckley",
-    "firstname": "Davidson",
-    "gender": "male",
-    "photo": "https://randomuser.me/portraits/men/16.jpg",
-    "id": 2195,
-    "twitter": "elit",
-    "slack": "sunt",
-    "github": "tempor",
-    "linkedin": "ea",
-    "url": "sunt",
-    "contactInfoPro": {
-      "mail": "davidsonbuckley@sfeir.com",
-      "fixedPhone": "+33189259029",
-      "mobilePhone": "+33683648521",
-      "street": "567 Thomas Street",
-      "postalCode": "30456",
-      "city": "Hillsboro"
-    },
-    "functionName": "Lula",
-    "functionDescription": "Massey",
-    "entity": "Sfeir-Luxembourg",
-    "currentClient": "Sanofi",
-    "workcity": "Strasbourg",
-    "workAdress": "rue...",
-    "manager": "Céline",
-    "department": "Recrutement",
+    "id": "5763cd4d979b62a209809160",
+    "photo": "https://randomuser.me/portraits/men/81.jpg",
+    "firstname": "Mercedes",
+    "lastname": "Hebert",
+    "entity": "QUINTITY",
+    "entryDate": "02/01/2016",
+    "birthDate": "20/07/1947",
+    "gender": "",
+    "email": "Mercedes.Hebert@undefined.com",
     "skills": [
-      "laboris",
-      "anim",
-      "veniam",
+      "ex",
+      "commodo",
+      "pariatur",
       "sit",
-      "adipisicing",
-      "cillum",
-      "React"
+      "aute"
     ],
-    "entryDate": "13/03/2004",
-    "birthDate": "25/11/2007",
-    "socialNumber": "4204274692",
-    "contactInfoPerso": {
-      "mail": "masseybuckley@sfeir.com",
-      "fixedPhone": "+33194556032",
-      "mobilePhone": "+33695454439",
-      "street": "946 Fenimore Street",
-      "postalCode": "85636",
-      "city": "Corriganville"
-    },
-    "emergencyContact": "",
-    "emergencyPhoneNumber": "",
-    "driverLicence": "",
-    "tshirtSize": "L",
-    "numberOfChild": 5,
     "geo": {
-      "lat": 48.859904993611046,
-      "lng": 2.3834820201715106
-    }
+      "lat": 48.846017690212236,
+      "lng": 2.381289161182463
+    },
+    "phone": "+1 (888) 491-2305",
+    "address": {
+      "street": "Laurel Avenue",
+      "postalCode": 8572,
+      "city": "Northchase"
+    },
+    "links": {
+      "twitter": "https://twitter.com/eiusmod",
+      "slack": "https://slack.com/sit",
+      "github": "https://github.com/reprehenderit",
+      "linkedin": "https://www.linkedin.com/in/do"
+    },
+    "isManager": true,
+    "manager": "Mclaughlin",
+    "managerId": "5763cd4d3c307cf87ed4f944"
+  },
+  {
+    "id": "5763cd4d15e6c2c28b70f2e8",
+    "photo": "https://randomuser.me/portraits/men/39.jpg",
+    "firstname": "Howell",
+    "lastname": "Mcknight",
+    "entity": "KRAG",
+    "entryDate": "26/09/2015",
+    "birthDate": "18/07/1979",
+    "gender": "",
+    "email": "Howell.Mcknight@undefined.com",
+    "skills": [
+      "commodo",
+      "cillum",
+      "ea",
+      "ex",
+      "in"
+    ],
+    "geo": {
+      "lat": 48.85466031451406,
+      "lng": 2.28371412891228
+    },
+    "phone": "+1 (835) 400-3285",
+    "address": {
+      "street": "Ford Street",
+      "postalCode": 5855,
+      "city": "Shindler"
+    },
+    "links": {
+      "twitter": "https://twitter.com/eu",
+      "slack": "https://slack.com/reprehenderit",
+      "github": "https://github.com/magna",
+      "linkedin": "https://www.linkedin.com/in/irure"
+    },
+    "isManager": false,
+    "manager": "Mclaughlin",
+    "managerId": "5763cd4dfa6f96cd26c65787"
+  },
+  {
+    "id": "5763cd4d5d6ad8dfc6c34883",
+    "photo": "https://randomuser.me/portraits/men/86.jpg",
+    "firstname": "Lizzie",
+    "lastname": "Morris",
+    "entity": "NSPIRE",
+    "entryDate": "03/05/2016",
+    "birthDate": "15/11/1981",
+    "gender": "",
+    "email": "Lizzie.Morris@undefined.com",
+    "skills": [
+      "laborum",
+      "cupidatat",
+      "nostrud",
+      "consequat",
+      "officia"
+    ],
+    "geo": {
+      "lat": 48.86595755527611,
+      "lng": 2.294342855755885
+    },
+    "phone": "+1 (800) 442-2458",
+    "address": {
+      "street": "Hall Street",
+      "postalCode": 2796,
+      "city": "Waverly"
+    },
+    "links": {
+      "twitter": "https://twitter.com/velit",
+      "slack": "https://slack.com/et",
+      "github": "https://github.com/cillum",
+      "linkedin": "https://www.linkedin.com/in/do"
+    },
+    "isManager": false,
+    "manager": "Mclaughlin",
+    "managerId": "5763cd4dfa6f96cd26c65787"
+  },
+  {
+    "id": "5763cd4dc378a38ecd387737",
+    "photo": "https://randomuser.me/portraits/men/55.jpg",
+    "firstname": "Roy",
+    "lastname": "Nielsen",
+    "entity": "QNEKT",
+    "entryDate": "17/05/2016",
+    "birthDate": "21/10/1951",
+    "gender": "",
+    "email": "Roy.Nielsen@undefined.com",
+    "skills": [
+      "pariatur",
+      "deserunt",
+      "sit",
+      "consectetur",
+      "occaecat"
+    ],
+    "geo": {
+      "lat": 48.855495309829195,
+      "lng": 2.4590747454636652
+    },
+    "phone": "+1 (895) 575-3660",
+    "address": {
+      "street": "Sumner Place",
+      "postalCode": 3635,
+      "city": "Glidden"
+    },
+    "links": {
+      "twitter": "https://twitter.com/non",
+      "slack": "https://slack.com/eu",
+      "github": "https://github.com/deserunt",
+      "linkedin": "https://www.linkedin.com/in/culpa"
+    },
+    "isManager": false,
+    "manager": "Mclaughlin",
+    "managerId": "5763cd4dfa6f96cd26c65787"
+  },
+  {
+    "id": "5763cd4dfa6f96cd26c65787",
+    "photo": "https://randomuser.me/portraits/men/70.jpg",
+    "firstname": "Mclaughlin",
+    "lastname": "Cochran",
+    "entity": "UTARA",
+    "entryDate": "11/04/2016",
+    "birthDate": "19/03/1973",
+    "gender": "",
+    "email": "Mclaughlin.Cochran@undefined.com",
+    "skills": [
+      "commodo",
+      "cillum",
+      "ea",
+      "ex",
+      "in"
+    ],
+    "geo": {
+      "lat": 48.848942410578736,
+      "lng": 2.4026880720467796
+    },
+    "phone": "+1 (919) 410-2406",
+    "address": {
+      "street": "Jewel Street",
+      "postalCode": 6069,
+      "city": "Snelling"
+    },
+    "links": {
+      "twitter": "https://twitter.com/mollit",
+      "slack": "https://slack.com/cupidatat",
+      "github": "https://github.com/qui",
+      "linkedin": "https://www.linkedin.com/in/sunt"
+    },
+    "isManager": true,
+    "manager": "Shanna",
+    "managerId": "5763cd4d07ec40df1792cef2"
   }
-];
+]

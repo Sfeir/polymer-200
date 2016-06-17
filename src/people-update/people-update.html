@@ -2,24 +2,45 @@
 <link rel="import" href="../components/people-form/people-form.html">
 
 <dom-module id="people-update">
-    <template>
-        <people-form></people-form>
-        <section class="actions layout horizontal end-justified">
-            <paper-button on-click="cancelForm">Cancel</paper-button>
-            <paper-button on-click="validateForm">Validate</paper-button>
-        </section>
-    </template>
+  <template>
+    <!-- ROUTES DATAS -->
+    <app-route
+      route="{{route}}"
+      pattern="/:id"
+      data="{{routeData}}"
+      tail="{{subroute}}">
+    </app-route>
 
-    <script>
-        (function() {
-            'use strict';
+    <!-- DATA SERVICES -->
+    <people-service id="peopleService" current-people="{{currentPeople}}"></people-service>
 
-            Polymer({
-                is : 'people-update',
-                properties : {
+    <people-form current-people="{{currentPeople}}"></people-form>
+    <section class="actions layout horizontal end-justified">
+      <paper-button on-click="cancelForm">Cancel</paper-button>
+      <paper-button on-click="validateForm">Validate</paper-button>
+    </section>
+  </template>
 
-                }
-            });
-        })();
-    </script>
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'people-update',
+        properties: {
+          currentPeople: {
+            type: Object,
+            value: {},
+            notify: true
+          }
+        },
+        observers: [
+          '_routePageChanged(routeData.id)'
+        ],
+        _routePageChanged: function (peopleId) {
+          this.$.peopleService.getPeopleById(peopleId);
+        }
+      });
+    })();
+  </script>
 </dom-module>

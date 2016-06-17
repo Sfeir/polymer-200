@@ -109,7 +109,7 @@
                             </div>
                             <div class="layout horizontal center flex">
                                 <iron-image src="/images/md-phone.svg"></iron-image>
-                                <a href$="tel:{{people.contactInfoPro.mobilePhone}}">{{people.contactInfoPro.mobilePhone}}</a>
+                                <a href$="tel:{{people.phone}}">{{people.phone}}</a>
                             </div>
                         </div>
                     </div>
@@ -119,17 +119,20 @@
                 </div>
                 <div class="datas layout vertical">
                     <div class="layout horizontal">
-                        <span class="label">Manager: </span>{{people.manager}}
+                      <span class="label">Manager: </span>
+                      <a href="/detail/{{people.managerId}}">
+                        {{people.manager}}
+                      </a>
                     </div>
                     <div class="layout horizontal center actions">
                         <div class="layout horizontal center actions flex">
                             <span class="label">Location: </span>
                             <a href="http://www.sfeir.com/contact/">{{people.entity}}</a>
                         </div>
-                        <a href="/list/map/{{people.email}}" tabindex="-1">
+                        <a href="/list/map/{{people.id}}" tabindex="-1">
                             <img class="mapicon" src="/images/md-map.svg">
                         </a>
-                        <a href="/update/{{people.email}}" tabindex="-1">
+                        <a href="/update/{{people.id}}" tabindex="-1">
                             <paper-icon-button icon="create"></paper-icon-button>
                         </a>
                         <paper-icon-button icon="delete"></paper-icon-button>

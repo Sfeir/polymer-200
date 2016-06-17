@@ -18,6 +18,7 @@
 <link rel="import" href="people-list/people-list.html">
 <link rel="import" href="people-detail/people-detail.html">
 <link rel="import" href="people-skills/people-skills.html">
+<link rel="import" href="people-update/people-update.html">
 
 
 <dom-module id="people-app">
@@ -102,7 +103,7 @@
         <!-- Skills -->
         <people-skills name="skills"></people-skills>
         <!-- Update -->
-        <people-update name="update"></people-update>
+        <people-update name="update" route="{{subroute}}"></people-update>
       </iron-pages>
       <a class="addfab" href="/list/add">
         <paper-fab icon="add"></paper-fab>
