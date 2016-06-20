@@ -13,6 +13,9 @@
 <link rel="import" href="../../bower_components/google-map/google-map-marker.html">
 
 
+<link rel="import" href="./people-list-map.html">
+<link rel="import" href="./people-list-add.html">
+
 <link rel="import" href="../components/people-form/people-form.html">
 <link rel="import" href="../components/people-card/people-card.html">
 
@@ -46,7 +49,6 @@
 
     </style>
 
-    <app-location id="location"></app-location>
     <!-- Subroutes -->
     <app-route
       route="{{route}}"
@@ -69,12 +71,10 @@
       <h2 class="flex">You have {{peoples.length}} contact(s)</h2>
 
       <a href="/list/card" tabindex="-1">
-        <paper-icon-button icon="dns"
-                           aria-label$="Shopping cart: [[_computePluralizedQuantity(numItems)]]"></paper-icon-button>
+        <paper-icon-button icon="dns"></paper-icon-button>
       </a>
       <a href="/list/map" tabindex="-1">
-        <paper-icon-button icon="maps:map"
-                           aria-label$="Shopping cart: [[_computePluralizedQuantity(numItems)]]"></paper-icon-button>
+        <paper-icon-button icon="maps:map"></paper-icon-button>
       </a>
     </section>
 
@@ -86,33 +86,12 @@
         </template>
       </div>
       <div name="map" class="list">
-        <google-map latitude="48.8534100" longitude="2.3488000" fit-to-markers
-                    api-key="AIzaSyB4voafjokZbBCNj4AdylLknJwNmjkbxEg">
-          <template is="dom-repeat" items="{{geoPeoples}}">
-            <google-map-marker latitude="[[item.geo.lat]]" longitude="[[item.geo.lng]]"
-                               title="[[item.lastname]]" open="[[_computOpen(routeUserData.id,item)]]">
-              <h2>[[item.lastname]]</h2>
-              <img src="[[item.photo]]">
-            </google-map-marker>
-          </template>
-
-        </google-map>
+        <people-list-map peoples="[[geoPeoples]]" current-selected-id="{{routeUserData.id}}"></people-list-map>
       </div>
     </iron-pages>
 
 
-    <paper-dialog id="addDialog" entry-animation="slide-from-top-animation"
-                  exit-animation="fade-out-animation"
-                  positionTarget="document.body">
-      <h2>Veuillez saisir les informations</h2>
-      <paper-dialog-scrollable>
-        <people-form id="peopleForm" display-only-id></people-form>
-      </paper-dialog-scrollable>
-      <div class="buttons">
-        <paper-button dialog-dismiss>Annuler</paper-button>
-        <paper-button dialog-confirm on-click="createPeople">Valider</paper-button>
-      </div>
-    </paper-dialog>
+    <people-list-add id="addDialog"></people-list-add>
 
   </template>
 
@@ -137,23 +116,21 @@
           '_routePageChanged(routeData.subpage)'
         ],
         listeners: {
-          'addDialog.iron-overlay-closed': 'onClose'
+          'addDialog.close-create-people': 'onClose',
+          'addDialog.create-people': 'createPeople'
         },
         ready: function () {
           this.$.peopleService.getPeoples();
         },
 
         _peoplesChanged: function (peoples) {
-          if(peoples){
-            this.geoPeoples=peoples.filter(function (item){
+          if (peoples) {
+            this.geoPeoples = peoples.filter(function (item) {
               return item.geo && item.geo.lat && item.geo.lng;
             })
           }
         },
 
-        _computOpen: function (id, item) {
-          return id && id == item.id;
-        },
 
         _routePageChanged: function (page) {
           if (page === 'add') {
@@ -169,21 +146,19 @@
             this.set('route.path', '/card');
             this.page = 'card';
           }
-          console.log(page);
         },
 
         onClose: function () {
           this.set('route.path', '/card');
         },
 
-        createPeople: function () {
-          var people=this.$.peopleForm.currentPeople;
+        createPeople: function (e) {
+          var people = e.detail;
           this.$.peopleService.createPeople(people);
-          this.$.peopleForm.resetForm();
         },
 
-        onCreate:function(){
-          this.$.location.set('route','/card');
+        onCreate: function () {
+          this.set('route.path', '/card');
           this.$.peopleService.getPeoples();
         },
 
@@ -192,7 +167,7 @@
         },
 
         onDelete: function (event) {
-          this.peoples=event.detail;
+          this.peoples = event.detail;
         }
 
       });

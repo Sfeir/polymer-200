@@ -39,9 +39,12 @@
           '_routePageChanged(routeData.skill)'
         ],
         _routePageChanged : function(selectedSkill) {
-          if(selectedSkill){
+          if(this.isActiveRoute()){
             this.$.peopleService.getPeoplesBySkills(selectedSkill);
           }
+        },
+        isActiveRoute: function () {
+          return this.route && this.route.prefix=='/skills';
         }
       });
     })();

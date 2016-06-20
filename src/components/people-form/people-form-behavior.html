@@ -1,0 +1,83 @@
+<script>
+  PeopleFormBehavior = {
+
+    properties: {
+      currentPeople: {
+        type: Object,
+        value: {},
+        notify: true
+      },
+      inputs: {
+        type: Array,
+        value: []
+      }
+    },
+    messages: {
+      valueMissing: 'Required field',
+      customError: 'Custom error',
+      patternMismatch: 'Pattern mismatch error',
+      typeMismatch: 'Type mismatch error',
+      rangeOverflow: 'Overflow error',
+      rangeUnderflow: 'Underflow error',
+      tooLong: 'Value too long',
+      default: 'An error occured'
+    },
+    ready: function () {
+
+    },
+    setForm: function (form) {
+      this.form = form;
+    },
+    isValid: function () {
+      var valid=this.validate();
+      //return this.form.validate();
+      return valid;
+    },
+
+    validate: function() {
+      var valid = true;
+
+      // Validate all the custom elements.
+      var elements=this.form._customElements;
+      for (var el, i = 0; el = elements[i], i < elements.length; i++) {
+        if (!el.disabled) {
+          if (el.validate)
+            valid = !!el.validate() && valid;
+            el.errorMessage=this._computeErrorMessage(el);
+        }
+      }
+      return valid;
+    },
+
+    resetForm: function () {
+      this.currentPeople = {};
+    },
+    getFormData: function () {
+      return this.currentPeople;
+    },
+    _computeErrorMessage: function (input) {
+      var validity = input.inputElement && input.inputElement.validity;
+      var errMsg = "";
+      if(input.invalid) {
+        switch (true) {
+          //REQUIRE ERROR
+          case validity.valueMissing:
+            errMsg = this.messages.valueMissing;
+            break;
+          //PATTERN ERROR
+          case validity.patternMismatch:
+            errMsg = this.messages.patternMismatch;
+            break;
+          //INPUT TYPE ERROR
+          case validity.typeMismatch:
+            errMsg = this.messages.typeMismatch;
+            break;
+          default :
+            errMsg = this.messages.default;
+        }
+      }
+      return errMsg;
+    }
+
+  };
+</script>

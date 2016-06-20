@@ -1,0 +1,64 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/google-map/google-map.html">
+<link rel="import" href="../../bower_components/google-map/google-map-marker.html">
+
+
+<dom-module id="people-list-map">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      google-map {
+        width: 700px;
+        height: 400px;
+      }
+
+    </style>
+
+
+    <google-map map-type="roadmap" latitude="48.8534100" longitude="2.3488000" fit-to-markers
+                api-key="AIzaSyB4voafjokZbBCNj4AdylLknJwNmjkbxEg">
+      <template is="dom-repeat" items="{{peoples}}">
+        <google-map-marker  latitude="[[item.geo.lat]]" longitude="[[item.geo.lng]]"
+                            open="[[_computOpen(currentSelectedId,item)]]">
+          <h2>[[item.lastname]]</h2>
+          <img src="[[item.photo]]">
+        </google-map-marker>
+      </template>
+
+    </google-map>
+
+
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'people-list-map',
+        properties: {
+          peoples: {
+            type: Array,
+            value: []
+          },
+          currentSelectedId: {
+            type: String
+          },
+          selestedId: {
+            type: String
+          }
+
+        },
+        ready: function () {
+        },
+
+        _computOpen: function (id, item) {
+          return id && id == item.id;
+        }
+      });
+    })();
+  </script>
+</dom-module>

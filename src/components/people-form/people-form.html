@@ -1,11 +1,13 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../../../bower_components/iron-input/iron-input.html">
 <link rel="import" href="../../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
+<link rel="import" href="people-form-behavior.html">
 
 <dom-module id="people-form">
   <style include="iron-flex iron-flex-alignment">
@@ -25,6 +27,10 @@
       color: var(--primary-color);
     }
 
+    paper-input {
+      --paper-input-container-invalid-color:red;
+    }
+
   </style>
   <template>
     <paper-card class="people">
@@ -33,26 +39,25 @@
           <section class="column">
             <h2>Id.</h2>
             <div class="row input-row">
-              <paper-input id="firstname"  name="firstname" label="Firstname"
+              <paper-input id="firstname"  name="firstname" label="Firstname*"
                            error-message="The firstname is required" required
                            value="{{currentPeople.firstname}}"></paper-input>
             </div>
             <div class="row input-row">
-              <paper-input id="lastname"  name="lastname" label="Lastname"
+              <paper-input id="lastname"  name="lastname" label="Lastname*"
                            required
                            value="{{currentPeople.lastname}}"></paper-input>
             </div>
             <div class="row input-row">
-              <paper-input type="email" id="accountEmail" name="accountEmail" label="Email"
+              <paper-input type="email" id="accountEmail" name="accountEmail" label="Email*"
                            error-message="The email is required" required
                            value="{{currentPeople.email}}"></paper-input>
             </div>
             <div class="row input-row">
-              <paper-input type="tel" id="accountPhone" name="accountPhone" label="Phone Number"
+              <paper-input type="text" id="accountPhone" name="accountPhone" label="Phone Number*"
                            error-message="The phone number should have 10 digits"
                            pattern="\d{10}"
                            value="{{currentPeople.phone}}"></paper-input>
-
             </div>
           </section>
           <template is="dom-if" if="{{!displayOnlyId}}">
@@ -67,7 +72,6 @@
               <div class="row input-row">
 
                 <paper-input type="text" id="shipCity" name="shipCity" label="City"
-                             error-message="The city is required" required
                              value="{{currentPeople.address.city}}"></paper-input>
 
               </div>
@@ -90,25 +94,15 @@
 
       Polymer({
         is: 'people-form',
+        behaviors: [PeopleFormBehavior],
         properties: {
           displayOnlyId: {
             type: Boolean,
             value: false
-          },
-          currentPeople: {
-            type: Object,
-            value: {},
-            notify: true
           }
         },
-        validateForm: function () {
-          return this.$.form.validate();
-        },
-        cancelForm: function () {
-          window.history.back();
-        },
-        resetForm: function () {
-          this.currentPeople={};
+        ready: function () {
+          this.form=this.$.form;
         }
       });
     })();

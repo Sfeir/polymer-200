@@ -47,8 +47,11 @@
           return this.route && this.route.prefix=='/update';
         },
         updatePeople: function () {
-          var people=this.$.peopleForm.currentPeople;
-          this.$.peopleService.updatePeople(people);
+          var form=this.$.peopleForm;
+          if(form.isValid()){
+            var people=form.getFormData();
+            this.$.peopleService.updatePeople(people);
+          }
         },
         backToList:function(){
           this.$.location.set('path','/list/card');
