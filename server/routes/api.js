@@ -117,5 +117,5 @@ function getId(req) {
 }
 
 function createId() {
-  return new Date().getTime();
+  return new Date().getTime()+"";
 }

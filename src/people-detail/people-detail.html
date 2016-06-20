@@ -13,6 +13,7 @@
     </style>
 
     <app-route
+      id="rte"
       route="{{route}}"
       pattern="/:id"
       data="{{routeData}}"
@@ -44,7 +45,12 @@
           '_routePageChanged(routeData.id)'
         ],
         _routePageChanged : function(peopleId) {
-          this.$.peopleService.getPeopleById(peopleId);
+          if(this.isActiveRoute()){
+            this.$.peopleService.getPeopleById(peopleId);
+          }
+        },
+        isActiveRoute: function () {
+          return this.route && this.route.prefix=='/detail';
         }
       });
     })

@@ -39,7 +39,12 @@
           '_routePageChanged(routeData.id)'
         ],
         _routePageChanged: function (peopleId) {
-          this.$.peopleService.getPeopleById(peopleId);
+          if(this.isActiveRoute()){
+            this.$.peopleService.getPeopleById(peopleId);
+          }
+        },
+        isActiveRoute: function () {
+          return this.route && this.route.prefix=='/update';
         },
         updatePeople: function () {
           var people=this.$.peopleForm.currentPeople;
