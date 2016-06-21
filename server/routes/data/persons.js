@@ -22,7 +22,7 @@ exports.peoples = [
       "lat": 48.854107964410616,
       "lng": 2.2486534555789013
     },
-    "phone": "+1 (917) 469-2495",
+    "phone": "0784112248",
     "address": {
       "street": "Narrows Avenue",
       "postalCode": 705,
@@ -59,7 +59,7 @@ exports.peoples = [
       "lat": 48.85988099923647,
       "lng": 2.283677529858706
     },
-    "phone": "+1 (918) 559-3382",
+    "phone": "0145652522",
     "address": {
       "street": "Metrotech Courtr",
       "postalCode": 5329,
@@ -96,7 +96,7 @@ exports.peoples = [
       "lat": 48.845544343608054,
       "lng": 2.399797357715456
     },
-    "phone": "+1 (833) 447-3526",
+    "phone": "0685230125",
     "address": {
       "street": "Oakland Place",
       "postalCode": 4086,
@@ -133,7 +133,7 @@ exports.peoples = [
       "lat": 48.843615611100034,
       "lng": 2.3131976417042717
     },
-    "phone": "+1 (818) 514-2231",
+    "phone": "0678412587",
     "address": {
       "street": "Havemeyer Street",
       "postalCode": 7615,
@@ -170,7 +170,7 @@ exports.peoples = [
       "lat": 48.852765798186375,
       "lng": 2.3216256189826345
     },
-    "phone": "+1 (938) 583-2635",
+    "phone": "0662589632",
     "address": {
       "street": "Russell Street",
       "postalCode": 500,
@@ -207,7 +207,7 @@ exports.peoples = [
       "lat": 48.846017690212236,
       "lng": 2.381289161182463
     },
-    "phone": "+1 (888) 491-2305",
+    "phone": "0125878522",
     "address": {
       "street": "Laurel Avenue",
       "postalCode": 8572,
@@ -244,7 +244,7 @@ exports.peoples = [
       "lat": 48.85466031451406,
       "lng": 2.28371412891228
     },
-    "phone": "+1 (835) 400-3285",
+    "phone": "0456987425",
     "address": {
       "street": "Ford Street",
       "postalCode": 5855,
@@ -281,7 +281,7 @@ exports.peoples = [
       "lat": 48.86595755527611,
       "lng": 2.294342855755885
     },
-    "phone": "+1 (800) 442-2458",
+    "phone": "0662259988",
     "address": {
       "street": "Hall Street",
       "postalCode": 2796,
@@ -318,7 +318,7 @@ exports.peoples = [
       "lat": 48.855495309829195,
       "lng": 2.4590747454636652
     },
-    "phone": "+1 (895) 575-3660",
+    "phone": "0755669551",
     "address": {
       "street": "Sumner Place",
       "postalCode": 3635,
@@ -355,7 +355,7 @@ exports.peoples = [
       "lat": 48.848942410578736,
       "lng": 2.4026880720467796
     },
-    "phone": "+1 (919) 410-2406",
+    "phone": "0266334856",
     "address": {
       "street": "Jewel Street",
       "postalCode": 6069,
