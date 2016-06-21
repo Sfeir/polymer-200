@@ -24,6 +24,7 @@ app.use(function(req, res, next) {
 // JSON API
 app.get('/api/peoples', api.listAll);
 app.get('/api/peoples/:id', api.get);
+app.get('/api/peoples/random', api.getRandom);
 app.get('/api/peoples/name/:name', api.filterByName);
 app.get('/api/peoples/skill/:skill', api.filterBySkill);
 app.post('/api/peoples', api.create);

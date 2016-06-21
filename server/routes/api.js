@@ -48,6 +48,11 @@ exports.get = function (req, res) {
   return res.status(200).json(person);
 };
 
+exports.getRandom = function (req, res) {
+  var person=PEOPLES[Math.floor(Math.random() * PEOPLES.length)];
+  return res.status(200).json(person);
+};
+
 
 exports.create = function (req, res) {
   var person = req.body;
