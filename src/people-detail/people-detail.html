@@ -24,7 +24,7 @@
     <!-- DATA SERVICES -->
     <people-service id="peopleService" current-people="{{currentPeople}}"></people-service>
 
-    <people-card display-skills people="{{currentPeople}}"></people-card>
+    <people-card display-skills display-links people="{{currentPeople}}"></people-card>
 
 
   </template>
@@ -43,13 +43,13 @@
             notify: true
           }
         },
-        observers  : [
-          '_routePageChanged(routeData.id)'
-        ],
-        _routePageChanged : function(peopleId) {
-          if(this.isActiveRoute()){
-            this.$.peopleService.getPeopleById(peopleId);
+        getPeople: function () {
+          if(this.routeData.id){
+            this.$.peopleService.getPeopleById(this.routeData.id);
           }
+        },
+        onShow: function() {
+          this.getPeople();
         }
       });
     })

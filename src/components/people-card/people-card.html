@@ -15,7 +15,6 @@
 
     paper-card {
       width: 450px;
-      height: 250px;
       background-color: white;
       margin: 10px;
       --paper-card-content: {
@@ -81,11 +80,10 @@
 
     .skills{
       padding: 10px;
-      border: 1px solid lightgrey;
+      background-color: #FAFAFA;
     }
 
     .skills h3 {
-      color: var(--primary-color);
       font-size: 24px;
       font-weight: normal;
       line-height: 1.1;
@@ -98,7 +96,7 @@
 
     a {
       text-decoration: none;
-      color: var(--primary-color);
+      color: #000000;
     }
 
     a.active paper-button{
@@ -106,6 +104,16 @@
       color:white;
     }
 
+    .links {
+      padding: 10px;
+      background-color: white;
+      height: 78px;
+    }
+
+    .links img {
+      color:rgba(0,0,0,0.54);
+      margin: 20px;
+    }
   </style>
 
   <template>
@@ -161,18 +169,33 @@
           </div>
         </div>
 
-
-      </div>
-      <template is="dom-if" if="{{displaySkills}}">
-        <div class="skills">
-          <h3>Skills</h3>
-          <template is="dom-repeat" items="{{people.skills}}">
-            <a href="/skills/{{item}}" class$="[[_computIsSkillSelected(selectedSkill,item)]]">
-              <paper-button elevation="1  " raised>{{item}}</paper-button>
+        <template is="dom-if" if="{{displaySkills}}">
+          <div class="skills">
+            <h3>Skills</h3>
+            <template is="dom-repeat" items="{{people.skills}}">
+              <a href="/skills/{{item}}" class$="[[_computIsSkillSelected(selectedSkill,item)]]">
+                <paper-button elevation="1  " raised>{{item}}</paper-button>
+              </a>
+            </template>
+          </div>
+        </template>
+        <template is="dom-if" if="{{displayLinks}}">
+          <div class="links layout horizontal center-justified">
+            <a href?="{{item.links.twitter}}">
+              <img  src="/images/md-twitter.svg">
             </a>
-          </template>
-        </div>
-      </template>
+            <a href?="{{item.links.slack}}">
+              <img  src="/images/md-slack.svg">
+            </a>
+            <a href?="{{item.links.github}}">
+              <img  src="/images/md-github.svg">
+            </a>
+            <a href?="{{item.links.linkedin}}">
+              <img  src="/images/md-linkedin.svg">
+            </a>
+          </div>
+        </template>
+      </div>
     </paper-card>
   </template>
 
@@ -188,6 +211,9 @@
             notify: true
           },
           displaySkills: {
+            type: Boolean
+          },
+          displayLinks: {
             type: Boolean
           },
           canDelete: {

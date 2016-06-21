@@ -47,15 +47,27 @@
           peoples : {
             type   : Array,
             value  : []
+          },
+          currentSkill:{
+            type:String
           }
         },
         observers  : [
           '_routePageChanged(routeData.skill)'
         ],
-        _routePageChanged : function(selectedSkill) {
-          if(this.isActiveRoute()){
-            this.$.peopleService.getPeoplesBySkills(selectedSkill);
+        getPeoplesBySkills: function () {
+          if(this.routeData.skill){
+            this.$.peopleService.getPeoplesBySkills(this.routeData.skill);
+            this.currentSkill=this.routeData.skill;
           }
+        },
+        _routePageChanged : function(newSkill) {
+          if(this.isActiveRoute() && newSkill!=this.currentSkill) {
+            this.getPeoplesBySkills();
+          }
+        },
+        onShow: function () {
+          this.getPeoplesBySkills();
         }
       });
     })();

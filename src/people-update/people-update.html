@@ -37,16 +37,10 @@
             notify: true
           }
         },
-        observers: [
-          '_routePageChanged(routeData.id)'
-        ],
-        _routePageChanged: function (peopleId) {
-          if(this.isActiveRoute()){
-            this.$.peopleService.getPeopleById(peopleId);
+        onShow: function (peopleId) {
+          if(this.routeData.id){
+            this.$.peopleService.getPeopleById(this.routeData.id);
           }
-        },
-        isActiveRoute: function () {
-          return this.route && this.route.prefix=='/update';
         },
         updatePeople: function () {
           var form=this.$.peopleForm;

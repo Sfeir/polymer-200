@@ -11,7 +11,10 @@
 
     _visibleChanged: function (visible) {
       if (this.visible ) {
-        this.onShow && this.onShow();
+        //use an async to be sure that other properties will be available on show
+        this.async(function() {
+          this.onShow && this.onShow();
+        }, 1);
       }
       else{
         this.onHide && this.onHide();
