@@ -26,11 +26,16 @@
       :host {
         display: block;
         padding: 20px;
+        width: 90%;
+        color: var(--primary-color);
       }
 
       .header {
-        padding: 0 20px;
-        color: var(--primary-color);
+
+      }
+
+      .search {
+        margin-right:20px;
       }
 
       paper-dialog {
@@ -69,7 +74,6 @@
 
     <section class="header layout horizontal center">
       <h2 class="flex">You have {{peoples.length}} contact(s)</h2>
-
       <a href="/list/card" tabindex="-1">
         <paper-icon-button icon="dns"></paper-icon-button>
       </a>
@@ -80,12 +84,16 @@
 
 
     <iron-pages class="layout vertical center" role="main" selected="[[page]]" attr-for-selected="name">
-      <div name="card" class="list layout horizontal wrap around-justified">
-        <template is="dom-repeat" items="{{peoples}}">
-          <people-card people="{{item}}" can-delete can-edit on-delete-people="deletePeople"></people-card>
-        </template>
-      </div>
-      <div name="map" class="list">
+      <section name="card">
+        <paper-input class="search flex" value="{{filter}}" label="Filter by name"></paper-input>
+        <div class="list layout horizontal wrap around-justified">
+          <template id="peoplesRepeat" is="dom-repeat" items="{{peoples}}" filter="hasName">
+            <people-card people="{{item}}" can-delete can-edit on-delete-people="deletePeople"></people-card>
+          </template>
+        </div>
+      </section>
+
+      <div name="map" class="list layout center">
         <people-list-map peoples="[[geoPeoples]]" current-selected-id="{{routeUserData.id}}"></people-list-map>
       </div>
     </iron-pages>
@@ -101,7 +109,7 @@
 
       Polymer({
         is: 'people-list',
-        behaviors:[PeopleRouteBehavior],
+        behaviors: [PeopleRouteBehavior],
         properties: {
           page: {
             type: String
@@ -110,6 +118,11 @@
             type: Array,
             value: [],
             observer: '_peoplesChanged'
+          },
+          filter:{
+            type:String,
+            value:'',
+            observer: 'filterChanged'
           }
         },
         observers: [
@@ -131,7 +144,6 @@
           }
         },
 
-
         _routePageChanged: function (page) {
           if (page === 'add') {
             this.$.addDialog.open();
@@ -146,6 +158,16 @@
             this.set('route.path', '/card');
             this.page = 'card';
           }
+        },
+
+        hasName: function (item) {
+          var filter=this.filter.toLowerCase();
+          return (item.firstname.toLowerCase().indexOf(filter)!=-1
+          || item.lastname.toLowerCase().indexOf(filter)!=-1)
+        },
+
+        filterChanged: function () {
+          this.$.peoplesRepeat.render();
         },
 
         onClose: function () {
