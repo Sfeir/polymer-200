@@ -2,7 +2,7 @@
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../../bower_components/google-map/google-map.html">
 <link rel="import" href="../../bower_components/google-map/google-map-marker.html">
-
+<link rel="import" href="../components/people-behaviors/people-route-behavior.html">
 
 <dom-module id="people-list-map">
   <template>
@@ -12,8 +12,8 @@
       }
 
       google-map {
-        width: 700px;
-        height: 400px;
+        min-width: 700px;
+        min-height: 400px;
       }
 
       .username {
@@ -38,7 +38,7 @@
                 api-key="AIzaSyB4voafjokZbBCNj4AdylLknJwNmjkbxEg">
       <template is="dom-repeat" items="{{peoples}}">
         <google-map-marker  latitude="[[item.geo.lat]]" longitude="[[item.geo.lng]]"
-                            open="[[_computOpen(currentSelectedId,item)]]">
+                            open="[[_computOpen(currentPeople,item)]]">
           <section class="layout vertical center">
             <a class="username" href="/detail/{{item.id}}">
               <span> {{item.firstname}}</span>
@@ -60,6 +60,7 @@
 
       Polymer({
         is: 'people-list-map',
+        behaviors: [PeopleRouteBehavior],
         properties: {
           peoples: {
             type: Array,
@@ -76,9 +77,19 @@
         ready: function () {
         },
 
-        _computOpen: function (id, item) {
-          return id && id == item.id;
+        _computOpen: function (currentPeople, item) {
+          return currentPeople && currentPeople == item;
+          //return id && id == item.id;
+        },
+
+        onShow: function () {
+          var _this=this;
+          this.currentPeople=this.peoples.find(function (item) {
+            return item.id==_this.currentSelectedId;
+          });
         }
+
+
       });
     })();
   </script>

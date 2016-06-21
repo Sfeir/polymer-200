@@ -83,7 +83,7 @@
     </section>
 
 
-    <iron-pages class="layout vertical center" role="main" selected="[[page]]" attr-for-selected="name">
+    <iron-pages class="layout vertical center" role="main" selected="[[page]]" attr-for-selected="name" selected-attribute="visible">
       <section name="card">
         <paper-input class="search flex" value="{{filter}}" label="Filter by name"></paper-input>
         <div class="list layout horizontal wrap around-justified">
@@ -93,9 +93,9 @@
         </div>
       </section>
 
-      <div name="map" class="list layout center">
-        <people-list-map peoples="[[geoPeoples]]" current-selected-id="{{routeUserData.id}}"></people-list-map>
-      </div>
+
+        <people-list-map name="map" class="list layout center" peoples="[[geoPeoples]]" current-selected-id="{{routeUserData.id}}"></people-list-map>
+
     </iron-pages>
 
 
@@ -116,7 +116,6 @@
           },
           peoples: {
             type: Array,
-            value: [],
             observer: '_peoplesChanged'
           },
           filter:{
@@ -190,6 +189,10 @@
 
         onDelete: function (event) {
           this.peoples = event.detail;
+        },
+
+        onHide: function (event) {
+          this.page = "";
         }
 
       });
