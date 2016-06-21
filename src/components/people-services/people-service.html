@@ -10,6 +10,10 @@
       handle-as="json"
       last-response="{{peoples}}"></iron-ajax>
     <iron-ajax
+      id="getRandomPeople"
+      handle-as="json"
+      last-response="{{currentPeople}}"></iron-ajax>
+    <iron-ajax
       id="getPeopleById"
       handle-as="json"
       last-response="{{currentPeople}}"></iron-ajax>
@@ -70,6 +74,10 @@
         getPeopleById: function (peopleId) {
           this.$.getPeopleById.url=this.apiUrl+"/"+peopleId;
           this.$.getPeopleById.generateRequest();
+        },
+        getRandomPeople: function () {
+          this.$.getRandomPeople.url=this.apiUrl+"/random";
+          this.$.getRandomPeople.generateRequest();
         },
         getPeoplesBySkills: function (selectedSkill) {
           this.$.getPeoplesBySkill.url=this.apiUrl+"/skill/"+selectedSkill;

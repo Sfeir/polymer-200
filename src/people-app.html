@@ -76,8 +76,6 @@
       tail="{{subroute}}">
     </app-route>
 
-    <!-- DATA SERVICES -->
-    <people-service id="peopleService" peoples="{{peoples}}"></people-service>
 
     <!-- APP LAYOUT -->
     <app-header-layout>
@@ -95,7 +93,7 @@
 
       <iron-pages class="layout vertical center" role="main" selected="[[page]]" attr-for-selected="name"  selected-attribute="visible">
         <!-- home view -->
-        <people-home name="home" current-people="{{randomPeople}}"></people-home>
+        <people-home name="home"></people-home>
         <!-- list view of items in a category -->
         <people-list id="list" name="list"  route="{{subroute}}"></people-list>
         <!-- detail view of one item -->
@@ -128,8 +126,7 @@
           },
           peoples: {
             type: Array,
-            value: [],
-            observer: '_peoplesChanged'
+            value: []
           },
           randomPeople: {
             type: Object,
@@ -143,27 +140,12 @@
 
         _routePageChanged: function (page) {
           this.page = page || 'home';
-          if(page=='home'){
-            this.getRandomPeople();
-          }
         },
 
         _pageChanged: function (page) {
           var name = 'people-' + page;
           // load page import on demand.
           //this.importHref(this.resolveUrl(name + '/' + name + '.html'), function () {}, null, true);
-        },
-
-        _peoplesChanged: function (peoples) {
-          this.getRandomPeople();
-        },
-
-        getRandomPeople: function () {
-          this.randomPeople = this.peoples[Math.floor(Math.random() * this.peoples.length)];
-        },
-
-        ready: function () {
-          this.$.peopleService.getPeoples();
         }
       });
     })();

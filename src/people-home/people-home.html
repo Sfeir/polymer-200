@@ -15,6 +15,8 @@
       }
     </style>
 
+    <!-- DATA SERVICES -->
+    <people-service id="peopleService" current-people="{{currentPeople}}"></people-service>
 
     <h2>Do you know ?</h2>
     <people-card people="{{currentPeople}}"></people-card>
@@ -35,6 +37,13 @@
             value: {},
             notify: true
           }
+        },
+
+        getRandomPeople: function () {
+          this.$.peopleService.getRandomPeople();
+        },
+        onShow: function() {
+          this.getRandomPeople();
         }
       });
     })

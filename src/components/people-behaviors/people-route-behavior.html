@@ -4,7 +4,17 @@
     properties: {
       visible: {
         type: Boolean,
-        value: false
+        value: false,
+        observer: '_visibleChanged'
+      }
+    },
+
+    _visibleChanged: function (visible) {
+      if (this.visible ) {
+        this.onShow && this.onShow();
+      }
+      else{
+        this.onHide && this.onHide();
       }
     },
 
