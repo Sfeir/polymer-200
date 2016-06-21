@@ -1,11 +1,12 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../../bower_components/google-map/google-map.html">
 <link rel="import" href="../../bower_components/google-map/google-map-marker.html">
 
 
 <dom-module id="people-list-map">
   <template>
-    <style>
+    <style include="iron-flex iron-flex-alignment">
       :host {
         display: block;
       }
@@ -13,6 +14,21 @@
       google-map {
         width: 700px;
         height: 400px;
+      }
+
+      .username {
+        font-size: 24px;
+        font-weight: 400;
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      .username:hover {
+          text-decoration: underline;
+      }
+
+      .lastname {
+        text-transform: uppercase;
       }
 
     </style>
@@ -23,8 +39,13 @@
       <template is="dom-repeat" items="{{peoples}}">
         <google-map-marker  latitude="[[item.geo.lat]]" longitude="[[item.geo.lng]]"
                             open="[[_computOpen(currentSelectedId,item)]]">
-          <h2>[[item.lastname]]</h2>
-          <img src="[[item.photo]]">
+          <section class="layout vertical center">
+            <a class="username" href="/detail/{{item.id}}">
+              <span> {{item.firstname}}</span>
+              <span class="lastname">{{item.lastname}}</span>
+            </a>
+            <img src="[[item.photo]]">
+          </section>
         </google-map-marker>
       </template>
 

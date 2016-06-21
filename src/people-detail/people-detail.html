@@ -2,6 +2,7 @@
 
 
 <link rel="import" href="../components/people-card/people-card.html">
+<link rel="import" href="../components/people-behaviors/people-route-behavior.html">
 
 <dom-module id="people-detail">
   <template>
@@ -34,6 +35,7 @@
 
       Polymer({
         is: 'people-detail',
+        behaviors:[PeopleRouteBehavior],
         properties: {
           currentPeople: {
             type: Object,
@@ -48,9 +50,6 @@
           if(this.isActiveRoute()){
             this.$.peopleService.getPeopleById(peopleId);
           }
-        },
-        isActiveRoute: function () {
-          return this.route && this.route.prefix=='/detail';
         }
       });
     })

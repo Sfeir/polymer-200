@@ -15,7 +15,7 @@
 
 <link rel="import" href="./people-list-map.html">
 <link rel="import" href="./people-list-add.html">
-
+<link rel="import" href="../components/people-behaviors/people-route-behavior.html">
 <link rel="import" href="../components/people-form/people-form.html">
 <link rel="import" href="../components/people-card/people-card.html">
 
@@ -101,6 +101,7 @@
 
       Polymer({
         is: 'people-list',
+        behaviors:[PeopleRouteBehavior],
         properties: {
           page: {
             type: String,

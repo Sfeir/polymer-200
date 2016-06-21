@@ -1,40 +1,43 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../components/people-card/people-card.html">
-
+<link rel="import" href="../components/people-behaviors/people-route-behavior.html">
 
 <dom-module id="people-home">
-    <template>
-        <style>
-            :host {
-                display: block;
-                padding: 10px;
-            }
-        </style>
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding: 10px;
+      }
+
+      h2 {
+        color: var(--primary-color);
+      }
+    </style>
 
 
-        <h2>Do you know ?</h2>
-        <people-card people="{{currentPeople}}"></people-card>
+    <h2>Do you know ?</h2>
+    <people-card people="{{currentPeople}}"></people-card>
 
 
-    </template>
+  </template>
 
-    <script>
-        (function() {
-            'use strict';
+  <script>
+    (function () {
+      'use strict';
 
-            Polymer({
-                is         : 'people-home',
-                properties : {
-                    currentPeople : {
-                        type: Object,
-                        value: {},
-                        notify: true
-                    }
-                },
-                ready : function() {
-                }
-            });
-        })
-        ();
-    </script>
+      Polymer({
+        is: 'people-home',
+        behaviors:[PeopleRouteBehavior],
+        properties: {
+          currentPeople: {
+            type: Object,
+            value: {},
+            notify: true
+          }
+        }
+      });
+    })
+    ();
+  </script>
 </dom-module>

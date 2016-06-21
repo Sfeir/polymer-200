@@ -1,8 +1,21 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-
+<link rel="import" href="../components/people-behaviors/people-route-behavior.html">
 
 <dom-module id="people-skills">
   <template>
+    <style>
+      :host {
+        display: block;
+        padding: 10px;
+      }
+
+      h2{
+        padding: 0 20px;
+        color: var(--primary-color);
+      }
+
+
+    </style>
 
     <app-route
       route="{{route}}"
@@ -29,6 +42,7 @@
 
       Polymer({
         is: 'people-skills',
+        behaviors:[PeopleRouteBehavior],
         properties: {
           peoples : {
             type   : Array,
@@ -42,9 +56,6 @@
           if(this.isActiveRoute()){
             this.$.peopleService.getPeoplesBySkills(selectedSkill);
           }
-        },
-        isActiveRoute: function () {
-          return this.route && this.route.prefix=='/skills';
         }
       });
     })();
