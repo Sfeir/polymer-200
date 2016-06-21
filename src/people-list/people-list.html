@@ -83,10 +83,10 @@
     </section>
 
 
-    <iron-pages class="layout vertical center" role="main" selected="[[page]]" attr-for-selected="name" selected-attribute="visible">
+    <iron-pages class="layout vertical" role="main" selected="[[page]]" attr-for-selected="name" selected-attribute="visible">
       <section name="card">
         <paper-input class="search flex" value="{{filter}}" label="Filter by name"></paper-input>
-        <div class="list layout horizontal wrap around-justified">
+        <div class="list layout horizontal wrap center-justified">
           <template id="peoplesRepeat" is="dom-repeat" items="{{peoples}}" filter="hasName">
             <people-card people="{{item}}" can-delete can-edit on-delete-people="deletePeople"></people-card>
           </template>
