@@ -1,0 +1,33 @@
+<template id="my-tpl">
+    <style>
+        span {
+            color:red;
+        }
+        .name{
+            text-transform: uppercase;
+        }
+    </style>
+    <input id="input" type="text">
+    <span>Bonjour:</span><span class="name"></span>
+</template>
+
+
+<script>
+    (function onload(){
+        console.log('component load');
+
+        var myDocument=document.currentScript.ownerDocument;
+        var proto = Object.create(HTMLElement.prototype, {
+            createdCallback: {
+                value: function() {
+
+                }
+            }
+        });
+
+        document.registerElement('hello-world', {
+            prototype: proto
+        });
+    })()
+
+</script>
