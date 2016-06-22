@@ -6,16 +6,26 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <link rel="shortcut icon" sizes="32x32" href="/images/icons/icon-32x32.png">
   <title>Peoples</title>
-  <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
   <link rel="import" href="bower_components/polymer/polymer.html">
   <link rel="import" href="bower_components/paper-input/paper-input.html">
-
-
 </head>
 
 <body>
   <div id="container">
     <span>Hello Polymer</span>
+    <template is="dom-bind">
+      <style>
+        span {
+          color:red;
+        }
+        .name{
+          text-transform: uppercase;
+        }
+      </style>
+      <paper-input value="{{name}}"></paper-input>
+      <span>Bonjour:</span><span class="name">{{name}}</span>
+    </template>
   </div>
 </body>
 </html>
