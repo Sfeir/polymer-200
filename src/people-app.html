@@ -30,6 +30,21 @@
                 height: 100%;
             }
         </style>
+        <!-- APP LAYOUT -->
+        <app-header-layout>
+            <app-header condenses fixed effects="waterfall">
+                <app-toolbar>
+                    <img src="/images/logo-people.svg" class="logo" aria-label="sfeir" alt="Sfeir">
+                    <span title></span>
+                    <span>Peoples</span>
+                </app-toolbar>
+            </app-header>
+
+            <section class="layout vertical center" role="main">
+                <span class="name"> Bonjour: {{name}}</span>
+                <paper-input value="{{name}}"></paper-input>
+            </section>
+        </app-header-layout>
 
     </template>
 

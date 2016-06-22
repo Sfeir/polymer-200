@@ -16,16 +16,10 @@
     }
   </style>
   <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-  <link rel="import" href="bower_components/polymer/polymer.html">
-  <link rel="import" href="bower_components/paper-input/paper-input.html">
+  <link rel="import" href="src/people-app.html">
 </head>
 
 <body>
-<div id="container">
-  <template is="dom-bind">
-    <span>Bonjour: {{name}}</span>
-    <paper-input value="{{name}}"></paper-input>
-  </template>
-</div>
+  <people-app></people-app>
 </body>
 </html>
