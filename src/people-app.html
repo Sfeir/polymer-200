@@ -4,7 +4,7 @@
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
-<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="components/people-card/people-card.html">
 
 
 <dom-module id="people-app">
@@ -41,8 +41,7 @@
             </app-header>
 
             <section class="layout vertical center" role="main">
-                <span class="name"> Bonjour: {{name}}</span>
-                <paper-input value="{{name}}"></paper-input>
+                <people-card></people-card>
             </section>
         </app-header-layout>
 

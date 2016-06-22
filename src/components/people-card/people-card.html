@@ -1,0 +1,122 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../../bower_components/iron-image/iron-image.html">
+
+
+<dom-module id="people-card">
+    <style include="iron-flex iron-flex-alignment">
+        :host {
+            margin: 20px;
+        }
+
+        paper-card {
+            width: 450px;
+            background-color: white;
+            margin: 10px;
+            --paper-card-content: {
+                padding: 0;
+                height: 100%;
+            };
+        }
+
+        .datas {
+            padding: 16px;
+        }
+
+        .datas a {
+            color: #337ab7;
+        }
+
+        .username {
+            color: #337ab7;
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        .lastname {
+            text-transform: uppercase;
+        }
+
+        .people-data a {
+            padding-left: 10px;
+        }
+
+        .people-image iron-image {
+            box-sizing: border-box;
+            width: 137px;
+            height: 137px;
+            border: 10px solid #F1F1F1;
+            border-radius: 2px;
+        }
+
+        .label {
+            padding-right: 10px;
+        }
+
+        .actions {
+            color: black;
+        }
+
+        .mapicon {
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+        }
+
+        .skills{
+            padding: 10px;
+            background-color: #FAFAFA;
+        }
+
+        .skills h3 {
+            font-size: 24px;
+            font-weight: normal;
+            line-height: 1.1;
+        }
+
+        .skills paper-button{
+            background-color: white;
+            margin: 5px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000000;
+        }
+
+        a.active paper-button{
+            background-color: orange;
+            color:white;
+        }
+        .links {
+            padding: 10px;
+            background-color: white;
+            height: 78px;
+        }
+
+        .links iron-image {
+            margin: 20px;
+        }
+
+    </style>
+
+    <template>
+     People card....
+    </template>
+
+    <script>
+        (function () {
+            'use strict';
+            Polymer({
+                is: 'people-card',
+                properties: {
+                    people: {
+                        type: Object
+                    }
+                }
+            });
+        })();
+    </script>
+</dom-module>
