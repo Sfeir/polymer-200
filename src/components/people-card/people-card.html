@@ -103,7 +103,63 @@
     </style>
 
     <template>
-     People card....
+        <paper-card class="people">
+            <div class="card-content layout vertical justified">
+                <div class="datas layout horizontal">
+                    <div class="layout vertical flex">
+                        <div class="people-header layout vertical flex">
+                            <div class="username">
+                                <span> {{people.firstname}}</span>
+                                <span class="lastname">{{people.lastname}}</span>
+                            </div>
+                        </div>
+                        <div class="people-data">
+                            <div class="layout horizontal center">
+                                <iron-image src="/images/md-email.svg"></iron-image>
+                                <a href$="mailto:{{people.email}}">{{people.email}}</a>
+                            </div>
+                            <div class="layout horizontal center flex">
+                                <iron-image src="/images/md-phone.svg"></iron-image>
+                                <a href$="tel:{{people.phone}}">{{people.phone}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="people-image">
+                        <iron-image placeholder="/images/profile.svg" src="{{people.photo}}"></iron-image>
+                    </div>
+                </div>
+                <div class="datas layout vertical">
+                    <div class="layout horizontal">
+                        <span class="label">Manager: </span>
+                        <span>{{people.manager}}</span>
+                    </div>
+                    <div class="layout horizontal center actions">
+                        <div class="layout horizontal center actions flex">
+                            <span class="label">Location: </span>
+                            <span>{{people.entity}}</span>
+                        </div>
+                        <img class="mapicon" src="/images/md-map.svg">
+                    </div>
+                </div>
+
+
+                <div class="skills">
+                    <h3>Skills</h3>
+                    <template is="dom-repeat" items="{{people.skills}}">
+                        <paper-button elevation="1  " raised>{{item}}</paper-button>
+                    </template>
+                </div>
+
+
+                <div class="links layout horizontal center-justified">
+                    <iron-image  src="/images/md-twitter.svg"></iron-image>
+                    <iron-image  src="/images/md-slack.svg"></iron-image>
+                    <iron-image  src="/images/md-github.svg"></iron-image>
+                    <iron-image  src="/images/md-linkedin.svg"></iron-image>
+                </div>
+
+            </div>
+        </paper-card>
     </template>
 
     <script>
@@ -113,8 +169,54 @@
                 is: 'people-card',
                 properties: {
                     people: {
-                        type: Object
+                        type: Object,
+                        notify: true
                     }
+                },
+                _computIsSkillSelected : function(selectedSkill,item) {
+                    if(selectedSkill && selectedSkill==item){
+                        return 'active';
+                    }
+                    return '';
+                },
+                ready: function () {
+                    this.people={
+                        "id": "5763cd4d9d2a4f259b53c901",
+                        "photo": "https://randomuser.me/portraits/women/59.jpg",
+                        "firstname": "Leanne",
+                        "lastname": "Woodard",
+                        "entity": "BIOSPAN",
+                        "entryDate": "27/10/2015",
+                        "birthDate": "02/01/1974",
+                        "gender": "",
+                        "email": "Leanne.Woodard@BIOSPAN.com",
+                        "skills": [
+                            "pariatur",
+                            "ipsum",
+                            "laboris",
+                            "nostrud",
+                            "elit"
+                        ],
+                        "geo": {
+                            "lat": 48.854107964410616,
+                            "lng": 2.2486534555789013
+                        },
+                        "phone": "0784112248",
+                        "address": {
+                            "street": "Narrows Avenue",
+                            "postalCode": 705,
+                            "city": "Boling"
+                        },
+                        "links": {
+                            "twitter": "https://twitter.com/laboris",
+                            "slack": "https://slack.com/fugiat",
+                            "github": "https://github.com/velit",
+                            "linkedin": "https://www.linkedin.com/in/voluptate"
+                        },
+                        "isManager": false,
+                        "manager": "Erika",
+                        "managerId": "5763cd4d3b57c672861bfa1f"
+                    };
                 }
             });
         })();
