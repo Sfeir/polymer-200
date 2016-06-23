@@ -1,9 +1,12 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 
 
 <link rel="import" href="../components/people-card/people-card.html">
+<link rel="import" href="./people-list-add.html">
 
 
 <dom-module id="people-list">
@@ -20,19 +23,34 @@
                 margin-right: 20px;
             }
 
-            a {
-                color: inherit;
+            .addfab {
+                position: fixed;
+                bottom: 10px;
+                right: 10px;
             }
+
+
         </style>
 
 
         <section class="header layout horizontal center">
-            <h2 class="flex">You have 1 contact(s)</h2>
+            <h2 class="flex">You have {{peoples.length}} contact(s)</h2>
+
         </section>
 
 
-        <section>
-            people list
+        <section name="card">
+            <paper-input class="search flex" value="{{filter    }}" label="Filter by name"></paper-input>
+            <div class="list layout horizontal wrap center-justified">
+                <template id="peoplesRepeat" is="dom-repeat" items="{{peoples}}" filter="filterOnName">
+                    <people-card people="{{item}}"></people-card>
+                </template>
+            </div>
+
+            <people-list-add id="addDialog"></people-list-add>
+
+            <paper-fab class="addfab" icon="add" on-click="openDialog"></paper-fab>
+
         </section>
 
 
@@ -46,7 +64,140 @@
                 properties : {
                     peoples : {
                         type : Array
+                    },
+                    filter  : {
+                        type     : String,
+                        observer : 'filterChanged'
                     }
+                },
+                listeners: {
+                    'addDialog.create-people': 'createPeople'
+                },
+                ready : function() {
+                    this.peoples = [
+                        {
+                            "id"        : "5763cd4d9d2a4f259b53c901",
+                            "photo"     : "https://randomuser.me/portraits/women/59.jpg",
+                            "firstname" : "Leanne",
+                            "lastname"  : "Woodard",
+                            "entity"    : "BIOSPAN",
+                            "entryDate" : "27/10/2015",
+                            "birthDate" : "02/01/1974",
+                            "gender"    : "",
+                            "email"     : "Leanne.Woodard@BIOSPAN.com",
+                            "skills"    : [
+                                "pariatur",
+                                "ipsum",
+                                "laboris",
+                                "nostrud",
+                                "elit"
+                            ],
+                            "geo"       : {
+                                "lat" : 48.854107964410616,
+                                "lng" : 2.2486534555789013
+                            },
+                            "phone"     : "0784112248",
+                            "address"   : {
+                                "street"     : "Narrows Avenue",
+                                "postalCode" : 705,
+                                "city"       : "Boling"
+                            },
+                            "links"     : {
+                                "twitter"  : "https://twitter.com/laboris",
+                                "slack"    : "https://slack.com/fugiat",
+                                "github"   : "https://github.com/velit",
+                                "linkedin" : "https://www.linkedin.com/in/voluptate"
+                            },
+                            "isManager" : false,
+                            "manager"   : "Erika",
+                            "managerId" : "5763cd4d3b57c672861bfa1f"
+                        },
+                        {
+                            "id"        : "5763cd4d51fdb6588742f99e",
+                            "photo"     : "https://randomuser.me/portraits/men/65.jpg",
+                            "firstname" : "Castaneda",
+                            "lastname"  : "Salinas",
+                            "entity"    : "METROZ",
+                            "entryDate" : "04/10/2015",
+                            "birthDate" : "22/01/1963",
+                            "gender"    : "",
+                            "email"     : "Castaneda.Salinas@METROZ.com",
+                            "skills"    : [
+                                "exercitation",
+                                "consectetur",
+                                "aute",
+                                "ad",
+                                "adipisicing"
+                            ],
+                            "geo"       : {
+                                "lat" : 48.85988099923647,
+                                "lng" : 2.283677529858706
+                            },
+                            "phone"     : "0145652522",
+                            "address"   : {
+                                "street"     : "Metrotech Courtr",
+                                "postalCode" : 5329,
+                                "city"       : "Franklin"
+                            },
+                            "links"     : {
+                                "twitter"  : "https://twitter.com/velit",
+                                "slack"    : "https://slack.com/sunt",
+                                "github"   : "https://github.com/sint",
+                                "linkedin" : "https://www.linkedin.com/in/voluptate"
+                            },
+                            "isManager" : false,
+                            "manager"   : "Erika",
+                            "managerId" : "5763cd4d3b57c672861bfa1f"
+                        },
+                        {
+                            "id"        : "5763cd4dba6362a3f92c954e",
+                            "photo"     : "https://randomuser.me/portraits/women/74.jpg",
+                            "firstname" : "Phyllis",
+                            "lastname"  : "Donovan",
+                            "entity"    : "PEARLESSA",
+                            "entryDate" : "30/03/2015",
+                            "birthDate" : "30/11/1951",
+                            "gender"    : "",
+                            "email"     : "Phyllis.Donovan@PEARLESSA.com",
+                            "skills"    : [
+                                "fugiat",
+                                "deserunt",
+                                "culpa",
+                                "adipisicing",
+                                "Lorem"
+                            ],
+                            "geo"       : {
+                                "lat" : 48.845544343608054,
+                                "lng" : 2.399797357715456
+                            },
+                            "phone"     : "0685230125",
+                            "address"   : {
+                                "street"     : "Oakland Place",
+                                "postalCode" : 4086,
+                                "city"       : "Onton"
+                            },
+                            "links"     : {
+                                "twitter"  : "https://twitter.com/non",
+                                "slack"    : "https://slack.com/enim",
+                                "github"   : "https://github.com/laborum",
+                                "linkedin" : "https://www.linkedin.com/in/et"
+                            },
+                            "isManager" : false,
+                            "manager"   : "Erika",
+                            "managerId" : "5763cd4d3b57c672861bfa1f"
+                        }
+                    ];
+                },
+                filterOnName : function(item) {
+                    var filter = this.filter.toLowerCase();
+                    return (item.firstname.toLowerCase().indexOf(filter) != -1
+                    || item.lastname.toLowerCase().indexOf(filter) != -1)
+                },
+                filterChanged : function() {
+                    this.$.peoplesRepeat.render();
+                },
+                openDialog: function() {
+                    this.$.addDialog.open();
                 }
             });
         })();

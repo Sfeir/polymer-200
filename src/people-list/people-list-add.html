@@ -1,0 +1,94 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/slide-from-top-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../../bower_components/iron-input/iron-input.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+
+
+<dom-module id="people-list-add">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+            paper-dialog {
+                min-width: 400px;
+                --paper-dialog-background-color: white;
+                top: 85px;
+            }
+            a {
+                color: inherit;
+            }
+        </style>
+
+        <paper-dialog id="dialog" entry-animation="slide-from-top-animation"
+                      exit-animation="fade-out-animation"
+                      positionTarget="document.body">
+            <h2>Veuillez saisir les informations</h2>
+            <paper-dialog-scrollable>
+                <form is="iron-form" id="form" method="post">
+                    <section class="layout vertical">
+                        <section class="column">
+                            <h2>Id.</h2>
+                            <div class="row input-row">
+                                <paper-input id="firstname"  name="firstname" label="Firstname*"></paper-input>
+                            </div>
+                            <div class="row input-row">
+                                <paper-input id="lastname"  name="lastname" label="Lastname*"></paper-input>
+                            </div>
+                            <div class="row input-row">
+                                <paper-input type="email" id="accountEmail" name="accountEmail" label="Email*"></paper-input>
+                            </div>
+                            <div class="row input-row">
+                                <paper-input type="text" id="accountPhone" name="accountPhone" label="Phone Number*"></paper-input>
+                            </div>
+                        </section>
+                        </section>
+                    </form>
+            </paper-dialog-scrollable>
+            <div class="buttons">
+                <paper-button dialog-dismiss>Annuler</paper-button>
+                <paper-button>Valider</paper-button>
+            </div>
+        </paper-dialog>
+
+    </template>
+
+    <script>
+        (function () {
+            'use strict';
+            Polymer({
+                is: 'people-list-add',
+                properties: {
+                    currentPeople: {
+                        type: Object,
+                        value:{},
+                        notify: true
+                    }
+                },
+                listeners: {
+                    'dialog.iron-overlay-closed': 'onClose'
+                },
+                ready: function () {
+                    this.dialog=this.$.dialog;
+                },
+                open: function () {
+                    this.dialog.open();
+                },
+                close: function () {
+                    this.dialog.close();
+                }
+            });
+        })();
+    </script>
+</dom-module>
