@@ -198,6 +198,9 @@
                 },
                 openDialog: function() {
                     this.$.addDialog.open();
+                },
+                createPeople: function (e) {
+                    this.push('peoples', e.detail);
                 }
             });
         })();

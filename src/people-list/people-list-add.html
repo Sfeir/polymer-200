@@ -41,24 +41,28 @@
                         <section class="column">
                             <h2>Id.</h2>
                             <div class="row input-row">
-                                <paper-input id="firstname"  name="firstname" label="Firstname*"></paper-input>
+                                <paper-input id="firstname"  name="firstname" label="Firstname*"
+                                             value="{{currentPeople.firstname}}"></paper-input>
                             </div>
                             <div class="row input-row">
-                                <paper-input id="lastname"  name="lastname" label="Lastname*"></paper-input>
+                                <paper-input id="lastname"  name="lastname" label="Lastname*"
+                                             value="{{currentPeople.lastname}}"></paper-input>
                             </div>
                             <div class="row input-row">
-                                <paper-input type="email" id="accountEmail" name="accountEmail" label="Email*"></paper-input>
+                                <paper-input type="email" id="accountEmail" name="accountEmail" label="Email*"
+                                             value="{{currentPeople.email}}"></paper-input>
                             </div>
                             <div class="row input-row">
-                                <paper-input type="text" id="accountPhone" name="accountPhone" label="Phone Number*"></paper-input>
+                                <paper-input type="text" id="accountPhone" name="accountPhone" label="Phone Number*"
+                                             value="{{currentPeople.phone}}"></paper-input>
                             </div>
                         </section>
-                        </section>
-                    </form>
+                    </section>
+                </form>
             </paper-dialog-scrollable>
             <div class="buttons">
                 <paper-button dialog-dismiss>Annuler</paper-button>
-                <paper-button>Valider</paper-button>
+                <paper-button on-click="createPeople">Valider</paper-button>
             </div>
         </paper-dialog>
 
@@ -81,6 +85,11 @@
                 },
                 ready: function () {
                     this.dialog=this.$.dialog;
+                },
+                createPeople: function () {
+                    this.fire('create-people',this.currentPeople);
+                    this.currentPeople={};
+                    this.close();
                 },
                 open: function () {
                     this.dialog.open();
