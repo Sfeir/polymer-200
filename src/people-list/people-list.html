@@ -1,9 +1,12 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 
 
 <link rel="import" href="../components/people-card/people-card.html">
+<link rel="import" href="./people-list-add.html">
 
 
 <dom-module id="people-list">
@@ -20,6 +23,11 @@
                 margin-right: 20px;
             }
 
+            .addfab {
+                position: fixed;
+                bottom: 10px;
+                right: 10px;
+            }
 
 
         </style>
@@ -38,6 +46,11 @@
                     <people-card people="{{item}}"></people-card>
                 </template>
             </div>
+
+            <people-list-add id="addDialog"></people-list-add>
+
+            <paper-fab class="addfab" icon="add" on-click="openDialog"></paper-fab>
+
         </section>
 
 
@@ -56,6 +69,9 @@
                         type     : String,
                         observer : 'filterChanged'
                     }
+                },
+                listeners: {
+                    'addDialog.create-people': 'createPeople'
                 },
                 ready : function() {
                     this.peoples = [
@@ -179,6 +195,9 @@
                 },
                 filterChanged : function() {
                     this.$.peoplesRepeat.render();
+                },
+                openDialog: function() {
+                    this.$.addDialog.open();
                 }
             });
         })();
