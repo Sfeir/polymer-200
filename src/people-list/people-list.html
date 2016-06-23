@@ -1,0 +1,54 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+
+
+<link rel="import" href="../components/people-card/people-card.html">
+
+
+<dom-module id="people-list">
+    <template>
+        <style include="iron-flex iron-flex-alignment">
+            :host {
+                display: block;
+                padding: 20px;
+                width: 90%;
+                color: var(--primary-color);
+            }
+
+            .search {
+                margin-right: 20px;
+            }
+
+            a {
+                color: inherit;
+            }
+        </style>
+
+
+        <section class="header layout horizontal center">
+            <h2 class="flex">You have 1 contact(s)</h2>
+        </section>
+
+
+        <section>
+            people list
+        </section>
+
+
+    </template>
+
+    <script>
+        (function() {
+            'use strict';
+            Polymer({
+                is : 'people-list',
+                properties : {
+                    peoples : {
+                        type : Array
+                    }
+                }
+            });
+        })();
+    </script>
+</dom-module>
