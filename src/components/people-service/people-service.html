@@ -1,0 +1,56 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/iron-ajax/iron-ajax.html">
+
+
+<dom-module id="people-service">
+  <template>
+    <iron-ajax
+      id="getPeoples"
+      url="{{apiUrl}}"
+      handle-as="json"
+      last-response="{{peoples}}"></iron-ajax>
+    <iron-ajax
+      id="createPeople"
+      url="{{apiUrl}}"
+      content-type="application/x-www-form-urlencoded"
+      method="POST"
+      handle-as="json"
+      on-response="onCreate"></iron-ajax>
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'people-service',
+        properties: {
+          apiUrl:{
+            type:String,
+            value:"http://localhost:3001/api/peoples"
+          },
+          peoples: {
+            type: Array,
+            value: [],
+            notify: true
+          },
+          currentPeople: {
+            type: Object,
+            value: {},
+            notify: true
+          }
+        },
+        getPeoples: function () {
+          this.$.getPeoples.generateRequest();
+        },
+        createPeople: function (people) {
+          this.$.createPeople.body=people;
+          this.$.createPeople.generateRequest();
+        },
+        onCreate: function (event) {
+          this.fire('create-success',event.detail.response);
+        }
+      });
+    })();
+  </script>
+</dom-module>
