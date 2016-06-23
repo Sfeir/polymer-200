@@ -65,7 +65,7 @@
             margin-left: 10px;
         }
 
-        .skills{
+        .skills {
             padding: 10px;
             background-color: #FAFAFA;
         }
@@ -76,7 +76,7 @@
             line-height: 1.1;
         }
 
-        .skills paper-button{
+        .skills paper-button {
             background-color: white;
             margin: 5px;
         }
@@ -86,10 +86,11 @@
             color: #000000;
         }
 
-        a.active paper-button{
+        a.active paper-button {
             background-color: orange;
-            color:white;
+            color: white;
         }
+
         .links {
             padding: 10px;
             background-color: white;
@@ -142,80 +143,88 @@
                     </div>
                 </div>
 
+                <template is="dom-if" if="{{displaySkills}}">
+                    <div class="skills">
+                        <h3>Skills</h3>
+                        <template is="dom-repeat" items="{{people.skills}}">
+                            <paper-button elevation="1  " raised>{{item}}</paper-button>
+                        </template>
+                    </div>
+                </template>
 
-                <div class="skills">
-                    <h3>Skills</h3>
-                    <template is="dom-repeat" items="{{people.skills}}">
-                        <paper-button elevation="1  " raised>{{item}}</paper-button>
-                    </template>
-                </div>
-
-
-                <div class="links layout horizontal center-justified">
-                    <iron-image  src="/images/md-twitter.svg"></iron-image>
-                    <iron-image  src="/images/md-slack.svg"></iron-image>
-                    <iron-image  src="/images/md-github.svg"></iron-image>
-                    <iron-image  src="/images/md-linkedin.svg"></iron-image>
-                </div>
+                <template is="dom-if" if="{{displayLinks}}">
+                    <div class="links layout horizontal center-justified">
+                        <iron-image src="/images/md-twitter.svg"></iron-image>
+                        <iron-image src="/images/md-slack.svg"></iron-image>
+                        <iron-image src="/images/md-github.svg"></iron-image>
+                        <iron-image src="/images/md-linkedin.svg"></iron-image>
+                    </div>
+                </template>
 
             </div>
         </paper-card>
     </template>
 
     <script>
-        (function () {
+        (function() {
             'use strict';
             Polymer({
-                is: 'people-card',
-                properties: {
-                    people: {
-                        type: Object,
-                        notify: true
-                    }
+                is                     : 'people-card',
+                properties             : {
+                    people        : {
+                        type   : Object,
+                        notify : true
+                    },
+                    displaySkills : {
+                        type : Boolean
+                    },
+                    displayLinks  : {
+                        type : Boolean
+                    },
                 },
-                _computIsSkillSelected : function(selectedSkill,item) {
-                    if(selectedSkill && selectedSkill==item){
+                _computIsSkillSelected : function(selectedSkill, item) {
+                    if (selectedSkill && selectedSkill == item) {
                         return 'active';
                     }
                     return '';
                 },
-                ready: function () {
-                    this.people={
-                        "id": "5763cd4d9d2a4f259b53c901",
-                        "photo": "https://randomuser.me/portraits/women/59.jpg",
-                        "firstname": "Leanne",
-                        "lastname": "Woodard",
-                        "entity": "BIOSPAN",
-                        "entryDate": "27/10/2015",
-                        "birthDate": "02/01/1974",
-                        "gender": "",
-                        "email": "Leanne.Woodard@BIOSPAN.com",
-                        "skills": [
+                ready                  : function() {
+                    this.people = {
+                        "id"        : "5763cd4d9d2a4f259b53c901",
+                        "photo"     : "https://randomuser.me/portraits/women/59.jpg",
+                        "firstname" : "Leanne",
+                        "lastname"  : "Woodard",
+                        "entity"    : "BIOSPAN",
+                        "entryDate" : "27/10/2015",
+                        "birthDate" : "02/01/1974",
+                        "gender"    : "",
+                        "email"     : "Leanne.Woodard@BIOSPAN.com",
+                        "skills"    : [
                             "pariatur",
                             "ipsum",
                             "laboris",
                             "nostrud",
                             "elit"
                         ],
-                        "geo": {
-                            "lat": 48.854107964410616,
-                            "lng": 2.2486534555789013
+                        "geo"       : {
+                            "lat" : 48.854107964410616,
+                            "lng" : 2.2486534555789013
                         },
-                        "phone": "0784112248",
-                        "address": {
-                            "street": "Narrows Avenue",
-                            "postalCode": 705,
-                            "city": "Boling"
+                        "phone"     : "0784112248",
+                        "address"   : {
+                            "street"     : "Narrows Avenue",
+                            "postalCode" : 705,
+                            "city"       : "Boling"
                         },
-                        "links": {
-                            "twitter": "https://twitter.com/laboris",
-                            "slack": "https://slack.com/fugiat",
-                            "github": "https://github.com/velit",
-                            "linkedin": "https://www.linkedin.com/in/voluptate"
+                        "links"     : {
+                            "twitter"  : "https://twitter.com/laboris",
+                            "slack"    : "https://slack.com/fugiat",
+                            "github"   : "https://github.com/velit",
+                            "linkedin" : "https://www.linkedin.com/in/voluptate"
                         },
-                        "isManager": false,
-                        "manager": "Erika",
-                        "managerId": "5763cd4d3b57c672861bfa1f"
+                        "isManager" : false,
+                        "manager"   : "Erika",
+                        "managerId" : "5763cd4d3b57c672861bfa1f"
                     };
                 }
             });
