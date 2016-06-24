@@ -141,7 +141,9 @@
                             <span>{{people.entity}}</span>
                         </div>
                         <img class="mapicon" src="/images/md-map.svg">
-                        <paper-icon-button icon="delete"></paper-icon-button>
+                        <template is="dom-if" if="{{canDelete}}">
+                            <paper-icon-button icon="delete" on-click="deletePeople"></paper-icon-button>
+                        </template>
                     </div>
                 </div>
 
@@ -182,6 +184,9 @@
                     },
                     displayLinks  : {
                         type : Boolean
+                    },
+                    canDelete: {
+                        type: Boolean
                     }
                 },
                 _computIsSkillSelected : function(selectedSkill, item) {
@@ -189,6 +194,9 @@
                         return 'active';
                     }
                     return '';
+                },
+                deletePeople: function () {
+                    this.fire('delete-people',this.people.id);
                 }
             });
         })();

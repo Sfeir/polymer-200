@@ -28,7 +28,8 @@
 
         <!-- DATA SERVICES -->
         <people-service id="peopleService" peoples="{{peoples}}"
-                        on-create-success="onCreate"></people-service>
+                        on-create-success="onCreate"
+                        on-delete-success="onDelete"></people-service>
 
         <!-- Subroutes -->
         <app-route
@@ -50,7 +51,7 @@
             <paper-input class="search flex" value="{{filter    }}" label="Filter by name"></paper-input>
             <div class="list layout horizontal wrap center-justified">
                 <template id="peoplesRepeat" is="dom-repeat" items="{{peoples}}" filter="filterOnName">
-                    <people-card people="{{item}}"></people-card>
+                    <people-card people="{{item}}" can-delete on-delete-people="deletePeople"></people-card>
                 </template>
             </div>
 
@@ -125,6 +126,12 @@
                 onCreate : function() {
                     this.set('route.path', '/card');
                     this.$.peopleService.getPeoples();
+                },
+                deletePeople: function (e) {
+                    this.$.peopleService.deletePeople(e.detail);
+                },
+                onDelete: function (event) {
+                    this.peoples = event.detail;
                 }
             });
         })();
