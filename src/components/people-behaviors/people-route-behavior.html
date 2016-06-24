@@ -1,3 +1,28 @@
 <script>
-  PeopleRouteBehavior = {};
+  PeopleRouteBehavior = {
+
+    properties: {
+      visible: {
+        type: Boolean,
+        value: false,
+        observer: '_visibleChanged'
+      }
+    },
+
+    _visibleChanged: function (visible) {
+      if (this.visible ) {
+        //use an async to be sure that other properties will be available on show
+        this.async(function() {
+          this.onShow && this.onShow();
+        }, 1);
+      }
+      else{
+        this.onHide && this.onHide();
+      }
+    },
+
+    isActiveRoute: function () {
+      return this.visible;
+    }
+  };
 </script>

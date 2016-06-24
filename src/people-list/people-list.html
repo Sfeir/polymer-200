@@ -6,6 +6,7 @@
 
 <link rel="import" href="../components/people-card/people-card.html">
 <link rel="import" href="../components/people-service/people-service.html">
+<link rel="import" href="../components/people-behaviors/people-route-behavior.html">
 <link rel="import" href="./people-list-add.html">
 
 
@@ -68,6 +69,7 @@
             'use strict';
             Polymer({
                 is : 'people-list',
+                behaviors:[PeopleRouteBehavior],
                 properties : {
                     peoples : {
                         type : Array
@@ -84,9 +86,6 @@
                     'addDialog.close-create-people': 'onClose',
                     'addDialog.create-people' : 'createPeople'
                 },
-                ready : function() {
-                    this.getPeoples();
-                },
                 getPeoples: function() {
                     this.$.peopleService.getPeoples();
                 },
@@ -96,7 +95,6 @@
                     }
                     else {
                         this.closeDialog();
-                        this.getPeoples();
                     }
                     if (page) {
                         this.page = page
@@ -136,6 +134,12 @@
                 },
                 onDelete: function (event) {
                     this.peoples = event.detail;
+                },
+                onShow: function () {
+                    this.getPeoples();
+                },
+                onHide: function () {
+                    this.page = "";
                 }
             });
         })();

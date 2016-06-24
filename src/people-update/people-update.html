@@ -1,6 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../components/people-form/people-form.html">
-
+<link rel="import" href="../components/people-behaviors/people-route-behavior.html">
 
 <dom-module id="people-update">
   <template>
@@ -29,18 +29,16 @@
 
       Polymer({
         is: 'people-update',
+        behaviors:[PeopleRouteBehavior],
         properties: {
           currentPeople: {
             type: Object,
             notify: true
           }
         },
-        observers: [
-          '_routePageChanged(routeData.id)'
-        ],
-        _routePageChanged: function (peopleId) {
-          if(peopleId){
-            this.$.peopleService.getPeopleById(peopleId);
+        onShow: function (peopleId) {
+          if(this.routeData.id){
+            this.$.peopleService.getPeopleById(this.routeData.id);
           }
         },
         updatePeople: function () {
