@@ -51,7 +51,7 @@
             <paper-input class="search flex" value="{{filter    }}" label="Filter by name"></paper-input>
             <div class="list layout horizontal wrap center-justified">
                 <template id="peoplesRepeat" is="dom-repeat" items="{{peoples}}" filter="filterOnName">
-                    <people-card people="{{item}}" can-delete on-delete-people="deletePeople"></people-card>
+                    <people-card people="{{item}}" can-delete can-edit on-delete-people="deletePeople"></people-card>
                 </template>
             </div>
 
@@ -85,6 +85,9 @@
                     'addDialog.create-people' : 'createPeople'
                 },
                 ready : function() {
+                    this.getPeoples();
+                },
+                getPeoples: function() {
                     this.$.peopleService.getPeoples();
                 },
                 _routePageChanged: function (page) {
@@ -93,6 +96,7 @@
                     }
                     else {
                         this.closeDialog();
+                        this.getPeoples();
                     }
                     if (page) {
                         this.page = page

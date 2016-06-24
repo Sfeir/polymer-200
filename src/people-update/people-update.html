@@ -1,0 +1,57 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../components/people-form/people-form.html">
+
+
+<dom-module id="people-update">
+  <template>
+    <!-- ROUTES DATAS -->
+    <app-location id="location"></app-location>
+    <app-route
+      route="{{route}}"
+      pattern="/:id"
+      data="{{routeData}}"
+      tail="{{subroute}}">
+    </app-route>
+
+    <!-- DATA SERVICES -->
+    <people-service id="peopleService" current-people="{{currentPeople}}" on-update-success="backToList"></people-service>
+
+    <people-form id="peopleForm" current-people="{{currentPeople}}"></people-form>
+    <section class="actions layout horizontal end-justified">
+      <paper-button on-click="backToList">Cancel</paper-button>
+      <paper-button on-click="updatePeople">Validate</paper-button>
+    </section>
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'people-update',
+        properties: {
+          currentPeople: {
+            type: Object,
+            notify: true
+          }
+        },
+        observers: [
+          '_routePageChanged(routeData.id)'
+        ],
+        _routePageChanged: function (peopleId) {
+          if(peopleId){
+            this.$.peopleService.getPeopleById(peopleId);
+          }
+        },
+        updatePeople: function () {
+          var form=this.$.peopleForm;
+          var people=form.getFormData();
+          this.$.peopleService.updatePeople(people);
+        },
+        backToList:function(){
+          this.$.location.set('path','/list/card');
+        }
+      });
+    })();
+  </script>
+</dom-module>
