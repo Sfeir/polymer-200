@@ -4,8 +4,11 @@
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
 
-<link rel="import" href="components/people-card/people-card.html">
 <link rel="import" href="people-list/people-list.html">
 <link rel="import" href="people-home/people-home.html">
 
@@ -27,35 +30,96 @@
 
             app-toolbar {
                 color: white;
+                --app-toolbar-font-size: 18px;
             }
 
             app-toolbar .logo {
                 height: 100%;
             }
 
+            app-toolbar a {
+                z-index: 1;
+                height: 100%;
+                border: 2px solid transparent;
+                text-decoration: none;
+                color: inherit;
+                line-height: 64px;
+                padding-right: 15px;
+            }
+
+            app-toolbar a:hover, app-toolbar a:focus {
+                border-bottom: 2px solid white;
+            }
+
+            .addfab {
+                position: fixed;
+                bottom: 10px;
+                right: 10px;
+            }
+
         </style>
+        <!-- ROUTING -->
+        <app-location route="{{route}}"></app-location>
+        <app-route
+                route="{{route}}"
+                pattern="/:page"
+                data="{{routeData}}"
+                tail="{{subroute}}">
+        </app-route>
+
+
         <!-- APP LAYOUT -->
         <app-header-layout>
             <app-header condenses fixed effects="waterfall">
                 <app-toolbar>
-                    <img src="/images/logo-people.svg" class="logo" aria-label="sfeir" alt="Sfeir">
+                    <a href="/home">
+                        <img src="/images/logo-people.svg" class="logo">
+                    </a>
                     <span title></span>
-                    <span>Peoples</span>
+                    <a href="/list/card">
+                        <span>Peoples</span>
+                    </a>
                 </app-toolbar>
             </app-header>
 
-            <section class="layout vertical center" role="main">
-                <people-home></people-home>
-                <people-list></people-list>
-            </section>
+            <iron-pages class="layout vertical center" role="main" selected="[[page]]" attr-for-selected="name"  selected-attribute="visible">
+                <!-- home view -->
+                <people-home name="home"></people-home>
+                <!-- people list view -->
+                <people-list name="list"  route="{{subroute}}"></people-list>
+            </iron-pages>
+
+            <a class="addfab" href="/list/add">
+                <paper-fab icon="add"></paper-fab>
+            </a>
+
         </app-header-layout>
     </template>
-
     <script>
         (function() {
             'use strict';
             Polymer({
-                is : 'people-app'
+                is : 'people-app',
+                properties: {
+                    page: {
+                        type: String,
+                        reflectToAttribute: true,
+                        observer: '_pageChanged'
+                    }
+                },
+                observers: [
+                    '_routePageChanged(routeData.page)'
+                ],
+
+                _routePageChanged: function (page) {
+                    this.page = page || 'home';
+                },
+
+                _pageChanged: function (page) {
+                    var name = 'people-' + page;
+                    // load page import on demand.
+                    //this.importHref(this.resolveUrl(name + '/' + name + '.html'), function () {}, null, true);
+                }
             });
         })();
     </script>
