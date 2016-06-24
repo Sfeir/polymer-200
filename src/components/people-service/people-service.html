@@ -12,7 +12,7 @@
     <iron-ajax
         id="createPeople"
         url="{{apiUrl}}"
-        content-type="application/x-www-form-urlencoded"
+        content-type="application/json"
         method="POST"
         handle-as="json"
         on-response="onCreate"></iron-ajax>
@@ -20,6 +20,11 @@
         id="getRandomPeople"
         handle-as="json"
         last-response="{{currentPeople}}"></iron-ajax>
+    <iron-ajax
+        id="deletePeople"
+        method="DELETE"
+        handle-as="json"
+        on-response="onDelete"></iron-ajax>
   </template>
 
   <script>
@@ -57,6 +62,13 @@
         getRandomPeople: function () {
           this.$.getRandomPeople.url=this.apiUrl+"/random";
           this.$.getRandomPeople.generateRequest();
+        },
+        deletePeople: function (peopleId) {
+          this.$.deletePeople.url=this.apiUrl+"/"+peopleId;
+          this.$.deletePeople.generateRequest();
+        },
+        onDelete: function (event) {
+          this.fire('delete-success',event.detail.response);
         }
       });
     })();
