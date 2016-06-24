@@ -1,0 +1,107 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../../../bower_components/iron-input/iron-input.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+
+
+<dom-module id="people-form">
+  <style include="iron-flex iron-flex-alignment">
+
+    .column {
+      padding-right: 20px;
+    }
+
+    paper-card {
+      min-width: 500px;
+      background-color: white;
+      margin: 10px;
+      padding: 15px;
+    }
+
+
+  </style>
+  <template>
+    <paper-card class="people">
+      <form is="iron-form" id="form" method="post">
+        <section class="layout vertical">
+          <section class="column">
+            <h2>Id.</h2>
+            <div class="row input-row">
+              <paper-input id="firstname"  name="firstname" label="Firstname*"
+                           value="{{currentPeople.firstname}}"></paper-input>
+            </div>
+            <div class="row input-row">
+              <paper-input id="lastname"  name="lastname" label="Lastname*"
+                           value="{{currentPeople.lastname}}"></paper-input>
+            </div>
+            <div class="row input-row">
+              <paper-input type="email" id="accountEmail" name="accountEmail" label="Email*"
+                           value="{{currentPeople.email}}"></paper-input>
+            </div>
+            <div class="row input-row">
+              <paper-input type="text" id="accountPhone" name="accountPhone" label="Phone Number*"
+                           value="{{currentPeople.phone}}"></paper-input>
+            </div>
+          </section>
+          <template is="dom-if" if="{{!displayOnlyId}}">
+            <section class="column">
+              <h2>Address</h2>
+              <div class="row input-row">
+
+                <paper-input type="text" id="shipAddress" name="shipAddress" label="Address"
+                             value="{{currentPeople.address.street}}"></paper-input>
+
+              </div>
+              <div class="row input-row">
+
+                <paper-input type="text" id="shipCity" name="shipCity" label="City"
+                             value="{{currentPeople.address.city}}"></paper-input>
+
+              </div>
+              <div class="row input-row">
+                <paper-input type="text" id="shipZip" name="shipZip" label="Zip/Postal Code"
+                             value="{{currentPeople.address.postalCode}}"></paper-input>
+              </div>
+              <paper-checkbox checked="{{currentPeople.isManager}}">Manager</paper-checkbox>
+            </section>
+          </template>
+        </section>
+      </form>
+    </paper-card>
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'people-form',
+        properties: {
+          currentPeople: {
+            type: Object,
+            value:{},
+            notify: true
+          },
+          displayOnlyId: {
+            type: Boolean,
+            value: false
+          }
+        },
+        ready: function () {
+          this.form=this.$.form;
+        },
+        getFormData: function() {
+          return this.currentPeople;
+        },
+        resetForm: function() {
+          this.currentPeople={};
+        }
+      });
+    })();
+  </script>
+</dom-module>
