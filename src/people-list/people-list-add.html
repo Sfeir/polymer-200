@@ -13,7 +13,7 @@
 <link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
-
+<link rel="import" href="../components/people-form/people-form.html">
 
 <dom-module id="people-list-add">
     <template>
@@ -36,29 +36,7 @@
                       positionTarget="document.body">
             <h2>Veuillez saisir les informations</h2>
             <paper-dialog-scrollable>
-                <form is="iron-form" id="form" method="post">
-                    <section class="layout vertical">
-                        <section class="column">
-                            <h2>Id.</h2>
-                            <div class="row input-row">
-                                <paper-input id="firstname"  name="firstname" label="Firstname*"
-                                             value="{{currentPeople.firstname}}"></paper-input>
-                            </div>
-                            <div class="row input-row">
-                                <paper-input id="lastname"  name="lastname" label="Lastname*"
-                                             value="{{currentPeople.lastname}}"></paper-input>
-                            </div>
-                            <div class="row input-row">
-                                <paper-input type="email" id="accountEmail" name="accountEmail" label="Email*"
-                                             value="{{currentPeople.email}}"></paper-input>
-                            </div>
-                            <div class="row input-row">
-                                <paper-input type="text" id="accountPhone" name="accountPhone" label="Phone Number*"
-                                             value="{{currentPeople.phone}}"></paper-input>
-                            </div>
-                        </section>
-                    </section>
-                </form>
+                <people-form id="peopleForm" display-only-id></people-form>
             </paper-dialog-scrollable>
             <div class="buttons">
                 <paper-button dialog-dismiss>Annuler</paper-button>
@@ -73,13 +51,6 @@
             'use strict';
             Polymer({
                 is: 'people-list-add',
-                properties: {
-                    currentPeople: {
-                        type: Object,
-                        value:{},
-                        notify: true
-                    }
-                },
                 listeners: {
                     'dialog.iron-overlay-closed': 'onClose'
                 },
@@ -90,8 +61,9 @@
                     this.fire('close-create-people');
                 },
                 createPeople: function () {
-                    this.fire('create-people',this.currentPeople);
-                    this.currentPeople={};
+                    var people=this.$.peopleForm.getFormData();
+                    this.fire('create-people',people);
+                    this.$.peopleForm.resetForm();
                     this.close();
                 },
                 open: function () {
