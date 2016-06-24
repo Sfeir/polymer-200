@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../components/people-card/people-card.html">
+<link rel="import" href="../components/people-behaviors/people-route-behavior.html">
 
 <dom-module id="people-home">
     <template>
@@ -29,6 +30,7 @@
 
             Polymer({
                 is: 'people-home',
+                behaviors:[PeopleRouteBehavior],
                 properties: {
                     currentPeople: {
                         type: Object,
@@ -38,7 +40,7 @@
                 getRandomPeople: function () {
                     this.$.peopleService.getRandomPeople();
                 },
-                ready: function() {
+                onShow: function() {
                     this.getRandomPeople();
                 }
             });
