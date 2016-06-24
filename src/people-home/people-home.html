@@ -1,0 +1,48 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../components/people-card/people-card.html">
+
+<dom-module id="people-home">
+    <template>
+        <style>
+            :host {
+                display: block;
+                padding: 10px;
+            }
+
+            h2 {
+                color: var(--primary-color);
+            }
+        </style>
+
+        <!-- DATA SERVICES -->
+        <people-service id="peopleService" current-people="{{currentPeople}}"></people-service>
+
+        <h2>Do you know ?</h2>
+        <people-card people="{{currentPeople}}"></people-card>
+
+
+    </template>
+
+    <script>
+        (function () {
+            'use strict';
+
+            Polymer({
+                is: 'people-home',
+                properties: {
+                    currentPeople: {
+                        type: Object,
+                        notify: true
+                    }
+                },
+                getRandomPeople: function () {
+                    this.$.peopleService.getRandomPeople();
+                },
+                ready: function() {
+                    this.getRandomPeople();
+                }
+            });
+        })
+        ();
+    </script>
+</dom-module>

@@ -5,17 +5,21 @@
 <dom-module id="people-service">
   <template>
     <iron-ajax
-      id="getPeoples"
-      url="{{apiUrl}}"
-      handle-as="json"
-      last-response="{{peoples}}"></iron-ajax>
+        id="getPeoples"
+        url="{{apiUrl}}"
+        handle-as="json"
+        last-response="{{peoples}}"></iron-ajax>
     <iron-ajax
-      id="createPeople"
-      url="{{apiUrl}}"
-      content-type="application/x-www-form-urlencoded"
-      method="POST"
-      handle-as="json"
-      on-response="onCreate"></iron-ajax>
+        id="createPeople"
+        url="{{apiUrl}}"
+        content-type="application/json"
+        method="POST"
+        handle-as="json"
+        on-response="onCreate"></iron-ajax>
+    <iron-ajax
+        id="getRandomPeople"
+        handle-as="json"
+        last-response="{{currentPeople}}"></iron-ajax>
   </template>
 
   <script>
@@ -49,6 +53,10 @@
         },
         onCreate: function (event) {
           this.fire('create-success',event.detail.response);
+        },
+        getRandomPeople: function () {
+          this.$.getRandomPeople.url=this.apiUrl+"/random";
+          this.$.getRandomPeople.generateRequest();
         }
       });
     })();

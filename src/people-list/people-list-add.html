@@ -86,6 +86,9 @@
                 ready: function () {
                     this.dialog=this.$.dialog;
                 },
+                onClose: function () {
+                    this.fire('close-create-people');
+                },
                 createPeople: function () {
                     this.fire('create-people',this.currentPeople);
                     this.currentPeople={};
