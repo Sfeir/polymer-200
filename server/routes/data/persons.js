@@ -25,7 +25,7 @@ exports.peoples = [
     "phone": "0784112248",
     "address": {
       "street": "Narrows Avenue",
-      "postalCode": 705,
+      "postalCode": 70534,
       "city": "Boling"
     },
     "links": {
@@ -62,7 +62,7 @@ exports.peoples = [
     "phone": "0145652522",
     "address": {
       "street": "Metrotech Courtr",
-      "postalCode": 5329,
+      "postalCode": 53292,
       "city": "Franklin"
     },
     "links": {
@@ -99,7 +99,7 @@ exports.peoples = [
     "phone": "0685230125",
     "address": {
       "street": "Oakland Place",
-      "postalCode": 4086,
+      "postalCode": 40863,
       "city": "Onton"
     },
     "links": {
@@ -136,7 +136,7 @@ exports.peoples = [
     "phone": "0678412587",
     "address": {
       "street": "Havemeyer Street",
-      "postalCode": 7615,
+      "postalCode": 76154,
       "city": "Yardville"
     },
     "links": {
@@ -173,7 +173,7 @@ exports.peoples = [
     "phone": "0662589632",
     "address": {
       "street": "Russell Street",
-      "postalCode": 5100,
+      "postalCode": 51004,
       "city": "Coloma"
     },
     "links": {
@@ -210,7 +210,7 @@ exports.peoples = [
     "phone": "0125878522",
     "address": {
       "street": "Laurel Avenue",
-      "postalCode": 8572,
+      "postalCode": 85752,
       "city": "Northchase"
     },
     "links": {
@@ -247,7 +247,7 @@ exports.peoples = [
     "phone": "0456987425",
     "address": {
       "street": "Ford Street",
-      "postalCode": 5855,
+      "postalCode": 58545,
       "city": "Shindler"
     },
     "links": {
@@ -284,7 +284,7 @@ exports.peoples = [
     "phone": "0662259988",
     "address": {
       "street": "Hall Street",
-      "postalCode": 2796,
+      "postalCode": 27946,
       "city": "Waverly"
     },
     "links": {
@@ -321,7 +321,7 @@ exports.peoples = [
     "phone": "0755669551",
     "address": {
       "street": "Sumner Place",
-      "postalCode": 3635,
+      "postalCode": 36335,
       "city": "Glidden"
     },
     "links": {
@@ -358,7 +358,7 @@ exports.peoples = [
     "phone": "0266334856",
     "address": {
       "street": "Jewel Street",
-      "postalCode": 6069,
+      "postalCode": 61400,
       "city": "Snelling"
     },
     "links": {
