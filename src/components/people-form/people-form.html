@@ -7,6 +7,8 @@
 <link rel="import" href="../../../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
+<link rel="import" href="../people-validator/people-zipcode-validator.html">
+
 
 
 <dom-module id="people-form">
@@ -26,6 +28,7 @@
 
   </style>
   <template>
+    <zipcode-validator validator-name="zipValidator"></zipcode-validator>
     <paper-card class="people">
       <form is="iron-form" id="form" method="post">
         <section class="layout vertical">
@@ -69,8 +72,9 @@
 
               </div>
               <div class="row input-row">
-                <paper-input type="text" id="shipZip" name="shipZip" pattern="\d{5}" label="Zip/Postal Code"
+                <paper-input type="text" id="shipZip" name="shipZip"  label="Zip/Postal Code"
                              error-message="The zipcode should have 5 digits"
+                             validator="zipValidator"
                              value="{{currentPeople.address.postalCode}}"></paper-input>
               </div>
               <paper-checkbox checked="{{currentPeople.isManager}}">Manager</paper-checkbox>
@@ -90,7 +94,7 @@
         properties: {
           currentPeople: {
             type: Object,
-            value:{},
+            value:{address:{}},
             notify: true
           },
           displayOnlyId: {
@@ -105,13 +109,13 @@
           return this.currentPeople;
         },
         resetForm: function() {
-          this.currentPeople={};
+          this.currentPeople={address:{}};
         },
         isValid: function () {
           var valid=this.form.validate()
                   && this.$.accountPhone.validate();
           if(!this.displayOnlyId){
-            valid=valid && this.$.shipZip.validate();
+            valid=valid && this.$$('#shipZip').validate();
           }
           return valid;
         }

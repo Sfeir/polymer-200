@@ -1,0 +1,24 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/iron-validator-behavior/iron-validator-behavior.html">
+
+<script>
+    Polymer({
+        is : 'zipcode-validator',
+        behaviors : [
+            Polymer.IronValidatorBehavior
+        ],
+        validate : function(values) {
+            if (!values) {
+                return false;
+            }
+            if (values.length != 5) {
+                return false;
+            }
+            var zipCode = parseInt(values.substring(0, 2));
+            if (isNaN(zipCode)) {
+                return false;
+            }
+            return zipCode < 99;
+        }
+    });
+</script>
