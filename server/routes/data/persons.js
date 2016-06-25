@@ -173,7 +173,7 @@ exports.peoples = [
     "phone": "0662589632",
     "address": {
       "street": "Russell Street",
-      "postalCode": 500,
+      "postalCode": 5100,
       "city": "Coloma"
     },
     "links": {
