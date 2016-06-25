@@ -12,7 +12,7 @@
     <iron-ajax
         id="createPeople"
         url="{{apiUrl}}"
-        content-type="application/x-www-form-urlencoded"
+        content-type="application/json"
         method="POST"
         handle-as="json"
         on-response="onCreate"></iron-ajax>
@@ -27,7 +27,7 @@
         on-response="onDelete"></iron-ajax>
     <iron-ajax
         id="updatePeople"
-        content-type="application/x-www-form-urlencoded"
+        content-type="application/json"
         method="PUT"
         handle-as="json"
         on-response="onUpdate"></iron-ajax>
