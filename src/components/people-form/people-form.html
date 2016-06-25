@@ -33,18 +33,23 @@
             <h2>Id.</h2>
             <div class="row input-row">
               <paper-input id="firstname"  name="firstname" label="Firstname*"
+                           error-message="The firstname is required" required
                            value="{{currentPeople.firstname}}"></paper-input>
             </div>
             <div class="row input-row">
               <paper-input id="lastname"  name="lastname" label="Lastname*"
+                           error-message="The lastname is required" required
                            value="{{currentPeople.lastname}}"></paper-input>
             </div>
             <div class="row input-row">
               <paper-input type="email" id="accountEmail" name="accountEmail" label="Email*"
+                           error-message="The email is required" required
                            value="{{currentPeople.email}}"></paper-input>
             </div>
             <div class="row input-row">
               <paper-input type="text" id="accountPhone" name="accountPhone" label="Phone Number"
+                           error-message="The phone number should have 10 digits"
+                           pattern="\d{10}"
                            value="{{currentPeople.phone}}"></paper-input>
             </div>
           </section>
@@ -64,7 +69,8 @@
 
               </div>
               <div class="row input-row">
-                <paper-input type="text" id="shipZip" name="shipZip" label="Zip/Postal Code"
+                <paper-input type="text" id="shipZip" name="shipZip" pattern="\d{5}" label="Zip/Postal Code"
+                             error-message="The zipcode should have 5 digits"
                              value="{{currentPeople.address.postalCode}}"></paper-input>
               </div>
               <paper-checkbox checked="{{currentPeople.isManager}}">Manager</paper-checkbox>
@@ -100,6 +106,14 @@
         },
         resetForm: function() {
           this.currentPeople={};
+        },
+        isValid: function () {
+          var valid=this.form.validate()
+                  && this.$.accountPhone.validate();
+          if(!this.displayOnlyId){
+            valid=valid && this.$$('#shipZip').validate();
+          }
+          return valid;
         }
       });
     })();

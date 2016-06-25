@@ -61,10 +61,12 @@
                     this.fire('close-create-people');
                 },
                 createPeople: function () {
-                    var people=this.$.peopleForm.getFormData();
-                    this.fire('create-people',people);
-                    this.$.peopleForm.resetForm();
-                    this.close();
+                    if(this.$.peopleForm.isValid()){
+                        var people=this.$.peopleForm.getFormData();
+                        this.fire('create-people',people);
+                        this.$.peopleForm.resetForm();
+                        this.close();
+                    }
                 },
                 open: function () {
                     this.dialog.open();
