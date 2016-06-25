@@ -111,7 +111,7 @@
           var valid=this.form.validate()
                   && this.$.accountPhone.validate();
           if(!this.displayOnlyId){
-            valid=valid && this.$$('#shipZip').validate();
+            valid=valid && this.$.shipZip.validate();
           }
           return valid;
         }
