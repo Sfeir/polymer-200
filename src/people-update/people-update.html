@@ -43,8 +43,10 @@
         },
         updatePeople: function () {
           var form=this.$.peopleForm;
-          var people=form.getFormData();
-          this.$.peopleService.updatePeople(people);
+          if(form.isValid()) {
+            var people = form.getFormData();
+            this.$.peopleService.updatePeople(people);
+          }
         },
         backToList:function(){
           this.$.location.set('path','/list/card');
