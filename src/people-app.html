@@ -12,6 +12,7 @@
 <link rel="import" href="people-list/people-list.html">
 <link rel="import" href="people-home/people-home.html">
 <link rel="import" href="people-update/people-update.html">
+<link rel="import" href="people-detail/people-detail.html">
 
 
 <dom-module id="people-app">
@@ -90,6 +91,8 @@
                 <people-list name="list"  route="{{subroute}}"></people-list>
                 <!-- Update -->
                 <people-update name="update" route="{{subroute}}"></people-update>
+                <!-- detail view of one item -->
+                <people-detail name="detail" route="{{subroute}}"></people-detail>
             </iron-pages>
 
             <a class="addfab" href="/list/add">
