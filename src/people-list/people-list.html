@@ -2,12 +2,15 @@
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
-
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/iron-icons/maps-icons.html">
 
 <link rel="import" href="../components/people-card/people-card.html">
 <link rel="import" href="../components/people-service/people-service.html">
 <link rel="import" href="../components/people-behaviors/people-route-behavior.html">
+
 <link rel="import" href="./people-list-add.html">
+<link rel="import" href="./people-list-map.html">
 
 
 <dom-module id="people-list">
@@ -24,6 +27,14 @@
                 margin-right: 20px;
             }
 
+            .search {
+                margin-right:20px;
+            }
+
+
+            a {
+                color: inherit;
+            }
 
         </style>
 
@@ -40,27 +51,33 @@
                 tail="{{subroute}}">
         </app-route>
 
-
-
         <section class="header layout horizontal center">
             <h2 class="flex">You have {{peoples.length}} contact(s)</h2>
-
+            <a href="/list/card" tabindex="-1">
+                <paper-icon-button icon="dns"></paper-icon-button>
+            </a>
+            <a href="/list/map" tabindex="-1">
+                <paper-icon-button icon="maps:map"></paper-icon-button>
+            </a>
         </section>
 
 
-        <section name="card">
-            <paper-input class="search flex" value="{{filter    }}" label="Filter by name"></paper-input>
-            <div class="list layout horizontal wrap center-justified">
-                <template id="peoplesRepeat" is="dom-repeat" items="{{peoples}}" filter="filterOnName">
-                    <people-card people="{{item}}" can-delete can-edit on-delete-people="deletePeople"></people-card>
-                </template>
-            </div>
+        <iron-pages class="layout vertical" role="main" selected="[[page]]" attr-for-selected="name" selected-attribute="visible">
+            <section name="card">
+                <paper-input class="search flex" value="{{filter}}" label="Filter by name"></paper-input>
+                <div class="list layout horizontal wrap center-justified">
+                    <template id="peoplesRepeat" is="dom-repeat" items="{{peoples}}" filter="filterOnName">
+                        <people-card people="{{item}}" can-delete can-edit on-delete-people="deletePeople"></people-card>
+                    </template>
+                </div>
+            </section>
 
-            <people-list-add id="addDialog"></people-list-add>
 
+            <people-list-map name="map" class="list layout center" peoples="[[geoPeoples]]"></people-list-map>
 
-        </section>
+        </iron-pages>
 
+        <people-list-add id="addDialog"></people-list-add>
 
     </template>
 
@@ -71,8 +88,12 @@
                 is : 'people-list',
                 behaviors:[PeopleRouteBehavior],
                 properties : {
+                    page: {
+                        type: String
+                    },
                     peoples : {
-                        type : Array
+                        type : Array,
+                        observer: '_peoplesChanged'
                     },
                     filter : {
                         type     : String,
@@ -88,6 +109,13 @@
                 },
                 getPeoples: function() {
                     this.$.peopleService.getPeoples();
+                },
+                _peoplesChanged: function (peoples) {
+                    if (peoples) {
+                        this.geoPeoples = peoples.filter(function (item) {
+                            return item.geo && item.geo.lat && item.geo.lng;
+                        })
+                    }
                 },
                 _routePageChanged: function (page) {
                     if (page === 'add') {
