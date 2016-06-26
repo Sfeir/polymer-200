@@ -14,16 +14,18 @@
     </style>
 
     <app-route
-      id="rte"
-      route="{{route}}"
-      pattern="/:id"
-      data="{{routeData}}"
-      tail="{{subroute}}">
+            id="rte"
+            route="{{route}}"
+            pattern="/:id"
+            data="{{routeData}}"
+            tail="{{subroute}}">
     </app-route>
 
+    <!-- DATA SERVICES -->
+    <people-service id="peopleService" current-people="{{currentPeople}}"></people-service>
 
+    <people-card display-skills display-links people="{{currentPeople}}"></people-card>
 
-  <h1>People detail</h1>
 
   </template>
 
@@ -33,7 +35,22 @@
 
       Polymer({
         is: 'people-detail',
-        behaviors:[PeopleRouteBehavior]
+        behaviors:[PeopleRouteBehavior],
+        properties: {
+          currentPeople: {
+            type: Object,
+            value: {},
+            notify: true
+          }
+        },
+        getPeople: function () {
+          if(this.routeData.id){
+            this.$.peopleService.getPeopleById(this.routeData.id);
+          }
+        },
+        onShow: function() {
+          this.getPeople();
+        }
       });
     })
     ();
