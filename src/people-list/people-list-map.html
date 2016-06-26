@@ -23,7 +23,7 @@
       }
 
       .username:hover {
-          text-decoration: underline;
+        text-decoration: underline;
       }
 
       .lastname {
@@ -33,7 +33,23 @@
     </style>
 
 
-    <h1>contact map</h1>
+    <google-map map-type="roadmap" latitude="48.8534100" longitude="2.3488000" fit-to-markers
+                api-key="AIzaSyB4voafjokZbBCNj4AdylLknJwNmjkbxEg">
+      <template is="dom-repeat" items="{{peoples}}">
+        <google-map-marker  latitude="[[item.geo.lat]]" longitude="[[item.geo.lng]]"
+                            open="[[_computOpen(currentPeople,item)]]">
+          <section class="layout vertical center">
+            <a class="username" href="/detail/{{item.id}}">
+              <span> {{item.firstname}}</span>
+              <span class="lastname">{{item.lastname}}</span>
+            </a>
+            <img src="[[item.photo]]">
+          </section>
+        </google-map-marker>
+      </template>
+
+    </google-map>
+
 
   </template>
 
