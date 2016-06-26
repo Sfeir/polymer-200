@@ -164,7 +164,9 @@
                     <div class="skills">
                         <h3>Skills</h3>
                         <template is="dom-repeat" items="{{people.skills}}">
-                            <paper-button elevation="1  " raised>{{item}}</paper-button>
+                            <a href="/skills/{{item}}" class$="[[_computIsSkillSelected(selectedSkill,item)]]">
+                                <paper-button elevation="1  " raised>{{item}}</paper-button>
+                            </a>
                         </template>
                     </div>
                 </template>
