@@ -35,6 +35,10 @@
         id="getPeopleById"
         handle-as="json"
         last-response="{{currentPeople}}"></iron-ajax>
+    <iron-ajax
+            id="getPeoplesBySkill"
+            handle-as="json"
+            last-response="{{peoplesBySkill}}"></iron-ajax>
   </template>
 
   <script>
@@ -56,6 +60,11 @@
           currentPeople: {
             type: Object,
             value: {},
+            notify: true
+          },
+          peoplesBySkill: {
+            type: Array,
+            value: [],
             notify: true
           }
         },
@@ -91,6 +100,10 @@
         },
         onUpdate: function (event) {
           this.fire('update-success',event.detail.response);
+        },
+        getPeoplesBySkills: function (selectedSkill) {
+          this.$.getPeoplesBySkill.url=this.apiUrl+"/skill/"+selectedSkill;
+          this.$.getPeoplesBySkill.generateRequest();
         }
       });
     })();
