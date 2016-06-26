@@ -1,0 +1,75 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../components/people-behaviors/people-route-behavior.html">
+
+<dom-module id="people-skills">
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding: 10px;
+      }
+
+      h2{
+        padding: 0 20px;
+        color: var(--primary-color);
+      }
+
+
+    </style>
+
+    <app-route
+      route="{{route}}"
+      pattern="/:skill"
+      data="{{routeData}}"
+      tail="{{subroute}}">
+    </app-route>
+
+    <!-- DATA SERVICES -->
+    <people-service id="peopleService" peoples-by-skill="{{peoples}}"></people-service>
+
+
+    <h2>People Skills</h2>
+    <div name="card" class="list layout horizontal wrap around-justified">
+      <template is="dom-repeat" items="{{peoples}}">
+        <people-card people="{{item}}" display-skills selected-skill="{{routeData.skill}}"></people-card>
+      </template>
+    </div>
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'people-skills',
+        behaviors:[PeopleRouteBehavior],
+        properties: {
+          peoples : {
+            type   : Array,
+            value  : []
+          },
+          currentSkill:{
+            type:String
+          }
+        },
+        observers  : [
+          '_routePageChanged(routeData.skill)'
+        ],
+        getPeoplesBySkills: function () {
+          if(this.routeData.skill){
+            this.$.peopleService.getPeoplesBySkills(this.routeData.skill);
+            this.currentSkill=this.routeData.skill;
+          }
+        },
+        _routePageChanged : function(newSkill) {
+          if(this.isActiveRoute() && newSkill!=this.currentSkill) {
+            this.getPeoplesBySkills();
+          }
+        },
+        onShow: function () {
+          this.getPeoplesBySkills();
+        }
+      });
+    })();
+  </script>
+</dom-module>

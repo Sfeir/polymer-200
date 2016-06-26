@@ -50,6 +50,12 @@
                 data="{{routeData}}"
                 tail="{{subroute}}">
         </app-route>
+        <app-route
+                route="{{subroute}}"
+                pattern="/:id"
+                data="{{routeUserData}}"
+                tail="{{userSubroute}}">
+        </app-route>
 
         <section class="header layout horizontal center">
             <h2 class="flex">You have {{peoples.length}} contact(s)</h2>
@@ -73,7 +79,7 @@
             </section>
 
 
-            <people-list-map name="map" class="list layout center" peoples="[[geoPeoples]]"></people-list-map>
+            <people-list-map name="map" class="list layout center" peoples="[[geoPeoples]]" current-selected-id="{{routeUserData.id}}"></people-list-map>
 
         </iron-pages>
 

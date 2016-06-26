@@ -106,7 +106,7 @@
             height: 78px;
         }
 
-        .links iron-image {
+        .links img {
             margin: 20px;
         }
 
@@ -148,7 +148,9 @@
                             <span class="label">Location: </span>
                             <span>{{people.entity}}</span>
                         </div>
-                        <img class="mapicon" src="/images/md-map.svg">
+                        <a href="/list/map/{{people.id}}" tabindex="-1">
+                            <img class="mapicon" src="/images/md-map.svg">
+                        </a>
                         <template is="dom-if" if="{{canEdit}}">
                             <a href="/update/{{people.id}}" tabindex="-1">
                                 <paper-icon-button icon="create"></paper-icon-button>
@@ -173,13 +175,20 @@
 
                 <template is="dom-if" if="{{displayLinks}}">
                     <div class="links layout horizontal center-justified">
-                        <iron-image src="/images/md-twitter.svg"></iron-image>
-                        <iron-image src="/images/md-slack.svg"></iron-image>
-                        <iron-image src="/images/md-github.svg"></iron-image>
-                        <iron-image src="/images/md-linkedin.svg"></iron-image>
+                        <a href="{{people.links.twitter}}">
+                            <img  src="/images/md-twitter.svg">
+                        </a>
+                        <a href="{{people.links.slack}}">
+                            <img  src="/images/md-slack.svg">
+                        </a>
+                        <a href="{{people.links.github}}">
+                            <img  src="/images/md-github.svg">
+                        </a>
+                        <a href="{{people.links.linkedin}}">
+                            <img  src="/images/md-linkedin.svg">
+                        </a>
                     </div>
                 </template>
-
             </div>
         </paper-card>
     </template>
